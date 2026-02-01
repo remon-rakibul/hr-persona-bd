@@ -354,4 +354,4 @@ This project is for educational purposes. The Bangladesh Labour Act is public do
 
 For questions or issues:
 - Open an issue on GitHub
-- Contact: [your-email@example.com]
+- Contact: [remon.rakibul.star@gmail.com]
