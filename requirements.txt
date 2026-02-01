@@ -1,0 +1,34 @@
+# HR Persona BD - Fine-tuning Pipeline Dependencies
+
+# Meta's Synthetic Data Kit for PDF to QA conversion
+synthetic-data-kit
+
+# PDF parsing dependencies
+pdfminer.six
+beautifulsoup4
+python-docx
+python-pptx
+
+# LLM APIs
+openai>=1.0.0
+ollama
+
+# Dataset handling
+datasets>=2.19.0
+huggingface-hub
+
+# For local inference
+transformers>=4.43.0
+torch>=2.3.0
+accelerate
+
+# JSON parsing
+json5
+
+# Utilities
+tqdm
+pyyaml
+python-dotenv
+
+# Note: For Colab notebooks, unsloth is installed separately:
+# pip install unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
