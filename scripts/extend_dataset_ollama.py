@@ -98,7 +98,15 @@ def check_ollama_connection(model: str) -> bool:
     try:
         # Try to list models
         models = ollama.list()
-        available_models = [m['name'] for m in models.get('models', [])]
+        available_models = []
+        
+        # Safely extract model names
+        if 'models' in models and isinstance(models['models'], list):
+            for m in models['models']:
+                if isinstance(m, dict) and 'name' in m:
+                    available_models.append(m['name'])
+                elif isinstance(m, dict) and 'model' in m:
+                    available_models.append(m['model'])
         
         # Check if our model is available (handle partial matches)
         model_base = model.split(':')[0]
