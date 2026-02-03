@@ -149,13 +149,33 @@ data/final/bangladesh_labour_act_chatml_validated.json
 
 ### 7. Deploy with Ollama
 
+**Note:** Unsloth saves the GGUF at the **Colab root** (e.g. `/content/`) as `llama-3.2-3b-instruct.Q4_K_M.gguf`, not inside `hr-persona-bd-llama32-3b-gguf/` and not as `unsloth.Q4_K_M.gguf`. The notebook now moves it into the folder after export. If you already have the file at root, move it into `hr-persona-bd-llama32-3b-gguf/` before zipping, or use that path with the deploy script.
+
+**Option A: Use the deploy script (recommended)**  
+Run from the project root. Use the **full path** to the GGUF file:
+
 ```bash
-# Navigate to GGUF model directory
+# From project root - use the actual GGUF filename from Colab
+# (often llama-3.2-3b-instruct.Q4_K_M.gguf)
+python scripts/deploy_ollama.py \
+  --gguf hr-persona-bd-llama32-3b-gguf/llama-3.2-3b-instruct.Q4_K_M.gguf \
+  --name hr-persona-bd \
+  --type llama
+
+# Then run the model
+ollama run hr-persona-bd
+```
+
+**Option B: Manual deployment**  
+You must run these commands **from inside the folder that contains the .gguf file**:
+
+```bash
+# 1. Go into the GGUF folder (after downloading from Colab)
 cd hr-persona-bd-llama32-3b-gguf
 
-# Create Modelfile
+# 2. Use the actual filename (ls to confirm: llama-3.2-3b-instruct.Q4_K_M.gguf or unsloth.Q4_K_M.gguf)
 cat > Modelfile << 'EOF'
-FROM ./unsloth.Q4_K_M.gguf
+FROM ./llama-3.2-3b-instruct.Q4_K_M.gguf
 
 TEMPLATE """{{- if .System }}<|begin_of_text|><|start_header_id|>system<|end_header_id|>
 
@@ -172,8 +192,42 @@ PARAMETER top_p 0.9
 PARAMETER stop "<|eot_id|>"
 EOF
 
-# Create and run the model
+# 3. Create the model
 ollama create hr-persona-bd -f Modelfile
+
+# 4. Run
+ollama run hr-persona-bd
+```
+
+**If you get "pull model manifest: file does not exist":**  
+Ollama has a broken or wrongly-created model. Remove it, then create it again:
+
+```bash
+# 1. Remove the broken model
+ollama rm hr-persona-bd
+
+# 2. Go into the GGUF folder
+cd hr-persona-bd-llama32-3b-gguf
+
+# 3. Confirm the GGUF file is here (name may be llama-3.2-3b-instruct.Q4_K_M.gguf)
+ls -la *.gguf
+
+# 4. Create the Modelfile (if not already there), then create the model
+ollama create hr-persona-bd -f Modelfile
+
+# 5. Run (from any directory)
+ollama run hr-persona-bd
+```
+
+Or use the deploy script from project root (no cd needed):
+
+```bash
+ollama rm hr-persona-bd
+cd ~/Documents/hr-persona-bd
+python scripts/deploy_ollama.py \
+  --gguf hr-persona-bd-llama32-3b-gguf/llama-3.2-3b-instruct.Q4_K_M.gguf \
+  --name hr-persona-bd \
+  --type llama
 ollama run hr-persona-bd
 ```
 
