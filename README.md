@@ -4,8 +4,9 @@ Fine-tuned LLM for Bangladesh Labour Law and HR practices, based on the Banglade
 
 ## Features
 
-- **PDF to QA Dataset**: Convert legal documents to training datasets using Meta's Synthetic Data Kit
+- **PDF to QA Dataset**: Convert legal documents to training datasets using Ollama
 - **Dataset Extension**: Expand datasets using Ollama or OpenAI GPT-4o-mini
+- **Dataset Validation**: Validate and improve datasets against source PDF (99.7% verification)
 - **Fine-tuning**: Train Llama 3.2 3B or Qwen3 4B on Google Colab (free tier)
 - **GGUF Export**: Export models in Q4_K_M format for Ollama
 - **Local Inference**: Run fine-tuned models locally with interactive chat
@@ -14,31 +15,39 @@ Fine-tuned LLM for Bangladesh Labour Law and HR practices, based on the Banglade
 
 ```
 hr-persona-bd/
-├── Bangladesh-Labour-Act-2006_English-Upto-2018.pdf  # Source PDF (at root)
+├── Bangladesh-Labour-Act-2006_English-Upto-2018.pdf  # Source PDF
 ├── data/
-│   ├── output/                   # Extracted text (if using synthetic-data-kit)
-│   ├── generated/                # Initial QA pairs
-│   ├── curated/                  # Quality-filtered QA pairs
-│   └── final/                    # Training-ready datasets
-├── scripts/
-│   ├── pdf_to_qa_direct.py       # PDF to QA conversion (recommended)
-│   ├── extend_dataset_ollama.py  # Dataset extension via Ollama
-│   ├── extend_dataset_openai.py  # Dataset extension via OpenAI
-│   ├── inference.py              # Local inference script
-│   ├── deploy_ollama.py          # Ollama deployment automation
-│   └── upload_to_hf.py           # Hugging Face upload utility
+│   └── final/                          # Training-ready datasets
+│       ├── bangladesh_labour_act_chatml.json           # Original (510 QA pairs)
+│       ├── bangladesh_labour_act_chatml_extended_ollama.json  # Extended (3,220 pairs)
+│       └── bangladesh_labour_act_chatml_validated.json # Validated (3,219 pairs, 99.7% verified)
+├── scripts/                            # All project scripts
+│   ├── pdf_to_qa_direct.py            # PDF to QA conversion
+│   ├── extend_dataset_ollama.py       # Dataset extension via Ollama
+│   ├── extend_dataset_openai.py       # Dataset extension via OpenAI
+│   ├── inference.py                   # Local inference script
+│   ├── deploy_ollama.py               # Ollama deployment automation
+│   ├── upload_to_hf.py                # Hugging Face upload utility
+│   └── validate_and_improve_dataset.py # Validate & improve dataset against PDF
 ├── notebooks/
-│   ├── finetune_llama32_3b.ipynb # Llama 3.2 3B fine-tuning
-│   └── finetune_qwen3_4b.ipynb   # Qwen3 4B fine-tuning
+│   ├── finetune_llama32_3b.ipynb      # Llama 3.2 3B fine-tuning
+│   └── finetune_qwen3_4b.ipynb        # Qwen3 4B fine-tuning
 ├── configs/
-│   └── config.yaml               # Configuration file
-├── requirements.txt              # Dependencies
-├── README.md                     # This file
-├── TROUBLESHOOTING.md            # Troubleshooting guide
-├── OLLAMA_DEPLOYMENT.md          # Ollama deployment guide
-├── HUGGINGFACE_UPLOAD.md         # HuggingFace upload guide
-└── .gitignore                    # Git ignore rules
+│   └── config.yaml                    # Configuration file
+├── requirements.txt                   # Dependencies
+├── README.md                          # This file
+├── TROUBLESHOOTING.md                 # Troubleshooting guide
+├── OLLAMA_DEPLOYMENT.md               # Ollama deployment guide
+└── HUGGINGFACE_UPLOAD.md              # HuggingFace upload guide
 ```
+
+## Available Datasets
+
+| Dataset | Items | Description |
+|---------|-------|-------------|
+| `bangladesh_labour_act_chatml.json` | 510 | Original QA pairs from PDF |
+| `bangladesh_labour_act_chatml_extended_ollama.json` | 3,220 | Extended with variations, follow-ups, scenarios |
+| `bangladesh_labour_act_chatml_validated.json` | 3,219 | **Recommended** - Validated against PDF (99.7% verified) |
 
 ## Quick Start
 
@@ -63,190 +72,88 @@ curl -fsSL https://ollama.com/install.sh | sh
 # Pull the model
 ollama pull llama3.2:3b-instruct-q4_K_M
 
-# Start Ollama server (keep this running in a separate terminal)
+# Start Ollama server (keep running in separate terminal)
 ollama serve
 ```
 
-### 3. Generate QA Dataset
+### 3. Generate QA Dataset (Optional - Pre-built datasets available)
 
 ```bash
-# RECOMMENDED: Start with a test run (20 chunks, ~100 QA pairs, ~30 minutes)
-python scripts/pdf_to_qa_direct.py \
-  --input Bangladesh-Labour-Act-2006_English-Upto-2018.pdf \
-  --num-pairs 5 \
-  --max-chunks 20
-
-# FULL DATASET: Generate complete dataset (all ~115 chunks, ~575 QA pairs, ~2-3 hours)
+# Generate QA pairs from PDF
 python scripts/pdf_to_qa_direct.py \
   --input Bangladesh-Labour-Act-2006_English-Upto-2018.pdf \
   --num-pairs 5
 
-# OR: Run full dataset in background (recommended for long generation)
-nohup python scripts/pdf_to_qa_direct.py \
-  --input Bangladesh-Labour-Act-2006_English-Upto-2018.pdf \
-  --num-pairs 5 \
-  > qa_generation.log 2>&1 &
-
-# Check background progress:
-tail -f qa_generation.log
+# Output: data/final/bangladesh_labour_act_chatml.json
 ```
-
-The dataset will be saved to `data/final/bangladesh_labour_act_chatml.json`
-
-**Performance Notes:**
-- The script automatically extracts text from PDF
-- Generation time: ~60-80 seconds per chunk (on GTX 1050 4GB)
-- Test run (20 chunks): ~25-30 minutes → ~100 QA pairs
-- Full dataset (115 chunks): ~2-3 hours → ~575 QA pairs
-- Recommended: Start with test run, then run full dataset overnight
-
-**IMPORTANT: Start Ollama before running the script!**
-
-```bash
-# Step 1: Install Ollama (if not already installed)
-curl -fsSL https://ollama.com/install.sh | sh
-
-# Step 2: Pull a model for QA generation
-ollama pull llama3.2:3b-instruct-q4_K_M
-
-# Step 3: Start Ollama server (in a separate terminal or background)
-ollama serve
-
-# Step 4: Verify Ollama is running
-curl http://localhost:11434/api/tags
-```
-
-#### Option A: Direct QA Generation with Ollama (Recommended - Fast & Reliable)
-
-This method directly uses Ollama without intermediate tools. It's simpler and more reliable.
-
-```bash
-# Generate a test dataset (20 chunks, ~100 QA pairs, ~25-30 minutes)
-python scripts/pdf_to_qa_direct.py \
-  --input data/parsed/Bangladesh-Labour-Act-2006_English-Upto-2018.txt \
-  --num-pairs 5 \
-  --max-chunks 20
-
-# Generate full dataset (all chunks, ~575 QA pairs, ~2-3 hours)
-python scripts/pdf_to_qa_direct.py \
-  --input data/parsed/Bangladesh-Labour-Act-2006_English-Upto-2018.txt \
-  --num-pairs 5
-
-# Or run it in background (overnight)
-nohup python scripts/pdf_to_qa_direct.py \
-  --input data/parsed/Bangladesh-Labour-Act-2006_English-Upto-2018.txt \
-  --num-pairs 5 \
-  > qa_generation.log 2>&1 &
-
-# Check progress
-tail -f qa_generation.log
-```
-
-**Note**: The script automatically extracts text from PDF files. It works with:
-- PDF files (`.pdf`) - Automatically extracts text
-- Text files (`.txt`) - Reads directly
-
-The script:
-1. Extracts/reads text from input file
-2. Splits text into chunks
-3. Generates QA pairs using Ollama
-4. Saves in ChatML format to `data/final/bangladesh_labour_act_chatml.json`
-
-**Performance Tips:**
-- Use `--num-pairs 5` for faster generation with quality pairs
-- Use `--max-chunks 20` to test with a smaller dataset first
-- Generation time: ~60-80 seconds per chunk on GTX 1050 4GB
-- Full dataset (~115 chunks) takes ~2-3 hours
-
-#### Option B: Using Synthetic Data Kit (Advanced - May Have Issues)
-
-If you prefer the full synthetic-data-kit pipeline:
-
-```bash
-# Parse PDF
-synthetic-data-kit -c configs/config.yaml ingest Bangladesh-Labour-Act-2006_English-Upto-2018.pdf
-
-# Generate QA pairs
-synthetic-data-kit -c configs/config.yaml create data/output/Bangladesh-Labour-Act-2006_English-Upto-2018.txt \
-  --type qa --num-pairs 50 --chunk-size 4000
-
-# Curate with quality threshold
-synthetic-data-kit -c configs/config.yaml curate data/generated/*.json --threshold 7.0
-
-# Save as ChatML format
-synthetic-data-kit -c configs/config.yaml save-as data/curated/*.json --format chatml --storage hf
-```
-
-**Note**: synthetic-data-kit may have configuration issues. Use Option A for reliability.
 
 ### 4. Extend Dataset (Optional)
 
-Expand the dataset with additional QA pairs:
-
-#### Using Ollama (Free, Local)
-
 ```bash
+# Extend with variations, follow-ups, and scenarios
 python scripts/extend_dataset_ollama.py \
   --input data/final/bangladesh_labour_act_chatml.json \
   --model llama3.2:3b-instruct-q4_K_M \
   --types variations follow_up scenarios
+
+# Output: data/final/bangladesh_labour_act_chatml_extended_ollama.json
 ```
 
-#### Using OpenAI (Paid, Higher Quality)
+### 5. Validate and Improve Dataset
+
+Validate the extended dataset against the source PDF:
 
 ```bash
-export OPENAI_API_KEY="your-api-key"
-python scripts/extend_dataset_openai.py \
-  --input data/final/bangladesh_labour_act_chatml.json \
-  --model gpt-4o-mini \
-  --types variations follow_up scenarios edge_cases
+python scripts/validate_and_improve_dataset.py \
+  --input data/final/bangladesh_labour_act_chatml_extended_ollama.json \
+  --pdf Bangladesh-Labour-Act-2006_English-Upto-2018.pdf \
+  --output data/final/bangladesh_labour_act_chatml_validated.json
 ```
 
-### 5. Fine-tune the Model
+**What this script does:**
+- Validates ChatML structure
+- Fixes content type issues (list to string)
+- Removes invalid section references
+- Removes duplicates
+- Verifies each answer against PDF (99.7% verification rate)
+
+**Output:**
+```
+Verification Status:
+  ✓ Verified: 3,209 (99.7%)
+  ⚠ Partial: 0 (0.0%)
+  ? Unverified: 10 (0.3%)
+
+Confidence Distribution:
+  High (≥0.8): 2,317 (72.0%)
+  Medium (0.6-0.8): 892 (27.7%)
+  Low (<0.6): 10 (0.3%)
+```
+
+### 6. Fine-tune the Model
 
 #### Using Google Colab (Recommended)
 
-1. Upload your dataset to Google Drive or prepare to upload during training
+1. Upload your dataset to Google Drive
 2. Open one of the notebooks in Google Colab:
    - [Llama 3.2 3B](notebooks/finetune_llama32_3b.ipynb)
    - [Qwen3 4B](notebooks/finetune_qwen3_4b.ipynb)
-3. Make sure to select **T4 GPU** runtime
-4. Run all cells and follow the instructions
-5. Download the GGUF model when complete
+3. Select **T4 GPU** runtime
+4. Run all cells
+5. Download the GGUF model
 
-#### Training Parameters
-
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| `max_seq_length` | 2048 | Context length |
-| `load_in_4bit` | True | Memory-efficient training |
-| `r` | 16 | LoRA rank |
-| `lora_alpha` | 16 | LoRA scaling |
-| `learning_rate` | 2e-4 | Training speed |
-| `batch_size` | 2 | Per-device batch size |
-| `gradient_accumulation` | 4 | Effective batch size = 8 |
-
-### 6. Deploy with Ollama
-
-After downloading the GGUF model from Colab:
-
-#### Install Ollama
-
-```bash
-# Linux/Mac
-curl -fsSL https://ollama.com/install.sh | sh
-
-# Windows
-# Download from https://ollama.com/download
+**Use the validated dataset for best results:**
+```
+data/final/bangladesh_labour_act_chatml_validated.json
 ```
 
-#### Create Modelfile
-
-For Llama 3.2:
+### 7. Deploy with Ollama
 
 ```bash
+# Navigate to GGUF model directory
 cd hr-persona-bd-llama32-3b-gguf
 
+# Create Modelfile
 cat > Modelfile << 'EOF'
 FROM ./unsloth.Q4_K_M.gguf
 
@@ -264,47 +171,16 @@ PARAMETER temperature 0.7
 PARAMETER top_p 0.9
 PARAMETER stop "<|eot_id|>"
 EOF
-```
 
-For Qwen3:
-
-```bash
-cd hr-persona-bd-qwen3-4b-gguf
-
-cat > Modelfile << 'EOF'
-FROM ./unsloth.Q4_K_M.gguf
-
-TEMPLATE """<|im_start|>system
-{{ .System }}<|im_end|>
-<|im_start|>user
-{{ .Prompt }}<|im_end|>
-<|im_start|>assistant
-{{ .Response }}<|im_end|>
-"""
-
-SYSTEM """You are an expert HR consultant specializing in Bangladesh Labour Law. You have comprehensive knowledge of the Bangladesh Labour Act 2006 and its amendments. Provide accurate, professional advice to HR practitioners."""
-
-PARAMETER temperature 0.7
-PARAMETER top_p 0.9
-PARAMETER stop "<|im_end|>"
-EOF
-```
-
-#### Create and Run the Model
-
-```bash
-# Create model in Ollama
+# Create and run the model
 ollama create hr-persona-bd -f Modelfile
-
-# Run interactive chat
 ollama run hr-persona-bd
 ```
 
-### 7. Use via API
-
-#### Ollama API
+### 8. Use via API
 
 ```bash
+# Ollama API
 curl http://localhost:11434/api/chat -d '{
   "model": "hr-persona-bd",
   "messages": [
@@ -313,9 +189,8 @@ curl http://localhost:11434/api/chat -d '{
 }'
 ```
 
-#### Python with Ollama
-
 ```python
+# Python with Ollama
 import ollama
 
 response = ollama.chat(
@@ -327,37 +202,39 @@ response = ollama.chat(
 print(response['message']['content'])
 ```
 
-### 8. Local Inference Script
-
-Use the provided inference script for more control:
-
-```bash
-# Interactive chat with Ollama
-python scripts/inference.py --backend ollama --model hr-persona-bd --interactive
-
-# Single query
-python scripts/inference.py --backend ollama --model hr-persona-bd \
-  --query "How many days of annual leave is an employee entitled to?"
-
-# Batch inference
-python scripts/inference.py --backend ollama --model hr-persona-bd \
-  --batch queries.json --output results.json
-```
-
 ## Dataset Format
 
-The training dataset uses ChatML format:
+ChatML format:
 
 ```json
 [
   {
     "messages": [
       {"role": "user", "content": "What is the maximum working hours per week?"},
-      {"role": "assistant", "content": "According to Section 100 of the Bangladesh Labour Act 2006..."}
+      {"role": "assistant", "content": "According to the Bangladesh Labour Act 2006..."}
     ]
   }
 ]
 ```
+
+## Dataset Validation
+
+The validation script (`scripts/validate_and_improve_dataset.py`) performs:
+
+1. **Structure Validation**: Ensures proper ChatML format
+2. **Content Type Fixes**: Converts list content to strings
+3. **Section Reference Validation**: Removes invalid section numbers
+4. **Duplicate Removal**: Removes identical conversations
+5. **Answer Verification**: Uses multiple methods to verify against PDF:
+   - Exact phrase matching
+   - 3-word phrase matching
+   - Semantic similarity (word overlap)
+   - Fuzzy sentence matching
+
+**Verification Results:**
+- 99.7% verified against PDF source
+- 72% high confidence (≥0.8)
+- 0% failures
 
 ## Model Comparison
 
@@ -365,30 +242,6 @@ The training dataset uses ChatML format:
 |-------|------------|--------------|-----------|----------|
 | Llama 3.2 3B | 3.2B | ~4GB | ~2GB | Balanced performance |
 | Qwen3 4B | 4B | ~5GB | ~2.5GB | Better reasoning |
-
-## Configuration
-
-Edit `configs/config.yaml` to customize:
-
-```yaml
-# LLM Provider for dataset generation
-llm:
-  provider: "ollama"  # or "vllm", "api-endpoint"
-
-# Ollama settings
-ollama:
-  model: "llama3.2:3b-instruct-q4_K_M"
-
-# Generation settings
-generation:
-  temperature: 0.7
-  chunk_size: 4000
-  num_pairs: 50
-
-# Quality curation
-curate:
-  threshold: 7.0
-```
 
 ## Troubleshooting
 
@@ -410,15 +263,13 @@ ollama list
 
 ### Poor Model Quality
 
-- Increase dataset size (aim for 1000+ QA pairs)
-- Raise curation threshold (8.0+)
+- Use the validated dataset (`bangladesh_labour_act_chatml_validated.json`)
 - Train for more epochs (2-3)
-- Use larger model for dataset generation
+- Increase dataset size
 
 ## References
 
 - [Unsloth Documentation](https://unsloth.ai/docs)
-- [Meta Synthetic Data Kit](https://github.com/meta-llama/synthetic-data-kit)
 - [Ollama Documentation](https://ollama.com/docs)
 - [Bangladesh Labour Act 2006](http://bdlaws.minlaw.gov.bd/)
 
