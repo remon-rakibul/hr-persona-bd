@@ -115,7 +115,7 @@ The source document is the Bangladesh Labour Act 2006 (English), amended up to 2
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/figure1_dataset_pipeline.png}
+\includegraphics[width=0.85\textwidth,height=0.45\textheight,keepaspectratio]{figures/figure1_dataset_pipeline.png}
 \caption{Dataset creation pipeline.}
 \label{fig:dataset}
 \end{figure}
@@ -128,7 +128,7 @@ Unsloth patches 28 layers (28 QKV, 28 O, 28 MLP). Trainable parameters: 24,313,8
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/figure2_finetuning_pipeline.png}
+\includegraphics[width=0.85\textwidth,height=0.45\textheight,keepaspectratio]{figures/figure2_finetuning_pipeline.png}
 \caption{Fine-tuning and deployment pipeline.}
 \label{fig:finetuning}
 \end{figure}
@@ -163,7 +163,7 @@ The fine-tuned model is deployed locally via Ollama using a Modelfile and a syst
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/figure3_evaluation_design.png}
+\includegraphics[width=0.85\textwidth,height=0.45\textheight,keepaspectratio]{figures/figure3_evaluation_design.png}
 \caption{Comparative evaluation design.}
 \label{fig:eval-design}
 \end{figure}
@@ -178,14 +178,14 @@ Figure~\ref{fig:loss} shows the training loss curve over steps. Figure~\ref{fig:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/figure4_training_loss.png}
+\includegraphics[width=0.85\textwidth,height=0.45\textheight,keepaspectratio]{figures/figure4_training_loss.png}
 \caption{Training loss curve.}
 \label{fig:loss}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/figure5_eval_loss_perplexity.png}
+\includegraphics[width=0.85\textwidth,height=0.45\textheight,keepaspectratio]{figures/figure5_eval_loss_perplexity.png}
 \caption{Evaluation loss and perplexity over training.}
 \label{fig:eval-perp}
 \end{figure}
