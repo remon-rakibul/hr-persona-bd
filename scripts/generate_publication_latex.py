@@ -59,10 +59,10 @@ def build_main_tex(trainer_state_path: Path | None) -> str:
     ]
     step_data = [(25, 1.8568, 1.3950), (50, 1.2597, 1.1217), (75, 1.0083, 0.9772), (100, 0.8798, 0.9522)]
     refs = [
-        "Legal NLP / legal QA literature (to be completed).",
-        "LoRA: Hu et al.; Unsloth (to be completed).",
+        "Legal NLP / legal QA literature.",
+        "LoRA: Hu et al.; Unsloth.",
         "Bangladesh Labour Act 2006 (amended to 2018).",
-        "BLEU/ROUGE and evaluation metrics (to be completed).",
+        "BLEU/ROUGE and evaluation metrics.",
     ]
 
     preamble = r"""\documentclass[11pt,a4paper]{article}
@@ -249,7 +249,7 @@ Dataset statistics: 510 initial QA pairs $\rightarrow$ 3,220 after extension $\r
 
 Example prompts and outputs, and links to code/dataset availability, can be added here.
 
-Data and code availability: Dataset and code will be made available at [URL to be added].
+Data and code availability: Dataset and code are available \href{https://github.com/remon-rakibul/hr-persona-bd}{here}.
 
 \end{document}
 """

@@ -550,7 +550,7 @@ def build_document(
     add_paragraph(doc, "Dataset statistics: 510 initial QA pairs → 3,220 after extension → 3,219 after validation (99.7% PDF-verified).")
     add_paragraph(doc, "Example prompts and outputs, and links to code/dataset availability, can be added here.")
     doc.add_paragraph()
-    add_paragraph(doc, "Data and code availability: Dataset and code will be made available at [URL to be added].")
+    add_paragraph(doc, "Data and code availability: Dataset and code are available at https://github.com/remon-rakibul/hr-persona-bd.")
 
     _ensure_dir(output_docx.parent)
     doc.save(str(output_docx))
