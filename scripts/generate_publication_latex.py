@@ -52,10 +52,10 @@ def build_main_tex(trainer_state_path: Path | None) -> str:
     """Build full main.tex content (professional styling, all sections, figures, tables)."""
     metrics_rows = get_training_metrics_table_data(trainer_state_path)
     comparison_data = [
-        ("Fine-tuned Llama 3.2 3B", "0.42 / 0.51", "0.38 / 4.2", "Domain fine-tuned; best section citation"),
-        ("Base Llama 3.2 3B", "0.31 / 0.38", "0.22 / 3.1", "No Bangladesh Labour Act fine-tuning"),
-        ("ChatGPT (e.g.\\ GPT-4o-mini)", "0.38 / 0.45", "0.35 / 3.9", "Strong general QA; less section-specific"),
-        ("Claude (e.g.\\ Claude 3 Haiku)", "0.39 / 0.46", "0.36 / 4.0", "Competitive; API-based"),
+        ("Fine-tuned Llama 3.2 3B", "0.42 / 0.51", "0.38 / 4.2", "Domain fine-tuned; best section citation."),
+        ("Base Llama 3.2 3B", "0.31 / 0.38", "0.22 / 3.1", "No Bangladesh Labour Act fine-tuning."),
+        ("ChatGPT (e.g., GPT-4o-mini)", "0.38 / 0.45", "0.35 / 3.9", "Strong general QA; less section-specific."),
+        ("Claude (e.g., Claude 3 Haiku)", "0.39 / 0.46", "0.36 / 4.0", "Competitive; API-based."),
     ]
     step_data = [(25, 1.8568, 1.3950), (50, 1.2597, 1.1217), (75, 1.0083, 0.9772), (100, 0.8798, 0.9522)]
     refs = [
@@ -72,15 +72,18 @@ def build_main_tex(trainer_state_path: Path | None) -> str:
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{setspace}
 \onehalfspacing
+\usepackage{float}
 \usepackage{graphicx}
 \usepackage[font=small,labelfont=bf]{caption}
 \captionsetup{skip=4pt}
 \usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 
 \title{Fine-Tuning Large Language Models for Bangladesh Labour Law: An HR-Oriented Legal QA System}
-\author{Md.\ Rakibul Haque \\ \textit{(first author)} \\[0.5em] Co-authors and affiliations to be added}
+\author{Md.\ Rakibul Haque \\ Fabia Chowdhury \\ Nowshin Sayara Tamanna}
 \date{}
 
 \begin{document}
@@ -99,7 +102,13 @@ Human resource professionals in Bangladesh require accurate, readily accessible 
 
 Accurate and timely answers to questions about labour law are essential for HR practitioners in Bangladesh. The Bangladesh Labour Act 2006, as amended up to 2018, is the primary source, but navigating it manually is time-consuming. General-purpose LLMs can assist but may lack precise knowledge of this jurisdiction and raise concerns about data privacy when used with confidential HR information. There is a gap in domain-specific LLMs tailored to Bangladesh labour law that can be deployed locally.
 
-This work contributes: (1) a curated, PDF-verified QA dataset derived from the Act (510 $\rightarrow$ 3,220 $\rightarrow$ 3,219 pairs after validation); (2) a reproducible dataset-creation and validation pipeline; (3) a fine-tuned Llama 3.2 3B model using LoRA and Unsloth; and (4) a comparative evaluation framework with baselines and metrics so that results can be filled after running the evaluation protocol.
+This work contributes:
+\begin{enumerate}[nosep,leftmargin=*]
+\item a curated, PDF-verified QA dataset derived from the Act (510 $\rightarrow$ 3,220 $\rightarrow$ 3,219 pairs after validation);
+\item a reproducible dataset-creation and validation pipeline;
+\item a fine-tuned Llama 3.2 3B model using LoRA and Unsloth; and
+\item a comparative evaluation framework with baselines and metrics so that results can be filled after running the evaluation protocol.
+\end{enumerate}
 
 \section{Related Work}
 
@@ -111,14 +120,16 @@ The end-to-end pipeline comprises dataset creation, model and training configura
 
 \subsection{Dataset creation}
 
-The source document is the Bangladesh Labour Act 2006 (English), amended up to 2018. Text is extracted from the PDF and split into chunks (e.g., 4,000 characters with 200-character overlap). For each chunk, question--answer pairs are generated using an LLM (Ollama). The dataset is extended with variations, follow-up questions, and scenarios to increase coverage. A validation step checks structure, section references, and consistency with the source PDF. The final ChatML-formatted dataset grows from 510 initial pairs to 3,220 after extension and 3,219 after validation, with a 99.7\% verification rate against the PDF. Scripts: pdf\_to\_qa\_direct.py, extend\_dataset\_ollama.py, validate\_and\_improve\_dataset.py.
+The source document is the Bangladesh Labour Act 2006 (English), amended up to 2018. Text is extracted from the PDF and split into chunks (e.g., 4,000 characters with 200-character overlap). For each chunk, question--answer pairs are generated using an LLM (Ollama). The dataset is extended with variations, follow-up questions, and scenarios to increase coverage. A validation step checks structure, section references, and consistency with the source PDF. The final ChatML-formatted dataset grows from 510 initial pairs to 3,220 after extension and 3,219 after validation, with a 99.7\% verification rate against the PDF. Scripts: pdf\_to\_qa\_direct.py, extend\_dataset\_ollama.py, validate\_and\_improve\_dataset.py. The steps are summarized in Figure~\ref{fig:dataset}. Chunking with overlap preserves context across boundaries; the extension step increases diversity and coverage; and the validation step ensures that section references and answers align with the source PDF, so the resulting dataset is suitable for training a model that can cite the Act accurately.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth,height=0.45\textheight,keepaspectratio]{figures/figure1_dataset_pipeline.png}
+\includegraphics[width=0.75\textwidth,height=0.5\textheight,keepaspectratio]{figures/figure1_dataset_pipeline.png}
 \caption{Dataset creation pipeline.}
 \label{fig:dataset}
 \end{figure}
+
+The pipeline yields a ChatML-formatted QA set with section references and high verification rate against the source Act, suitable for supervised fine-tuning. The following subsection describes the base model, training configuration, and export to a locally deployable format; Figure~\ref{fig:finetuning} summarizes the fine-tuning and deployment workflow.
 
 \subsection{Model and training}
 
@@ -132,6 +143,8 @@ Unsloth patches 28 layers (28 QKV, 28 O, 28 MLP). Trainable parameters: 24,313,8
 \caption{Fine-tuning and deployment pipeline.}
 \label{fig:finetuning}
 \end{figure}
+
+The LoRA adapter and optional merge are then exported to GGUF (Q4\_K\_M) for use with Ollama. Deployment is local only, avoiding external API calls and keeping HR queries on-premises. The following subsection summarizes how the model is served with an HR consultant persona.
 
 \subsection{Deployment}
 
@@ -150,7 +163,7 @@ The fine-tuned model is deployed locally via Ollama using a Modelfile and a syst
 \centering
 \caption{Model comparison on hold-out Bangladesh Labour Act QA.}
 \label{tab:comparison}
-\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}p{3.4cm}ccp{4.2cm}@{}}
 \toprule
 \textbf{Model} & \textbf{BLEU / ROUGE-L} & \textbf{Exact match / Human (1--5)} & \textbf{Notes} \\
 \midrule
@@ -178,17 +191,20 @@ Figure~\ref{fig:loss} shows the training loss curve over steps. Figure~\ref{fig:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\textwidth,height=0.45\textheight,keepaspectratio]{figures/figure4_training_loss.png}
+\includegraphics[width=0.88\textwidth,height=0.36\textheight,keepaspectratio]{figures/figure4_training_loss.png}
 \caption{Training loss curve.}
 \label{fig:loss}
 \end{figure}
 
+\vspace{0.5em}
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\textwidth,height=0.45\textheight,keepaspectratio]{figures/figure5_eval_loss_perplexity.png}
+\includegraphics[width=0.88\textwidth,height=0.36\textheight,keepaspectratio]{figures/figure5_eval_loss_perplexity.png}
 \caption{Evaluation loss and perplexity over training.}
 \label{fig:eval-perp}
 \end{figure}
+
+Evaluation loss and perplexity decrease over steps, indicating convergence without severe overfitting. Table~\ref{tab:eval-steps} below reports the exact training and validation loss at each evaluation step for reproducibility.
 
 Training metrics summary (from Colab run):
 
@@ -210,6 +226,8 @@ Loss at evaluation steps (from Colab run):
 
 \begin{table}[htbp]
 \centering
+\caption{Loss at evaluation steps.}
+\label{tab:eval-steps}
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -242,14 +260,11 @@ We presented a pipeline for building a domain-specific legal QA system for the B
         body += f"\\bibitem{{ref{i}}} {escape_latex(ref)}\n"
     body += r"""\end{thebibliography}
 
+\vspace{-0.5em}
 \appendix
-\section{Appendices}
-
-Dataset statistics: 510 initial QA pairs $\rightarrow$ 3,220 after extension $\rightarrow$ 3,219 after validation (99.7\% PDF-verified).
-
-Example prompts and outputs, and links to code/dataset availability, can be added here.
-
-Data and code availability: Dataset and code are available \href{https://github.com/remon-rakibul/hr-persona-bd}{here}.
+\section*{Appendix}
+\small
+\noindent\textbf{Dataset statistics:} 510 initial QA pairs $\rightarrow$ 3,220 after extension $\rightarrow$ 3,219 after validation (99.7\% PDF-verified). Example prompts and outputs: see repository. \textbf{Data and code:} \href{https://github.com/remon-rakibul/hr-persona-bd}{github.com/remon-rakibul/hr-persona-bd}.
 
 \end{document}
 """
@@ -260,6 +275,37 @@ Data and code availability: Dataset and code are available \href{https://github.
 def ensure_dir(p: Path) -> Path:
     p.mkdir(parents=True, exist_ok=True)
     return p
+
+
+def trim_figure_borders(src: Path, dst: Path, border_threshold: int = 248, padding_pct: float = 0.02) -> None:
+    """Trim excess white borders from a figure so it takes less space on the page."""
+    try:
+        from PIL import Image
+        import numpy as np
+    except ImportError:
+        shutil.copy2(src, dst)
+        return
+    im = Image.open(src).convert("RGB")
+    arr = np.array(im)
+    h, w = arr.shape[:2]
+    gray = arr.mean(axis=2)
+    # Rows/cols with any pixel darker than threshold
+    row_has_content = (gray < border_threshold).any(axis=1)
+    col_has_content = (gray < border_threshold).any(axis=0)
+    if not row_has_content.any() or not col_has_content.any():
+        shutil.copy2(src, dst)
+        return
+    y_min, y_max = int(np.argmax(row_has_content)), int(h - 1 - np.argmax(row_has_content[::-1]))
+    x_min, x_max = int(np.argmax(col_has_content)), int(w - 1 - np.argmax(col_has_content[::-1]))
+    # Add small padding (padding_pct of content size each side)
+    pad_x = max(1, int((x_max - x_min + 1) * padding_pct))
+    pad_y = max(1, int((y_max - y_min + 1) * padding_pct))
+    x_min = max(0, x_min - pad_x)
+    x_max = min(w - 1, x_max + pad_x)
+    y_min = max(0, y_min - pad_y)
+    y_max = min(h - 1, y_max + pad_y)
+    cropped = im.crop((x_min, y_min, x_max + 1, y_max + 1))
+    cropped.save(dst, "PNG")
 
 
 def main() -> None:
@@ -285,13 +331,17 @@ def main() -> None:
     (overleaf_dir / "main.tex").write_text(main_tex, encoding="utf-8")
     print(f"Wrote {overleaf_dir / 'main.tex'}")
 
-    # Copy figures
+    # Copy figures: trim fig1 borders so it doesn't take a whole page; use full fig5 so whole plot is visible
     for name in FIGURE_NAMES:
         src = figures_src / name
         dst = figures_dst / name
         if src.exists():
-            shutil.copy2(src, dst)
-            print(f"Copied {name}")
+            if name == "figure1_dataset_pipeline.png":
+                trim_figure_borders(src, dst, padding_pct=0.008)
+                print(f"Trimmed and wrote {name}")
+            else:
+                shutil.copy2(src, dst)
+                print(f"Copied {name}")
         else:
             print(f"Warning: {src} not found, skipping", file=sys.stderr)
 
