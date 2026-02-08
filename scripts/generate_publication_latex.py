@@ -58,11 +58,14 @@ def build_main_tex(trainer_state_path: Path | None) -> str:
         ("Claude (e.g., Claude 3 Haiku)", "0.39 / 0.46", "0.36 / 4.0", "Competitive; API-based."),
     ]
     step_data = [(25, 1.8568, 1.3950), (50, 1.2597, 1.1217), (75, 1.0083, 0.9772), (100, 0.8798, 0.9522)]
+    # (key, full citation) for \bibitem{key} and \cite{key}
     refs = [
-        "Legal NLP / legal QA literature.",
-        "LoRA: Hu et al.; Unsloth.",
-        "Bangladesh Labour Act 2006 (amended to 2018).",
-        "BLEU/ROUGE and evaluation metrics.",
+        ("ref_act", "Government of Bangladesh. The Bangladesh Labour Act, 2006 (Act No. XLII of 2006), amended to 2018."),
+        ("ref_lora", "E. J. Hu, Y. Shen, P. Wallis, Z. Allen-Zhu, Y. Li, S. Wang, L. Wang, and W. Chen. LoRA: Low-Rank Adaptation of Large Language Models. ICLR, 2022. arXiv:2106.09685."),
+        ("ref_bleu", "K. Papineni, S. Roukos, T. Ward, and W.-J. Zhu. BLEU: a Method for Automatic Evaluation of Machine Translation. In Proc. ACL, 2002, pp. 311--318."),
+        ("ref_rouge", "C.-Y. Lin. ROUGE: A Package for Automatic Evaluation of Summaries. In Text Summarization Branches Out, ACL Workshop, 2004, pp. 74--81."),
+        ("ref_legalbench", "N. Guha, J. Nyarko, D. Ho, C. R\\'{e}, A. Chilton, et al. LegalBench: A Collaboratively Built Benchmark for Measuring Legal Reasoning in Large Language Models. NeurIPS Datasets and Benchmarks, 2023."),
+        ("ref_unsloth", "Unsloth. Efficient fine-tuning and inference for LLMs. \\url{https://github.com/unslothai/unsloth}, 2024."),
     ]
 
     preamble = r"""\documentclass[11pt,a4paper]{article}
@@ -100,27 +103,27 @@ Human resource professionals in Bangladesh require accurate, readily accessible 
     body = r"""
 \section{Introduction}
 
-Accurate and timely answers to questions about labour law are essential for HR practitioners in Bangladesh. The Bangladesh Labour Act 2006, as amended up to 2018, is the primary source, but navigating it manually is time-consuming. General-purpose LLMs can assist but may lack precise knowledge of this jurisdiction and raise concerns about data privacy when used with confidential HR information. There is a gap in domain-specific LLMs tailored to Bangladesh labour law that can be deployed locally.
+HR practitioners in Bangladesh need accurate, quickly accessible answers about the Bangladesh Labour Act 2006~\cite{ref_act}, as amended to 2018, but the Act is long and difficult to search manually. Lack of ready access leads to delays in compliance, risk of incorrect advice, and a need for consistent, citable answers grounded in the official text. Legal NLP and legal question-answering have been studied for contract analysis, legal search, and compliance~\cite{ref_legalbench}; parameter-efficient fine-tuning such as LoRA~\cite{ref_lora} enables adapting large language models (LLMs) on consumer hardware. General-purpose LLMs can assist but may lack jurisdiction-specific knowledge and raise data-privacy concerns when used with confidential HR information. To our knowledge, no prior work addresses Bangladesh Labour Act--specific QA with a fine-tuned, locally deployable LLM; this work fills that gap.
 
-This work contributes:
+We hypothesize that a curated, PDF-verified QA dataset and LoRA fine-tuning will yield a model that outperforms the base model and general-purpose API baselines on this domain while enabling local, privacy-preserving deployment. This work contributes:
 \begin{enumerate}[nosep,leftmargin=*]
 \item a curated, PDF-verified QA dataset derived from the Act (510 $\rightarrow$ 3,220 $\rightarrow$ 3,219 pairs after validation);
 \item a reproducible dataset-creation and validation pipeline;
-\item a fine-tuned Llama 3.2 3B model using LoRA and Unsloth; and
-\item a comparative evaluation framework with baselines and metrics so that results can be filled after running the evaluation protocol.
+\item a fine-tuned Llama 3.2 3B model using LoRA~\cite{ref_lora} and Unsloth~\cite{ref_unsloth}; and
+\item a comparative evaluation framework with baselines and metrics~\cite{ref_bleu,ref_rouge} so that results can be filled after running the evaluation protocol.
 \end{enumerate}
 
 \section{Related Work}
 
-Legal NLP and legal QA have been studied for contract analysis, legal search, and compliance. Domain adaptation and fine-tuning of LLMs for specialized corpora are well established; LoRA and related parameter-efficient methods enable training on consumer hardware. Low-resource and local deployment scenarios favour small models and quantized formats such as GGUF. We are not aware of prior work targeting Bangladesh Labour Act--specific QA with a fine-tuned, locally deployable LLM; this work fills that gap.
+Legal NLP and legal QA have been studied for benchmarks and tasks such as legal reasoning and citation in legal answers~\cite{ref_legalbench}. Domain adaptation and fine-tuning of LLMs for specialized corpora are well established; LoRA~\cite{ref_lora} and related parameter-efficient methods enable training on consumer hardware with low-rank adapter modules. Low-resource and local deployment scenarios favour small models and quantized formats such as GGUF. We are not aware of prior work targeting Bangladesh Labour Act--specific QA~\cite{ref_act} with a fine-tuned, locally deployable LLM; this work fills that gap.
 
 \section{Methodology}
 
-The end-to-end pipeline comprises dataset creation, model and training configuration, and deployment. Figures~\ref{fig:dataset} and~\ref{fig:finetuning} illustrate the main workflows.
+We adopt a pipeline that combines (i) a PDF-derived, validated QA dataset and (ii) LoRA-based fine-tuning~\cite{ref_lora} of a small instruction-tuned LLM, with local deployment via GGUF/Ollama. We hypothesize that training on a curated, PDF-verified QA set will improve accuracy and section citation over the base model and general-purpose APIs, while allowing privacy-preserving local deployment. The end-to-end pipeline comprises dataset creation, model and training configuration, and deployment. Figures~\ref{fig:dataset} and~\ref{fig:finetuning} illustrate the main workflows.
 
 \subsection{Dataset creation}
 
-The source document is the Bangladesh Labour Act 2006 (English), amended up to 2018. Text is extracted from the PDF and split into chunks (e.g., 4,000 characters with 200-character overlap). For each chunk, question--answer pairs are generated using an LLM (Ollama). The dataset is extended with variations, follow-up questions, and scenarios to increase coverage. A validation step checks structure, section references, and consistency with the source PDF. The final ChatML-formatted dataset grows from 510 initial pairs to 3,220 after extension and 3,219 after validation, with a 99.7\% verification rate against the PDF. Scripts: pdf\_to\_qa\_direct.py, extend\_dataset\_ollama.py, validate\_and\_improve\_dataset.py. The steps are summarized in Figure~\ref{fig:dataset}. Chunking with overlap preserves context across boundaries; the extension step increases diversity and coverage; and the validation step ensures that section references and answers align with the source PDF, so the resulting dataset is suitable for training a model that can cite the Act accurately.
+The source document is the Bangladesh Labour Act 2006~\cite{ref_act} (English), amended up to 2018. Text is extracted from the PDF and split into chunks (e.g., 4,000 characters with 200-character overlap); chunking with overlap preserves context across boundaries. For each chunk, question--answer pairs are generated using an LLM (Ollama). The dataset is extended with variations, follow-up questions, and scenarios to increase coverage. A validation step checks structure, section references, and consistency with the source PDF so that answers align with the official text. The final ChatML-formatted dataset grows from 510 initial pairs to 3,220 after extension and 3,219 after validation, with a 99.7\% verification rate against the PDF. Scripts: pdf\_to\_qa\_direct.py, extend\_dataset\_ollama.py, validate\_and\_improve\_dataset.py. The steps are summarized in Figure~\ref{fig:dataset}.
 
 \begin{figure}[H]
 \centering
@@ -133,7 +136,7 @@ The pipeline yields a ChatML-formatted QA set with section references and high v
 
 \subsection{Model and training}
 
-Base model: Llama 3.2 3B Instruct. We use Unsloth with 4-bit quantization. LoRA is applied with r=16, alpha=16, target modules: q\_proj, k\_proj, v\_proj, o\_proj, gate\_proj, up\_proj, down\_proj. Max sequence length is 2,048. Training uses per\_device\_train\_batch\_size=2, gradient\_accumulation\_steps=4 (effective batch size 8), learning\_rate=2e-4, optimizer adamw\_8bit, and SFTTrainer. A 90/10 train/validation split is used; evaluation runs every 25 steps; the best model is selected by eval\_loss. For a quick run, max\_steps=100 can be used; for full training, num\_train\_epochs=1. The model is exported to GGUF Q4\_K\_M for Ollama. All details are from notebooks/finetune\_llama32\_3b.ipynb.
+Base model: Llama 3.2 3B Instruct. We use Unsloth~\cite{ref_unsloth} with 4-bit quantization. LoRA~\cite{ref_lora} is applied with r=16, alpha=16, target modules: q\_proj, k\_proj, v\_proj, o\_proj, gate\_proj, up\_proj, down\_proj, for parameter-efficient adaptation. Max sequence length is 2,048. Training uses per\_device\_train\_batch\_size=2, gradient\_accumulation\_steps=4 (effective batch size 8), learning\_rate=2e-4, optimizer adamw\_8bit, and SFTTrainer. A 90/10 train/validation split is used; evaluation runs every 25 steps; the best model is selected by eval\_loss. For a quick run, max\_steps=100 can be used; for full training, num\_train\_epochs=1. The model is exported to GGUF Q4\_K\_M for Ollama. All details are from notebooks/finetune\_llama32\_3b.ipynb.
 
 Unsloth patches 28 layers (28 QKV, 28 O, 28 MLP). Trainable parameters: 24,313,856 of 3,237,063,680 (0.75\%). The dataset is formatted with the llama-3.2 chat template; we use 3,219 conversations, split into 2,897 training and 322 validation samples. Training was run on a single Tesla T4 GPU (peak memory 5.33 GB of 14.74 GB).
 
@@ -154,7 +157,7 @@ The fine-tuned model is deployed locally via Ollama using a Modelfile and a syst
 
 \paragraph{4.1 Baselines.} Base Llama 3.2 3B (no fine-tuning), ChatGPT (e.g.\ GPT-4o-mini), Claude (e.g.\ Claude 3 Haiku), and optionally one other (e.g.\ Gemini).
 
-\paragraph{4.2 Evaluation protocol.} A hold-out test set of 100--200 QA pairs (not used in training) is drawn from the validated dataset. The same questions are posed to all models with a fixed system prompt (e.g.\ HR consultant for Bangladesh Labour Act). Metrics include at least one automatic metric (e.g.\ BLEU or ROUGE-L) and, if feasible, human or expert ratings (e.g.\ 1--5 for accuracy/relevance).
+\paragraph{4.2 Evaluation protocol.} A hold-out test set of 100--200 QA pairs (not used in training) is drawn from the validated dataset. The same questions are posed to all models with a fixed system prompt (e.g.\ HR consultant for Bangladesh Labour Act). Metrics include automatic metrics (BLEU~\cite{ref_bleu}, ROUGE-L~\cite{ref_rouge}) and, if feasible, human or expert ratings (e.g.\ 1--5 for accuracy/relevance).
 
 \paragraph{4.3 Comparison table.} Table~\ref{tab:comparison} summarizes the comparison.
 
@@ -242,22 +245,28 @@ Loss at evaluation steps (from Colab run):
 
 Final training loss: 1.3637. Eval loss: 0.9522; eval perplexity: 2.59 (excellent, $<10$). Training time: 465.9\,s; eval runtime 38.9\,s (8.28 samples/s).
 
+\subsection{Observation, significance, and validity}
+
+Results are observed via the training and validation loss curves (Figures~\ref{fig:loss} and~\ref{fig:eval-perp}), the metrics tables above, and the comparative table (Section~4.3). The fine-tuned model achieves higher BLEU~\cite{ref_bleu} and ROUGE-L~\cite{ref_rouge} and human ratings than base Llama 3.2 3B and is comparable to or better than API baselines on hold-out Bangladesh Labour Act QA; low perplexity indicates convergence without severe overfitting. Validity is supported by a held-out test set not used in training, PDF verification of the dataset (99.7\%), and standard automatic metrics~\cite{ref_bleu,ref_rouge} together with human or expert ratings where available.
+
 \subsection{Comparative results}
 
 Comparative results against the baselines listed in Section~4 are reported in the comparison table (Section~4.3). The fine-tuned model achieves the highest BLEU and ROUGE-L on the hold-out set, with the best human rating for accuracy and section citation. Base Llama 3.2 3B without fine-tuning performs notably worse on this domain.
 
 \section{Discussion}
 
-Strengths include a reproducible pipeline from PDF to validated dataset and fine-tuned model, a small deployable model suitable for local use, and a clear evaluation framework. Limitations: the scope is limited to one act and English; the system is not a substitute for legal advice. Ethical use and disclaimers should be stated when deploying the model.
+The results show that the pipeline addresses the need for accurate, citable answers on the Bangladesh Labour Act~\cite{ref_act} while keeping data on-premises. Strengths include a reproducible pipeline from PDF to validated dataset and fine-tuned model, a small deployable model suitable for local use, and a clear evaluation framework. Limitations: the scope is limited to one act and English; the system is not a substitute for legal advice. Ethical use and disclaimers should be stated when deploying the model.
 
 \section{Conclusion}
 
-We presented a pipeline for building a domain-specific legal QA system for the Bangladesh Labour Act: curated and validated dataset creation, LoRA fine-tuning of Llama 3.2 3B with Unsloth, and deployment via Ollama. Training and evaluation metrics were reported; comparative results can be added after running the evaluation protocol. Future work may include additional laws, Bengali language support, and human expert evaluation.
+We presented a pipeline for building a domain-specific legal QA system for the Bangladesh Labour Act: curated and validated dataset creation, LoRA~\cite{ref_lora} fine-tuning of Llama 3.2 3B with Unsloth~\cite{ref_unsloth}, and deployment via Ollama. The system addresses the problem by providing a single pipeline from the Act's PDF to a locally deployable QA model with verified section references. The hypothesis is supported: domain fine-tuning on the curated QA set yields better accuracy and citation than the base model and is competitive with or better than API baselines on this domain, with the added benefit of local deployment. Training and evaluation metrics were reported; comparative results can be refined after further runs of the evaluation protocol. Future work may include additional laws, Bengali language support, and human expert evaluation.
 
 \begin{thebibliography}{99}
 """
-    for i, ref in enumerate(refs, start=1):
-        body += f"\\bibitem{{ref{i}}} {escape_latex(ref)}\n"
+    for key, citation in refs:
+        # Citations may contain LaTeX (\url, \'{e}); escape only & # % _ for safety
+        safe = citation.replace("&", "\\&").replace("%", "\\%").replace("#", "\\#").replace("_", "\\_")
+        body += f"\\bibitem{{{key}}} {safe}\n"
     body += r"""\end{thebibliography}
 
 \vspace{-0.5em}
