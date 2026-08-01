@@ -1,0 +1,28 @@
+{
+ "generated_utc": "2026-07-26T15:56:53Z",
+ "temperature": 0.0,
+ "seed": 3407,
+ "num_predict": 384,
+ "system_prompt": "You are an expert HR consultant providing statute-grounded informational support (not legal advice) on the Bangladesh Labour Act 2006, amended to 2018. Answer questions about employment matters under the Act \u2014 wages, leave, working hours, overtime, termination, maternity benefit, misconduct, probation, safety, compensation and trade unions \u2014 and cite the relevant section when possible. If a question is outside the Bangladesh Labour Act, politely decline and say it is outside your scope.",
+ "python": "3.12.8",
+ "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39",
+ "models": {
+  "base": {
+   "model": "llama3.2:3b-instruct-q4_K_M",
+   "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+  },
+  "finetuned": {
+   "model": "hr-persona-bd:latest",
+   "digest": "5682aa1fe109d4fc9f1442a75ee5d5ba0ede6400e032e7bac4919072100f36b7"
+  },
+  "rag_base": {
+   "model": "llama3.2:3b-instruct-q4_K_M",
+   "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+  },
+  "rag_finetuned": {
+   "model": "hr-persona-bd:latest",
+   "digest": "5682aa1fe109d4fc9f1442a75ee5d5ba0ede6400e032e7bac4919072100f36b7"
+  }
+ },
+ "ollama_version": "ollama version is 0.20.2"
+}

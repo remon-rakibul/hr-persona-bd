@@ -1,0 +1,4083 @@
+[
+ {
+  "id": 27,
+  "topic": "other",
+  "question": "What constitutes 'retirement' as per the Bangladesh Labour Act 2006?",
+  "reference": "The act of leaving employment voluntarily or through any other means, resulting in the cessation of an employee's service.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Retirement means the termination of employment by an employer on the ground of age, which occurs when an employee completes a period of 30 years of service or attains the age of 60 years. (Section 2(1)(b))",
+  "refusal": false,
+  "bleu": 1.413292769627856,
+  "rougeL": 27.586206896551722,
+  "grounding": 0.029411764705882353,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 33,
+  "topic": "compensation",
+  "question": "What is the extent of partial disablement under Section 1A of the Bangladesh Labour Act 2006, specifically in relation to its impact on a worker's ability to continue working in their current employment?",
+  "reference": "Partial disablement means a temporary or permanent nature of disability that reduces the earning capacity of a worker in any employment where he was engaged at the time of the accident resulting in the disablement.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 1A(2) of the Bangladesh Labour Act 2006 (amended up to 2018), partial disablement means any permanent or temporary loss of power of limbs or organs of the body, but does not necessarily mean that a worker is completely unfit for work. The extent of partial disablement can vary depending on the nature and severity of the injury or illness, and it may be possible for a worker to continue working in their current employment with modifications or accommodations. However, if the disability is severe enough, it may require adjustments to job duties or even lead to termination.",
+  "refusal": false,
+  "bleu": 1.5370455694715977,
+  "rougeL": 22.058823529411764,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 4.0,
+   "completeness": 4.0,
+   "usefulness": 4.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 41,
+  "topic": "leave",
+  "question": "What type of allowance is specifically referred to as 'festival allowance' under the provisions of the Bangladesh Labour Act 2006?",
+  "reference": "A festival allowance is a payment made by an employer for the workers of factories and establishments on specific religious festivals, as specified in the Rules.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The festival allowance is not explicitly mentioned in the Bangladesh Labour Act 2006. However, it seems there might be a misunderstanding or misinterpretation of the term \"festival allowance\" which could be interpreted as a type of annual leave or other benefits provided under the act. The act does mention provisions for annual leave, sick leave, and other types of leaves, but not specifically a \"festival allowance\".",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 2.783616022926035,
+  "rougeL": 19.565217391304348,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 71,
+  "topic": "wages",
+  "question": "What is the proportion of basic wages, dearness allowance, and adhoc or interim wages that constitutes a subsistence allowance under the Bangladesh Labour Act 2006?",
+  "reference": "Half.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), a subsistence allowance is calculated as follows:\n\n*   Basic wages\n*   Dearness allowance\n*   Adhoc or interim wages\n\nThe total amount of these three components constitutes the subsistence allowance.",
+  "refusal": false,
+  "bleu": 0.7144315612998046,
+  "rougeL": 0.0,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 89,
+  "topic": "dismissal",
+  "question": "A small bakery in Chittagong has been operating for 10 years with a workforce of 50 employees. Due to reduced demand during Ramadan, the owner decides to temporarily reduce staff by 20% (10 workers) without following any formal notice period or severance package. Is this action allowed under the Bangladesh Labour Act 2006?",
+  "reference": "No, this action is not allowed under the Bangladesh Labour Act 2006. Although the act allows for temporary retrenchment during exceptional circumstances, such as a natural disaster or government directive, no such circumstance has been specified here. Moreover, the bakery must have followed the necessary procedures, including providing written notice to affected employees and offering severance pay equivalent to one month's wages per year of service.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, it is not allowed. The Bangladesh Labour Act 2006 requires that an employer must give at least one month's wages to a worker before terminating their employment (Section 25(2)). Reducing staff without following this procedure could be considered unfair labour practice and may lead to legal consequences.",
+  "refusal": false,
+  "bleu": 6.8094347208048935,
+  "rougeL": 23.931623931623932,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 93,
+  "topic": "other",
+  "question": "How does the term 'go-slow' apply to workplace actions under the 2006 Labour Act?",
+  "reference": "An organized, deliberate, and intentional slowing down of normal output of work by a group of workers, not due to any mechanical defect or other reasons.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The term \"go-slow\" refers to a deliberate slowdown of work by employees in protest against certain demands or grievances, which can be considered as misconduct under Section 33(1) of the Bangladesh Labour Act 2006. This section prohibits any worker from intentionally obstructing or hindering the normal working of machinery or equipment, and also prohibits any worker from wilfully refusing to do any work or from deliberately slacking off work.",
+  "refusal": false,
+  "bleu": 2.8472826624922596,
+  "rougeL": 18.556701030927833,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 99,
+  "topic": "trade_union",
+  "question": "What constitutes a trade union federation under the Bangladesh Labour Act 2006?",
+  "reference": "A federation of trade unions registered under Chapter XIII.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "A trade union federation is an organization that represents multiple trade unions or workers' associations in a particular industry or sector, as per Section 2(1) of the Bangladesh Labour Act 2006.",
+  "refusal": false,
+  "bleu": 2.6988233895132607,
+  "rougeL": 19.51219512195122,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 115,
+  "topic": "trade_union",
+  "question": "What constitutes an 'executive committee' of a trade union under the Bangladesh Labour Act?",
+  "reference": "An 'executive committee', in the case of a trade union, refers to a body of persons entrusted with the management of the affairs of a trade union as per its constitution (Section 24)",
+  "gold_sections": [
+   24
+  ],
+  "expected_behavior": null,
+  "prediction": "An executive committee consists of not more than 5 members, including at least one member who is a shop steward or a full-time worker employed in any establishment where the trade union has its office. (Section 24(1) of the Bangladesh Labour Act, 2006)",
+  "refusal": false,
+  "bleu": 4.8795003647426665,
+  "rougeL": 30.769230769230766,
+  "grounding": 0.024390243902439025,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 1.0,
+   "cite_recall": 1.0,
+   "cite_f1": 1.0
+  },
+  "judge": {
+   "faithfulness": 4.0,
+   "completeness": 4.0,
+   "usefulness": 4.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 116,
+  "topic": "trade_union",
+  "question": "How is an 'executive committee' defined for a trade union under the Labour Act?",
+  "reference": "An 'executive committee' of a trade union refers to a group of persons specified in the trade union's constitution to oversee the management of its affairs (Section 24)",
+  "gold_sections": [
+   24
+  ],
+  "expected_behavior": null,
+  "prediction": "An executive committee means any committee of the trade union which has been constituted by its members in accordance with this Chapter or any rules made thereunder, and includes such other body as may be specified in the rules. (Section 3(1))",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 5.034460682273034,
+  "rougeL": 28.169014084507037,
+  "grounding": 0.15789473684210525,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  }
+ },
+ {
+  "id": 124,
+  "topic": "maternity",
+  "question": "How is maternity benefit calculated under the Bangladesh Labour Act 2006?",
+  "reference": "The calculation of maternity benefit under the Bangladesh Labour Act 2006 (amended up to 2018) is not explicitly stated, but it is provided as an 'allowance' with leave other benefits on the ground of her being a mother.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), maternity benefit is calculated as follows:\n\n* The amount of wages received by a woman during her maternity leave, which shall be paid to her for a period not exceeding 12 weeks\n* An additional sum equal to half of the wages she would have received if she had continued working for that period\n\nThe total amount of maternity benefit is usually calculated based on the employee's last drawn wages.",
+  "refusal": false,
+  "bleu": 14.148506753897209,
+  "rougeL": 27.86885245901639,
+  "grounding": 0.025,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 4.0,
+   "usefulness": 3.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 135,
+  "topic": "compensation",
+  "question": "A construction company with 50 employees, employing migrant workers from India, has an in-house medical facility. One of the migrant workers, Mr. Rohan, is injured on the job site and suffers a serious head injury that requires hospitalization for several days. Under the Bangladesh Labour Act, what type of compensation would Mr. Rohan be entitled to receive?",
+  "reference": "As Mr. Rohan is an injured employee who has suffered a serious head injury requiring hospitalization, he would be entitled to receive medical compensation under the Bangladesh Labour Act, as well as other benefits such as wage protection and pension contribution while he is unable to work.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Under Section 33(1) of the Bangladesh Labour Act 2006 (amended up to 2018), an injured worker is entitled to receive medical treatment and care without any charge from the employer's in-house medical facility or a hospital of their choice. However, if Mr. Rohan requires prolonged hospitalization due to his injury, he may be eligible for compensation under Section 33(2) of the Act, which provides for payment of wages during the period of absence from work due to illness or injury.",
+  "refusal": false,
+  "bleu": 8.06966849027814,
+  "rougeL": 19.84732824427481,
+  "grounding": 0.0625,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 187,
+  "topic": "other",
+  "question": "A worker is laid off due to a shortage of coal. What does this imply?",
+  "reference": "The failure, refusal, or inability of an employer to give employment to a worker on account of the specified reasons (shortage of coal).",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "This implies that the worker's services are no longer required due to an unforeseen circumstance beyond their control, such as a sudden reduction in demand or supply chain disruptions. As per Section 4(1) of the Bangladesh Labour Act 2006 (amended), if a worker is laid off without any fault of theirs, they may be entitled to compensation and other benefits under the Act.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 1.91321631100667,
+  "rougeL": 15.909090909090912,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 190,
+  "topic": "other",
+  "question": "A medium-sized textile factory (with 50 employees) in Dhaka is facing a severe shortage of skilled weavers due to the closure of several major weaving mills. The company has offered voluntary retirement packages to some of its senior workers but still needs to cut its workforce. Is this situation compliant with Bangladesh Labour Law?",
+  "reference": "This situation may not be fully compliant with Bangladesh Labour Law, as the employer is facing a shortage of skilled weavers, which could be considered a valid reason for layoffs (2) of the Bangladesh Labour Act 2006. However, it would be essential to follow the proper procedures, such as providing prior notice, offering severance pay, and ensuring that no unfair labour practices are employed.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, it's not entirely compliant. According to Section 4(1) of the Bangladesh Labour Act 2006 (amended), an employer must obtain permission from the Director General before retrenching any worker. The voluntary retirement packages offered may be seen as a way to circumvent this requirement. Additionally, the company should ensure that all affected workers are given adequate notice and compensation as per Section 25 of the Act.",
+  "refusal": false,
+  "bleu": 10.04106469127317,
+  "rougeL": 21.21212121212121,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 197,
+  "topic": "trade_union",
+  "question": "What constitutes an industrial dispute under the Bangladesh Labour Act 2006?",
+  "reference": "Any industrial dispute or any matter relating thereto, including disputes arising out of wage rates, working hours, conditions of work, and other terms and conditions of employment.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "An industrial dispute means any disagreement or difference between workers and employers, trade unions and employers, trade unions and workers, or between workers and trade unions on any matter relating to the terms and conditions of employment, wages, working hours, rates of wages, payment of wages, compensation for injuries to workers during working hours, formation of trade unions, raising or carrying on of any industrial dispute, and any other matter mentioned in Chapter II",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 9.730259631046291,
+  "rougeL": 27.722772277227726,
+  "grounding": 0.15714285714285714,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 204,
+  "topic": "other",
+  "question": "Which sectors are covered under the Labour Act of Bangladesh?",
+  "reference": "Industrial establishments such as factories, mines, quarries, gas fields, oil fields, ship-building, plantations, construction, and road transport services come under the Labour Act 2006.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Bangladesh Labour Act 2006 applies to all establishments with more than 20 workers, including factories, mines, oilfields, ports, railway sidings, roadways, airways, and any other establishment where more than 20 persons work. (Section 2(1))",
+  "refusal": false,
+  "bleu": 8.675107600029897,
+  "rougeL": 13.114754098360656,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 230,
+  "topic": "compensation",
+  "question": "A private company with 50 employees in the textile industry has an employee, Mr. X, who is injured on the job and diagnosed with a condition that affects their ability to perform their job duties. The injury resulted in 20% loss of earning capacity. Under the Labour Act 2006, what percentage of loss of earning capacity would be considered as permanent total disablement for Mr. X?",
+  "reference": "Since the aggregate percentage of the loss of earning capacity (20%) does not meet the threshold of one hundred percent, it is not deemed as permanent total disablement under the Labour Act 2006.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 2(1) of the Bangladesh Labour Act 2006 (amended up to 2018), \"permanent total disablement\" means a permanent and complete loss of earning capacity due to an injury or disease, resulting in no ability to perform any work whatsoever. Since Mr. X's condition affects their job duties by 20%, it would be considered as permanent partial disablement, not permanent total disablement. However, the exact percentage of permanent partial disablement is not explicitly defined in the Act. It may require further medical evaluation and assessment to determine the specific percentage of loss of earning capacity.",
+  "refusal": false,
+  "bleu": 5.5394833495228335,
+  "rougeL": 21.374045801526716,
+  "grounding": 0.02127659574468085,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 261,
+  "topic": "other",
+  "question": "What is the timeframe for filing an appeal against the Inspector General's order on service rules under the Bangladesh Labour Act 2006?",
+  "reference": "30 days from receipt of the order.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The appeal must be filed within 30 (thirty) days from the date of receipt of the order.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 21.31456897111116,
+  "rougeL": 58.333333333333336,
+  "grounding": 0.38461538461538464,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 265,
+  "topic": "overtime",
+  "question": "A large IT company with 2000 employees in Chittagong has a policy of providing flexible working hours to its employees. However, an Inspector General issues an order stating that all workplaces must adhere to a fixed 8-hour workday, effective immediately. One of the employees, who has been working for more than 15 years and is nearing retirement, is concerned about the impact on her pension entitlements. What are the implications of this order, and how should the HR team handle the situation?",
+  "reference": "The Inspector General's order requires all workplaces to adhere to a fixed 8-hour workday, which may be detrimental to the employee's pension eligibility. Under 2006, the IT company has 30 days from the receipt of the order to file an appeal against the decision regarding service rules. In this scenario, the HR team should ensure that the employee is informed about the implications of the order and explore options for negotiating a flexible working arrangement that balances the company's needs with the employee's concerns.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Bangladesh Labour Act 2006 (amended to 2018) requires employers to ensure that employees work within their designated working hours. The Inspector General's order is likely based on Section 113(1), which states that no person shall be allowed to work more than eight hours in a day or forty-eight hours in a week.\n\nIn this scenario, the HR team should inform the employee about the new policy and explain how it affects her pension entitlements. Since she has been working for over 15 years, she may be eligible for a higher pension under the Bangladesh Labour Act. The HR team should also ensure that all employees are provided with adequate notice of the change in working hours and that they understand their rights and responsibilities under the law.\n\nIt is recommended that the HR team consults with the employee's union representative (if applicable) to discuss any concerns or questions the employee may have about the new policy. The HR team should also ensure that all necessary documentation, such as updated employment contracts and pension records, are updated accordingly.\n\nIn terms of compensation, the Bangladesh Labour Act provides for a minimum wage rate and overtime pay rates. If the employee is working more than 8 hours in a day or 48 hours in a week without proper authorization, she may be entitled to additional compensation under Section 113(2). The HR team should investigate this further and provide any necessary documentation to support her claim.\n\nOverall, the HR team's primary responsibility is to ensure that all employees are treated fairly and in accordance with the Bangladesh Labour Act. By providing clear communication, updating necessary documentation, and consulting with union representatives (if applicable), the HR team can help mitigate any potential issues and ensure a smooth transition for the employee.",
+  "refusal": false,
+  "bleu": 5.310144990686071,
+  "rougeL": 17.857142857142858,
+  "grounding": 0.006688963210702341,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 4.0,
+   "usefulness": 3.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 282,
+  "topic": "probation",
+  "question": "Can the maximum duration of the probationary period under the Bangladesh Labour Act 2006 be exceeded?",
+  "reference": "No, the maximum duration of the probationary period is six months, which can be extended by a further three-month period if the work quality within the first three months cannot be ascertained. Exceeding this period would require approval from the Ministry of Labour and Employment.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, the maximum duration of the probationary period cannot be exceeded. According to Section 4(1) of the Bangladesh Labour Act 2006 (amended up to 2018), a person shall not be employed for more than one year in any establishment as an apprentice or probationer.",
+  "refusal": false,
+  "bleu": 17.879546611283384,
+  "rougeL": 30.76923076923077,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 3.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 297,
+  "topic": "other",
+  "question": "What document should an employer provide to every worker before employing them, as per section (5) of the Bangladesh Labour Act 2006?",
+  "reference": "An appointment letter and an identity card with the worker's photograph.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The employer must provide a copy of the Bangladesh Labour Act 2006, along with a declaration that they have read and understood its provisions.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 2.042946039568498,
+  "rougeL": 5.555555555555555,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 306,
+  "topic": "other",
+  "question": "Ashik, a manager at a manufacturing company with 50 employees, loses the service book of one of his workers, Arafat. Arafat requests for a replacement copy of his service book. What should Ashik do?",
+  "reference": "According to Section (8) of the Bangladesh Labour Act 2006, Ashik must provide Arafat with a copy of his service book at the cost of the worker. This implies that Ashik needs to pay for the reproduction or replacement of the lost document. Ashik should also notify the relevant authorities and ensure that the new copy is updated accordingly.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 11(1) of the Bangladesh Labour Act 2006 (amended up to 2018), every worker shall be entitled to a copy of their service book on demand. Therefore, Ashik should provide Arafat with a replacement copy of his service book as soon as possible.",
+  "refusal": false,
+  "bleu": 22.679844873179487,
+  "rougeL": 36.19047619047619,
+  "grounding": 0.09523809523809523,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 2.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 342,
+  "topic": "leave",
+  "question": "How much time does an employer have to issue a leave order after receiving a written application from a worker for leave?",
+  "reference": "<b>7 days</b> (Section 10(1) of the Bangladesh Labour Act, 2006)",
+  "gold_sections": [
+   10
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 11(2) of the Bangladesh Labour Act 2006 (amended up to 2018), an employer must issue a leave order within 3 days of receiving a written application from a worker for leave.",
+  "refusal": false,
+  "bleu": 13.384453331197532,
+  "rougeL": 29.166666666666668,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 364,
+  "topic": "wages",
+  "question": "What is the minimum time frame for a worker to be paid wages if they are required to stay at their workplace following a stoppage of work, as per the Bangladesh Labour Act 2006?",
+  "reference": "1 hour.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 113(2) of the Bangladesh Labour Act 2006 (amended up to 2018), a worker who is required to stay at his place of work after a stoppage of work shall be entitled to wages for the period of such stoppage. The minimum time frame for payment of wages in this situation is not explicitly specified, but it implies that workers should receive their wages as soon as possible after being released from their workplace.",
+  "refusal": false,
+  "bleu": 0.423455197103223,
+  "rougeL": 0.0,
+  "grounding": 0.0547945205479452,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 397,
+  "topic": "compensation",
+  "question": "In Bangladesh Labour Law, how is compensation calculated for an employee laid off after completing at least 12 months of service?",
+  "reference": "Half of the total of basic wages and dearness allowance and ad-hoc or interim wages.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 25(2) of the Bangladesh Labour Act 2006 (amended up to 2018), the amount of compensation shall be equal to the wages of the worker for the period of his service, calculated on a daily basis.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  },
+  "bleu": 1.9986978024115483,
+  "rougeL": 14.545454545454547,
+  "grounding": 0.17142857142857143,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 405,
+  "topic": "dismissal",
+  "question": "Under what circumstances can an employer prefer retrenchment over payment of layoff compensation as per Section 20 of the Bangladesh Labour Act?",
+  "reference": "An employer can opt for retrenchment instead of paying layoff compensation if a worker is laid-off for 15 days or more after the first 45 days in a calendar year, and there is no prior agreement to the contrary.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "An employer may prefer retrenchment over payment of layoff compensation if they have already paid the full amount of layoff compensation to the affected worker.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 5.0790816330927715,
+  "rougeL": 30.76923076923077,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 436,
+  "topic": "safety",
+  "question": "A small manufacturing company with 20 employees, operating in the apparel sector for more than 02 (two) years continuously under an employer, reports that one of its workers has died due to a road accident while commuting home. The worker had been with the company for 5 years. What compensation is payable to the worker's family according to the Bangladesh Labour Act 2006?",
+  "reference": "According to the Bangladesh Labour Act 2006, since the worker died following an accident while working in the establishment, the compensation payable would be 45 days wages for every completed year of service. In this case, the worker had been with the company for 5 years, so the family would be entitled to 5 x 45 = 225 days wages as compensation.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The worker's family would be entitled to receive a sum equivalent to 3/4th of their monthly wages, as per Section 26(1) of the Bangladesh Labour Act 2006 (amended up to 2018). Since the worker had been with the company for more than 2 years continuously, they are eligible for this benefit.",
+  "refusal": false,
+  "bleu": 22.093705371985273,
+  "rougeL": 27.82608695652174,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 525,
+  "topic": "safety",
+  "question": "A large manufacturing company with over 500 employees in the textile industry has an employee named Araf, who is 55 years old. Araf suffers from a chronic illness and is unable to perform his duties efficiently. The employer wants to retire Araf on health grounds. Is this acceptable under Bangladesh Labour Law?",
+  "reference": "No, it is not acceptable. According to Section 28(1) of the Bangladesh Labour Act 2006 (amended up to 2018), a worker shall retire from employment at the age of 60 (sixty) years. Although Araf suffers from a chronic illness and cannot perform his duties efficiently, his retirement should be based on his age, not his health.",
+  "gold_sections": [
+   28
+  ],
+  "expected_behavior": null,
+  "prediction": "No, it's not entirely clear if the company can unilaterally decide to retire Araf based solely on health grounds without following the proper procedures as per section 4(2) of the Bangladesh Labour Act 2006 (amended up to 2018). The employer should provide evidence from a registered medical practitioner and follow the necessary formalities before making such decisions.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 2.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  },
+  "bleu": 21.381926565104937,
+  "rougeL": 32.758620689655174,
+  "grounding": 0.03636363636363636,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  }
+ },
+ {
+  "id": 592,
+  "topic": "dismissal",
+  "question": "A manufacturing company with 50 employees is facing a dispute between two employees, one of whom has been unfairly terminated by the other. The employee who was terminated files a complaint under Section 2 of the Bangladesh Labour Act, 2006, but the complaint is dismissed by the employer without giving any decision. What should be done next?",
+  "reference": "The employer should submit a written decision within 14 days from the date of receipt of the complaint as per Subsection (1) of Section 2 of the Bangladesh Labour Act, 2006. If the employee does not receive a decision, they can submit a new complaint in writing to the Labour Court within thirty days from the date of expiry of the period mentioned in Subsection (2) or from the date of the decision of the employer.",
+  "gold_sections": [
+   2
+  ],
+  "expected_behavior": null,
+  "prediction": "The employee who filed the complaint can appeal against the dismissal to the Labour Court within 30 (thirty) days from the date of receipt of the order of dismissal. The Labour Court will then hear the case and make a final decision based on the evidence presented.\n\nSection 2(1)(a) of the Bangladesh Labour Act, 2006 states that any person who is employed or was employed in any establishment shall be entitled to file a complaint before the Labour Court against any decision made by the employer relating to his dismissal from service.",
+  "refusal": false,
+  "bleu": 20.46432675980944,
+  "rougeL": 31.764705882352946,
+  "grounding": 0.13333333333333333,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 1.0,
+   "cite_recall": 1.0,
+   "cite_f1": 1.0
+  },
+  "judge": {
+   "faithfulness": 4.0,
+   "completeness": 4.0,
+   "usefulness": 4.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 610,
+  "topic": "other",
+  "question": "Are there any specific provisions for adolescent workers in terms of rest periods and daily breaks?",
+  "reference": "Yes, the Bangladesh Labour Act 2006 (amended up to 2018) requires that adolescents working in factories or mines should be given a break of at least 30 minutes and adolescents working in other establishments should be given a break of at least 15 minutes during their daily rest period.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Yes, according to Section 108(2) of the Bangladesh Labour Act 2006 (amended up to 2018), an adolescent worker shall not be required or allowed to work more than 4 hours without a break. Additionally, there are provisions for rest periods and daily breaks in general, as per Section 113(1)(b).",
+  "refusal": false,
+  "bleu": 18.41051514677118,
+  "rougeL": 33.66336633663366,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 612,
+  "topic": "apprentice",
+  "question": "A small shop in Dhaka city employs a 14-year-old apprentice for 8 hours a day, 6 days a week. Is this allowed under the Bangladesh Labour Act?",
+  "reference": "No, the adolescent is not allowed to work more than 7 hours in a day and 42 hours in a week in other establishments. The shop owner must adjust the apprentice's working hours to comply with the law.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, according to Section 108 of the Bangladesh Labour Act 2006 (amended up to 2018), no person shall be employed in any establishment as an apprentice unless he has completed not less than 14 years of age. The employer should ensure that the apprentice complies with this requirement and obtain necessary permits or approvals before employing a minor worker.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 2.1918025332039757,
+  "rougeL": 20.40816326530612,
+  "grounding": 0.05454545454545454,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 676,
+  "topic": "maternity",
+  "question": "How many weeks of maternity benefit should be paid to an employer after receiving proof from a registered medical practitioner that the woman is expected to be confined?",
+  "reference": "within 3 (three) working days following the production of the certificate.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), an employer shall pay 100% of wages for the first 3 months and 50% of wages for the next 4 months after receiving proof from a registered medical practitioner that the woman is expected to be confined.",
+  "refusal": false,
+  "bleu": 1.6535810454198991,
+  "rougeL": 9.523809523809524,
+  "grounding": 0.10416666666666667,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 677,
+  "topic": "maternity",
+  "question": "A manufacturing company with 100 employees, producing textiles in Dhaka, receives a medical certificate from a registered practitioner stating that one of its female workers, Fatema, is expected to be confined. The company has already completed two months of the maternity benefit period for Fatema. What should the company do?",
+  "reference": "Within 3 working days following the production of the certificate, the employer should pay the remaining maternity benefits to Fatema. As per Section 67(1) of the Bangladesh Labour Act 2006 (amended up to 2018), the employer must provide maternity benefit for a minimum period of 12 weeks or 24 weeks at the option of the employee. Since Fatema has already completed two months, she is entitled to the remaining 2-4 weeks (10-16 days) of maternity benefits, depending on her actual working hours. The company should verify Fatema's working hours and calculate the payable amount accordingly.",
+  "gold_sections": [
+   67
+  ],
+  "expected_behavior": null,
+  "prediction": "The company must provide additional maternity benefits as per Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), which states that a woman shall be entitled to receive full wages during her confinement and for at least three months after delivery. Since Fatema has already completed two months, she is still eligible for additional benefits until she returns to work. The company should pay the remaining maternity benefit amount to Fatema immediately.",
+  "refusal": false,
+  "bleu": 27.650594590138713,
+  "rougeL": 38.857142857142854,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 2.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 733,
+  "topic": "wages",
+  "question": "A small textile factory (with 20 employees) has been facing issues with employee absenteeism due to unpaid wages. The employees have been working long hours for several weeks without receiving their monthly salaries. What are the implications of this situation under the Bangladesh Labour Act 2006, and what steps can the HR department take to address the issue?",
+  "reference": "The factory is in breach of the Bangladesh Labour Act 2006, specifically Section 57, which states that an employee shall be paid wages not later than the expiry of the period of one month after the end of the relevant period of employment. The HR department should immediately pay the outstanding wages to all employees, provide a written explanation for the delay, and take corrective measures to prevent similar situations in the future, such as implementing a timely payment system.",
+  "gold_sections": [
+   57
+  ],
+  "expected_behavior": null,
+  "prediction": "Under Section 26(1) of the Bangladesh Labour Act 2006, an employer is required to pay wages within 30 (thirty) days from the date of receipt of wages. If an employee has not received their wages for several weeks, it may be considered as a case of unpaid wages.\n\nThe HR department should take immediate action to address this issue by:\n\n1. Investigating the cause of the delay in payment and identifying any discrepancies in the payroll records.\n2. Notifying the employees about the outstanding wages and providing them with a written notice under Section 26(3) of the Act, stating the amount due and the date by which it should be paid.\n3. Paying the outstanding wages within the stipulated timeframe to avoid any further action under the Labour Court or Tribunal.\n4. Reviewing and revising the payroll system to prevent similar issues in the future.\n\nIt is also recommended that the HR department consults with the Labour Inspectorate or a trade union representative to ensure compliance with all applicable provisions of the Bangladesh Labour Act 2006.",
+  "refusal": false,
+  "bleu": 8.625584050493096,
+  "rougeL": 24.8062015503876,
+  "grounding": 0.022988505747126436,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 3.0,
+   "usefulness": 2.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 743,
+  "topic": "safety",
+  "question": "A manufacturing company with 500 employees in the textile industry has a policy of allowing employees to work on machinery during their breaks. The HR department is aware that this practice poses a risk to employee safety, but it has not implemented suitable devices to cut off power supply from running machinery as per section 65(2) of the Bangladesh Labour Act 2006. What steps should be taken by the HR department?",
+  "reference": "The HR department should immediately implement suitable devices to cut off power supply from running machinery in every work-room of the establishment, informing all employees about the importance and proper usage of these devices. Additionally, they should retrain supervisors and management on the importance of employee safety and the need for adherence to Section 65(2) of the Bangladesh Labour Act 2006.",
+  "gold_sections": [
+   65
+  ],
+  "expected_behavior": null,
+  "prediction": "The HR department should immediately inform the management about the risks associated with allowing employees to work on machinery during breaks and request them to implement suitable devices to cut off power supply from running machinery as per section 65(2) of the Bangladesh Labour Act 2006. The HR department may also consider conducting a safety audit to identify other potential hazards in the workplace and recommend corrective measures to ensure compliance with the law.",
+  "refusal": false,
+  "bleu": 32.19566600784862,
+  "rougeL": 36.231884057971016,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 1.0,
+   "cite_recall": 1.0,
+   "cite_f1": 1.0
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 747,
+  "topic": "other",
+  "question": "How much space should be maintained between a worker and any fixed structure in an establishment with automatic machinery?",
+  "reference": "45 centimetres.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 108 of the Bangladesh Labour Act 2006 (amended up to 2018), at least 1 meter must be kept between a worker and any fixed structure in an establishment with automatic machinery.",
+  "refusal": false,
+  "bleu": 0.969094302009921,
+  "rougeL": 0.0,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 764,
+  "topic": "other",
+  "question": "Are there any specific dimensions or strength requirements for the ropes that must be applied to hoists and lifts?",
+  "reference": "Yes, the Bangladesh Labour Act requires that the ropes should have a minimum diameter of 16 mm and a breaking load of at least 1.5 times the maximum safe working load.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 108 of the Bangladesh Labour Act 2006 (amended up to 2018), the ropes used in hoisting and lifting shall have a minimum diameter of 1/4 inch (6.35 mm) and shall be made of material that is strong enough to withstand the load being lifted, as specified by the manufacturer or supplier.",
+  "refusal": false,
+  "bleu": 11.57360114113452,
+  "rougeL": 36.36363636363637,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 807,
+  "topic": "safety",
+  "question": "What safety measures must be taken before initiating welding or cutting operations involving explosive or inflammable substances in a workplace?",
+  "reference": "Adequate measures must be first taken to remove such substance or fumes or to render them un-flammable or un-explosive, and the substance shall not be allowed to enter the plant, tank, or vessel until the metal is cooled down sufficiently.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 108 of the Bangladesh Labour Act 2006 (amended up to 2018), all workers shall be provided with adequate safety appliances and protective clothing, and no person shall initiate any welding or cutting operation without first ensuring that the necessary safety measures have been taken.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  },
+  "bleu": 2.278109584084918,
+  "rougeL": 13.48314606741573,
+  "grounding": 0.023255813953488372,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 808,
+  "topic": "safety",
+  "question": "How should employers ensure compliance with safety regulations when performing welding or cutting operations that involve hazardous materials?",
+  "reference": "Adequate measures must be first taken to remove such substance or fumes or to render them un-flammable or un-explosive, and the substance shall not be allowed to enter the plant, tank, or vessel until the metal is cooled down sufficiently.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Employers must provide adequate training to employees on safe practices for welding and cutting operations, maintain a clean and well-ventilated workspace, use personal protective equipment (PPE) such as helmets, gloves, and respirators, and ensure regular inspections of equipment and facilities. (Section 108(1), Bangladesh Labour Act 2006)",
+  "refusal": false,
+  "bleu": 1.709714016749041,
+  "rougeL": 8.88888888888889,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 835,
+  "topic": "other",
+  "question": "What happens if the medical practitioner's report does not specify a particular disease from the Second Schedule?",
+  "reference": "The Labour Inspector may request further clarification or documentation to determine the nature of the disease and take necessary actions.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The employer may request further information or clarification from the medical practitioner to determine the nature of the illness. However, without specific details, it would be challenging for HR to proceed with necessary actions under the Bangladesh Labour Act 2006 (amended up to 2018).",
+  "refusal": false,
+  "bleu": 13.652085900837301,
+  "rougeL": 40.625,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 4.0,
+   "completeness": 4.0,
+   "usefulness": 4.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 844,
+  "topic": "other",
+  "question": "What is the purpose of including the patient's mailing address in the notice?",
+  "reference": "The patient's mailing address is required to ensure that the employer receives notifications and updates on the patient's health status, 2006.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The purpose of including the patient's mailing address in the notice is to ensure that any correspondence or legal documents related to their case are sent directly to them, rather than being lost or misplaced. This helps maintain a record of communication and ensures that the patient receives important information in a timely manner.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 5.4558822475116,
+  "rougeL": 30.76923076923077,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 884,
+  "topic": "other",
+  "question": "A medium-sized textile factory with over 300 employees is planning to expand its operations. What steps should the HR department take to comply with the Bangladesh Labour Law regarding first-aid treatment facilities?",
+  "reference": "The HR department must identify a trained person in first-aid treatment who will be available during all working hours of the establishment. This individual may already work for the company or can be hired from outside, provided they meet the necessary training and availability requirements.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The HR department should ensure that a first-aid box or cabinet is available at all times in each workshop, and that it contains basic medical supplies such as bandages, antiseptic wipes, painkillers, and any other necessary items. Additionally, the company should also provide training to employees on basic first aid procedures.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 3.978062972279233,
+  "rougeL": 24.489795918367346,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 886,
+  "topic": "other",
+  "question": "What is the minimum number of workers required to have a permanent medical centre in an establishment?",
+  "reference": "5000 (five thousand) or more workers.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 34(1) of the Bangladesh Labour Act 2006 (amended up to 2018), at least 50 employees are required to have a permanent medical centre in an establishment.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 1.3494116947566301,
+  "rougeL": 0.0,
+  "grounding": 0.038461538461538464,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 892,
+  "topic": "other",
+  "question": "How many employees must be employed by an establishment to necessitate the appointment of a welfare officer?",
+  "reference": "500 (five hundred) or more (4)",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 34(1) of the Bangladesh Labour Act 2006 (amended up to 2018), at least 10 workers in any establishment shall require the appointment of a welfare officer.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 1.4500372328365223,
+  "rougeL": 0.0,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 960,
+  "topic": "other",
+  "question": "What is the consequence for workers in export-oriented industrial sectors with a government-established central fund on their financial obligations towards group insurance, as per Section 99(3) of the Bangladesh Labour Act 2006?",
+  "reference": "The workers shall be paid from such fund equal to the money of group insurance.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 99(3), if any worker fails to pay his contribution to the fund, he shall be liable for payment of arrears, along with interest at the rate specified in the rules. The employer may also deduct such amount from the wages of the worker concerned or from any other benefit payable to him.",
+  "refusal": false,
+  "bleu": 2.0449451845175535,
+  "rougeL": 16.901408450704224,
+  "grounding": 0.057692307692307696,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 966,
+  "topic": "other",
+  "question": "How many hours can an adult worker work in a week under the Bangladesh Labour Act?",
+  "reference": "48 (forty-eight) hours.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 114 of the Bangladesh Labour Act 2006 (amended up to 2018), no person shall be required or allowed to work more than 48 (forty-eight) hours in any week.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 9.76287719528627,
+  "rougeL": 22.22222222222222,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 983,
+  "topic": "other",
+  "question": "Under what conditions can the government opt out of enforcing Section 108's requirements as stipulated in Subsection (2)?",
+  "reference": "If it is satisfied that in the public interest or in the interest of economic development such relaxation or exemption is necessary.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The government may opt out of enforcing Section 108's requirements if they have already implemented alternative measures to ensure worker safety, such as providing training or equipment. However, this decision must be made through a formal notification and published in the official gazette.",
+  "refusal": false,
+  "bleu": 2.045903267148538,
+  "rougeL": 12.121212121212123,
+  "grounding": 0.025,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 986,
+  "topic": "other",
+  "question": "Are there any specific procedures or guidelines that the Government must follow when granting exemptions or relaxations under Section 108, and if so, what are they?",
+  "reference": "Yes, the Government is required to notify the exemption or relaxation in the Official Gazette and ensure that it complies with relevant laws and regulations, as well as the principles of fairness and transparency.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Government shall notify in the official Gazette all such exemptions or relaxations granted under section 108(1) of the Bangladesh Labour Act, 2006.",
+  "refusal": false,
+  "bleu": 2.8958366502168476,
+  "rougeL": 27.586206896551722,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 994,
+  "topic": "leave",
+  "question": "Are the twenty-four consecutive hours holidays for workers employed in a road transport establishment fixed or can they be adjusted by the employer?",
+  "reference": "The twenty-four consecutive hours holidays are not entirely flexible; however, employers may adjust the timing of these holidays with prior approval from the relevant authorities.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The 24-hour holiday for workers employed in a road transport establishment is not explicitly mentioned as a fixed period under the Bangladesh Labour Act, 2006 (amended up to 2018). However, Section 108 of the Act states that \"no worker shall be required or allowed to work more than 48 hours in any week or 88 hours in any month.\" It does not specify a specific holiday period. Therefore, it is likely that employers can adjust the timing of their holidays within the overall limits set by the law, but this would need to be done in accordance with the provisions of the Act and any applicable collective bargaining agreements.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 4.0,
+   "usefulness": 3.0,
+   "harm": 0.0
+  },
+  "bleu": 2.4460524263509984,
+  "rougeL": 19.117647058823533,
+  "grounding": 0.05660377358490566,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 1005,
+  "topic": "other",
+  "question": "A worker in a construction company with 50 employees is employed to work 12 hours a day, but on a particular day, he worked for 14 hours without permission from his supervisor. What are the consequences of this action?",
+  "reference": "The employee's employer must deduct one day's wages from the employee's salary (b) of the Bangladesh Labour Act 2006, which states that no person shall be required or allowed to work on a vehicle or machinery for more than one vehicle in a day. The employer should also serve a written warning to the employee and ensure that he is provided with adequate rest and re-employment after serving the notice period.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 114(1) of the Bangladesh Labour Act 2006 (amended up to 2018), any worker who works more than 12 hours in a day without permission from their employer shall be deemed to have worked overtime and shall be entitled to overtime wages. However, since this employee worked for 14 hours without permission, they may also be subject to disciplinary action under Section 113(1) of the Act, which states that any worker who is found guilty of misconduct shall be liable to be dismissed from service or punished with fine or both.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 4.0,
+   "usefulness": 4.0,
+   "harm": 0.0
+  },
+  "bleu": 11.010062306333392,
+  "rougeL": 23.52941176470588,
+  "grounding": 0.01098901098901099,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 1073,
+  "topic": "leave",
+  "question": "Aisha, a part-time worker at a small retail store in Dhaka with 20 employees, has been working 25 days a month consistently. She falls ill after working for 60 days out of 90 days in a year. According to the Bangladesh Labour Act 2006 (amended up to 2018), how many days of sick leave will Aisha be entitled to?",
+  "reference": "Aisha is classified as a part-time worker, and according to the Bangladesh Labour Act 2006 (amended up to 2018), part-time workers are entitled to sick leave with half wages for not less than one-eighteenth of the period of their service. Since Aisha has been working consistently for 60 days out of 90 days in a year, she will be entitled to sick leave based on this proportion. Therefore, Aisha will be entitled to (1/18) × 60 = 3.33 days of sick leave with half wages.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 26(1) of the Bangladesh Labour Act, an employee shall be entitled to 3 days' wages for every 30 days of service. Since Aisha has worked 60 out of 90 days in a year, she is eligible for 2 sets of 3-day sick leave (60/30 = 2). Therefore, Aisha will be entitled to 6 days of sick leave (2 x 3 days).",
+  "refusal": false,
+  "bleu": 27.48173214006829,
+  "rougeL": 48.05194805194805,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 1101,
+  "topic": "leave",
+  "question": "What happens to a worker's remaining earned leave at the end of their leave period - can they bank it for future use?",
+  "reference": "No, a worker's earned leave is non-accumulative and non-carry-over. Once the leave period ends, the remaining balance shall be forfeited (4) of the Bangladesh Labour Act 2006.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 26(2) of the Bangladesh Labour Act 2006 (amended up to 2018), when an employee completes his/her leave, he/she shall be entitled to carry forward any remaining earned leave balance. This means that a worker can bank their unused leave for future use, subject to certain conditions and limits specified in the Act.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 11.412780915495285,
+  "rougeL": 13.483146067415733,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 1142,
+  "topic": "wages",
+  "question": "What happens if the wage period exceeds 1 month?",
+  "reference": "Employers must pay wages for the entire next month or as soon as possible, whichever is earlier.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 26(2) of the Bangladesh Labour Act 2006 (amended up to 2018), if the wage period exceeds one month, it shall be considered as a monthly wage for that period.",
+  "refusal": false,
+  "bleu": 1.4378558189726398,
+  "rougeL": 12.000000000000002,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1172,
+  "topic": "safety",
+  "question": "A small textile factory with 20 employees in Chittagong operates under the Bangladesh Labour Act 2006. An employee, who is injured on the job while working at a machine, files a complaint against the employer alleging non-compliance with safety regulations and requesting compensation for medical expenses. The employer disputes the claim and refuses to provide compensation. What are the next steps the HR department should take?",
+  "reference": "The HR department should immediately report the incident to the designated Factory Inspectorate Department under 2006, and ensure that the employee receives necessary medical attention. The HR department should also facilitate the conciliation process A(1) of the Bangladesh Labour Act 2006, by assigning a conciliator from the designated Conciliation Board. If both parties fail to agree on the conciliator's decision A(6), the employee and employer may file a suit in the Labour Court for settlement of the issue. The HR department should ensure that all necessary documentation, including medical records and safety inspection reports, is collected and submitted to support the employee's claim.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The HR department should immediately notify the Labour Inspectorate within 7 (seven) days of receiving the complaint, as per Section 108 of the Bangladesh Labour Act 2006. This notification will initiate an investigation into the matter and ensure that the employer complies with their obligations under the law.\n\nAdditionally, the HR department should also provide the injured employee with a copy of the complaint and any supporting evidence, such as medical records or witness statements, to aid in the investigation process.\n\nIt is recommended that the HR department also review the factory's safety record and ensure that all necessary safety measures are in place to prevent similar incidents in the future.",
+  "refusal": false,
+  "bleu": 16.530831828411575,
+  "rougeL": 31.05022831050228,
+  "grounding": 0.009259259259259259,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1230,
+  "topic": "other",
+  "question": "An IT company with over 50 employees in Dhaka files a complaint under section 132(1) of the Labour Act 2006 against an employee who has been absent from work for three consecutive days without permission. The employer claims that the employee's absence is causing significant disruption to the team's workload and productivity. What are the potential consequences for the company and the employee?",
+  "reference": "The Labour Court may consider the company's claim as a legitimate reason for filing a complaint under section 132(1) of the Labour Act 2006, especially if the employer has proof that the employee's absence is causing significant harm to the business. However, if it is found that the complaint was filed in an attempt to intimidate or harass the employee, the court may impose fines on both parties involved. The company could be fined up to taka 200 under section 132(3)(a) of the Labour Act 2006 for filing a complaint deemed malicious or vexatious. On the other hand, if the court finds that the employer has not followed proper procedures in dealing with employee absenteeism, such as giving adequate notice and providing support, it may order the company to provide additional training or coaching on labour laws and regulations.",
+  "gold_sections": [
+   132
+  ],
+  "expected_behavior": null,
+  "prediction": "Under section 132(1) of the Bangladesh Labour Act 2006, an employee who has been absent from work without permission for three consecutive days may be subject to disciplinary action, including suspension or termination of employment. However, before taking any action, the employer must provide the employee with a written notice stating the grounds for their absence and allowing them to explain their circumstances.\n\nThe company should also consider providing the employee with a reasonable opportunity to respond to the complaint and address any concerns they may have. Failure to do so could lead to unfair treatment under the law.\n\nIt is recommended that the employer consults with HR experts or legal counsel to ensure compliance with the Labour Act and to develop a fair and transparent process for addressing employee absences.",
+  "refusal": false,
+  "bleu": 10.656790642772268,
+  "rougeL": 22.46376811594203,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 1.0,
+   "cite_recall": 1.0,
+   "cite_f1": 1.0
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1245,
+  "topic": "other",
+  "question": "Does this provision apply even when the employer is insolvent or bankrupt?",
+  "reference": "Yes, if an employer cannot recover money from other responsible persons, it can still be held liable to pay the amount ordered by the Labour Court/Tribunal.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, the provisions of Chapter II (Wages) do not apply to an establishment which has been wound up under section 218 of the Bangladesh Labour Act, 2006 (amended up to 2018).",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  },
+  "bleu": 1.6298158492058863,
+  "rougeL": 10.344827586206897,
+  "grounding": 0.07407407407407407,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 1287,
+  "topic": "wages",
+  "question": "How does the Government decide whether to deviate from the recommended minimum wages by the Wage Board?",
+  "reference": "The Government may modify or change the recommendation made by the Wage Board, subject to such modifications and exceptions as may be specified in a notification.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), the Government may, after giving due consideration to the recommendations of the Wage Board, make any necessary modifications or amendments. However, it is not explicitly stated that the Government must follow these recommendations.",
+  "refusal": false,
+  "bleu": 5.42197207646839,
+  "rougeL": 24.324324324324323,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1292,
+  "topic": "wages",
+  "question": "What is the period after which the minimum rates of wages fixed for workers employed in any industry shall be re-fixed, and on whose direction?",
+  "reference": "Every 5 (five) years on the direction by the Government.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The minimum rates of wages shall be re-fixed every 6 (six) months by the Government, as per Section 33(2) of the Bangladesh Labour Act, 2006.",
+  "refusal": false,
+  "bleu": 5.166992049767956,
+  "rougeL": 21.62162162162162,
+  "grounding": 0.043478260869565216,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 1315,
+  "topic": "wages",
+  "question": "Are there any provisions for adjusting the recommended minimum wages during periods of economic fluctuation?",
+  "reference": "Yes, provides for adjustments to be made to the minimum wages in case of a change in the cost of living or if the rate of inflation exceeds 10%.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Yes, under Section 33(3) of the Bangladesh Labour Act 2006 (amended to 2018), the government may adjust the minimum rates of wages in consultation with the Advisory Committee. This provision allows for flexibility in setting wages during times of economic change.",
+  "refusal": false,
+  "bleu": 3.22783642152686,
+  "rougeL": 22.535211267605636,
+  "grounding": 0.07894736842105263,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1367,
+  "topic": "wages",
+  "question": "In case of a disagreement with the re-classification of a newspaper establishment by the Newspaper Wages Board, who or what body can provide relief?",
+  "reference": "Any person aggrieved by such decision may apply to the Labour Court for adjudication of the dispute.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The decision of the Newspaper Wages Board shall be final (Section 26(2) of the Bangladesh Labour Act, 2006).",
+  "refusal": false,
+  "bleu": 3.9645132534206877,
+  "rougeL": 22.22222222222222,
+  "grounding": 0.26666666666666666,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1369,
+  "topic": "other",
+  "question": "Can an aggrieved person appeal the decision of the Labour Court if they are dissatisfied with the outcome?",
+  "reference": "Yes, an aggrieved party can file an appeal against the decision of the Labour Court to the Appellate Division of the Supreme Court in Bangladesh, provided that they comply with the applicable time limits and procedural requirements.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Yes, an aggrieved party can file an appeal against the decision of the Labour Court to the Appellate Division within 30 (thirty) days from the date of receipt of the judgment. Bangladesh Labour Act, 2006 (amended up to 2018) Section 123(2).",
+  "refusal": false,
+  "bleu": 39.55908988932762,
+  "rougeL": 55.69620253164557,
+  "grounding": 0.21052631578947367,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1413,
+  "topic": "other",
+  "question": "What is the timeframe for making an application under Section 63 of the Bangladesh Labour Act, 2006?",
+  "reference": "The timeframe is not specified in the Act, but it's recommended to make the application within a reasonable time frame after the worker's condition changes.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "An application must be made within 30 (thirty) days from the date of receipt of notice of termination or within 15 (fifteen) days from the date of service of a copy of the notice.",
+  "refusal": false,
+  "bleu": 1.5342333164810606,
+  "rougeL": 13.114754098360654,
+  "grounding": 0.2,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 1418,
+  "topic": "compensation",
+  "question": "Can an employer agree to pay monthly compensation in a single lump sum payment, instead of making regular installments?",
+  "reference": "Yes, an employer may pay monthly compensation payable to a worker by paying a lump-sum amount on the basis of the agreement between the parties.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, according to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), an employer shall not be allowed to make any compromise or settlement with an employee in relation to any claim under this Chapter. The payment should be made in regular installments as per the terms and conditions of employment.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  },
+  "bleu": 3.026857534381489,
+  "rougeL": 12.34567901234568,
+  "grounding": 0.0784313725490196,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 1420,
+  "topic": "compensation",
+  "question": "Can an employer deviate from the regular practice of paying monthly compensation to its employee by making a one-time payment that reflects their agreed-upon settlement?",
+  "reference": "Yes, an employer may pay monthly compensation payable to a worker by paying a lump-sum amount on the basis of the agreement between the parties.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, according to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), employers must pay monthly wages in cash or by cheque within 15 days from the last working day of each month. A one-time payment may not be considered as a deviation from this requirement.",
+  "refusal": false,
+  "bleu": 2.279658441354004,
+  "rougeL": 15.584415584415586,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 1485,
+  "topic": "other",
+  "question": "What are the formalities for serving a notice under Section 150 of the Bangladesh Labour Act, and what essential details should it include?",
+  "reference": "It shall be served by delivering it at, or sending it by registered post addressed to, the residence or office of the person on whom it is to be served; it must state the name and address of the injured worker, cause of injury, and date of accident.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "A notice under Section 150 must be in writing and served on the employer at least one day before the intended date of termination. The notice should specify the employee's name, designation, address, reason for leaving (if applicable), and the date of last working day. It is recommended to keep a copy of the notice for record-keeping purposes.",
+  "refusal": false,
+  "bleu": 2.6718667897175994,
+  "rougeL": 22.222222222222225,
+  "grounding": 0.017857142857142856,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1513,
+  "topic": "other",
+  "question": "To what location should an employer refer the worker for medical evaluation in case of grave nature, as per Labour Law?",
+  "reference": "At the place where the worker is staying.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), if a worker suffers from any disease or injury which is of grave nature and requires immediate medical attention, the employer shall refer him/her to a registered medical practitioner for examination.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 0.9884133258387923,
+  "rougeL": 10.90909090909091,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 1526,
+  "topic": "compensation",
+  "question": "If an injured worker refuses to accept offered medical treatment and deliberately disregards instructions, what happens to their compensation?",
+  "reference": "The injury and disablement evident from it shall be deemed to be of the same nature and duration as they might have reasonably been expected if the worker had been regularly attended by a registered medical practitioner and followed his instructions.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 56(2) of the Bangladesh Labour Act 2006 (amended up to 2018), if a worker is found guilty of intentionally refusing or neglecting any treatment prescribed by an authorized medical practitioner, they may be denied compensation. The employer can also deduct the amount from their wages or claim it as part of the fine imposed under Section 56(1).",
+  "refusal": false,
+  "bleu": 2.0368673117004534,
+  "rougeL": 15.53398058252427,
+  "grounding": 0.017241379310344827,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 4.0,
+   "completeness": 4.0,
+   "usefulness": 4.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1550,
+  "topic": "other",
+  "question": "According to Section 11 of the Bangladesh Labour Act, 2006, what type of insurance scheme can an establishment with at least 10 workers introduce?",
+  "reference": "A group insurance programme against accidents under which benefits or money received shall be spent for the treatment of workers.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "An establishment with at least 10 workers must introduce a provident fund for its employees under Chapter XII of the Bangladesh Labour Act, 2006.",
+  "refusal": false,
+  "bleu": 2.2608914449138346,
+  "rougeL": 13.636363636363635,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1572,
+  "topic": "wages",
+  "question": "What is the procedure for an insurer's recovery of payments made by a worker in case of insolvency or liquidation proceedings, considering the validity of the underlying contract?",
+  "reference": "The insurer can proceed to recover the amount paid to the worker under Sub-section (4) of Section 163, treating the contract as if it were not voidable due to non-compliance with its terms and conditions.",
+  "gold_sections": [
+   163
+  ],
+  "expected_behavior": null,
+  "prediction": "The procedure for an insurer's recovery of payments made by a worker in case of insolvency or liquidation proceedings is governed by Section 34(2) of the Bangladesh Labour Act 2006 (amended to 2018). According to this section, if any sum of money is paid by an employer to an insurance company under Chapter II, such payment shall be recoverable from the worker's estate in case of his insolvency or liquidation proceedings. However, it is essential to note that the validity of the underlying contract and the rights of the insurer must be determined through legal proceedings.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  },
+  "bleu": 1.2065748167184442,
+  "rougeL": 17.647058823529413,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  }
+ },
+ {
+  "id": 1576,
+  "topic": "wages",
+  "question": "The management of a small IT service provider (less than 10 employees) is facing financial difficulties due to non-payment by clients. As a result, the company is undergoing insolvency proceedings. During this process, it was discovered that the company had paid Tk. 50,000 as a bonus to an employee in December 2022, which was not authorized by the board of directors. The employee has demanded the payment of the bonus.",
+  "reference": "(1) and Sub-section (4) of the Bangladesh Labour Act 2006, since the company is voided or voidable by reason of non-compliance with any terms and conditions of the contract (other than payment of premium), the provisions of Sub-section (4) shall apply. This means that the employee's claim for the unauthorized bonus would be recoverable along with other debts. The company should prioritize paying its legitimate wages and benefits to all employees, including the one who received the unauthorized bonus, in accordance with the law.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Bangladesh Labour Act 2006 does not explicitly address insolvency proceedings or its impact on employee benefits such as bonuses. However, Section 108(1) states that no person shall be entitled to any wages or other benefit in respect of any period during which he has been absent from work without the permission of the employer or the Board for Industrial and Labour Relations (BILR). In this scenario, since the company is undergoing insolvency proceedings, it's likely that the employee's bonus payment would not be considered a \"wage\" under Section 108(1), as it was paid without authorization. Nevertheless, the employee may still have grounds to claim compensation for unauthorized payment of wages or other benefits under Section 113 of the Act, which deals with \"unauthorized payment of wages.\" It is recommended that the HR department consults with a lawyer specializing in labour law to determine the best course of action and ensure compliance with relevant regulations.",
+  "refusal": false,
+  "bleu": 6.80685885707574,
+  "rougeL": 21.052631578947366,
+  "grounding": 0.01935483870967742,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 2.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1649,
+  "topic": "overtime",
+  "question": "A small-scale textile factory with 50 employees faces a dispute between management and a group of 10 workers who are demanding overtime pay for working on Sundays. What is the first step HR should take in this situation to resolve the matter?",
+  "reference": "Since both parties have failed to settle the question by agreement, the HR should ensure that the dispute is documented and then file an application with the Labour Court under 2006, as no overtime pay has been provided to the workers despite their demands.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The HR department should refer the matter to the Labour Court or Tribunal under Section 108(1) of the Bangladesh Labour Act, 2006 (amended up to 2018), which states that any dispute between an employer and worker regarding wages, working hours, overtime, termination, maternity benefit, misconduct, probation, safety, compensation, or trade unions shall be referred to a Labour Court or Tribunal.",
+  "refusal": false,
+  "bleu": 3.0606374632336983,
+  "rougeL": 20.952380952380953,
+  "grounding": 0.10526315789473684,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1654,
+  "topic": "safety",
+  "question": "In what circumstances does the venue of proceedings for accidents under Section 167 of the Bangladesh Labour Act 2006 deviate from the area where the accident occurred?",
+  "reference": "For seamen, it shall be done by or before the Labour Court having jurisdiction in the area where the owner or agent resides or carries on business.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The venue of proceedings may be changed by order of the Government, but only if it is deemed necessary and justifiable. This decision should be made based on specific circumstances, such as the location of witnesses or evidence that needs to be presented in court. The employer must provide reasonable notice to all parties involved before making any changes to the venue.",
+  "refusal": false,
+  "bleu": 1.0047830513726816,
+  "rougeL": 13.48314606741573,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 1655,
+  "topic": "other",
+  "question": "What is the significance of determining the venue of proceedings under Section 167 of the Bangladesh Labour Act 2006?",
+  "reference": "Determining the venue of proceedings ensures that disputes are resolved in a timely and efficient manner, taking into account the location where the accident or incident took place, which may affect the parties involved.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Determining the venue of proceedings under Section 167 of the Bangladesh Labour Act 2006 is crucial as it ensures that the dispute resolution process takes place in a neutral and impartial location, thereby preventing any bias or influence from local factors. This helps to maintain fairness and consistency in the application of labour laws.",
+  "refusal": false,
+  "bleu": 9.092617426809149,
+  "rougeL": 31.818181818181817,
+  "grounding": 0.02,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 3.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1679,
+  "topic": "other",
+  "question": "Does the 60-day period start from the date of judgment or from the date of service of the notice?",
+  "reference": "The 60-day period starts from the date of receipt of the notice of judgment, not from the date of judgment itself.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The 60-day period starts from the date of service of the notice. (Section 4(2) of the Bangladesh Labour Act, 2006)",
+  "refusal": false,
+  "bleu": 37.915977218631475,
+  "rougeL": 63.63636363636363,
+  "grounding": 0.05555555555555555,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 1695,
+  "topic": "trade_union",
+  "question": "What specific details must be specified in a trade union's constitution to obtain registration under the Bangladesh Labour Act 2006?",
+  "reference": "The name and address of the trade union, the purpose of its formation, the procedure for becoming a member, the sources of its fund, and the purposes for which such fund shall be utilized.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 3(1) of the Bangladesh Labour Act 2006 (amended up to 2018), a trade union shall have a constitution that includes certain particulars, such as its name, object, membership rules, and procedures for admission and expulsion. The constitution must also specify the number of members required for a quorum, the method of electing officers, and other essential details.",
+  "refusal": false,
+  "bleu": 2.540318107159614,
+  "rougeL": 23.157894736842106,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 4.0,
+   "completeness": 3.0,
+   "usefulness": 3.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1773,
+  "topic": "trade_union",
+  "question": "How is a group of establishments defined for trade union registration purposes under the Bangladesh Labour Act 2006?",
+  "reference": "All establishments in a specified area carrying on the same specified industry where more than 20 (twenty) workers are employed.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "A group of establishments means two or more establishments which are owned by the same person or company",
+  "refusal": false,
+  "bleu": 4.09118841791307,
+  "rougeL": 15.789473684210526,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1823,
+  "topic": "trade_union",
+  "question": "Can workers employed in these ports still form a joint trade union with employees from other industries or sectors?",
+  "reference": "No, as per the Bangladesh Labour Act 2006, once a single trade union is formed for an industry or sector, no new trade union can be formed by the same group of workers. However, individual workers may continue to be part of different trade unions.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, under Section 3(1) of the Bangladesh Labour Act 2006 (amended to 2018), only workers employed in specific establishments can form a trade union. Therefore, workers employed in ports cannot join a joint trade union with employees from other industries or sectors.",
+  "refusal": false,
+  "bleu": 10.920262846150512,
+  "rougeL": 27.27272727272727,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1858,
+  "topic": "trade_union",
+  "question": "A small-scale manufacturing company with 50 employees in the textile industry faces a dispute between two union leaders over leadership roles. The Labour Court grants permission to cancel the registration of the trade union due to internal conflicts. Who can appeal against this decision?",
+  "reference": "The union members who are aggrieved by the order of the Labour Court, as well as the company management and relevant government authorities, may file an appeal against the decision. However, only the union members who are directly affected by the cancellation of their trade union registration have a direct right to appeal.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The employer or any worker who was a member of the trade union at the time of its registration, as per Section 24(2) of the Bangladesh Labour Act 2006 (amended up to 2018).",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 2.5931510559457145,
+  "rougeL": 20.689655172413794,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 1888,
+  "topic": "trade_union",
+  "question": "What does perpetual succession mean for a trade union?",
+  "reference": "Perpetual succession means that the life of the trade union is not limited by any specific person or entity, and it continues to exist even after its founding members retire or pass away.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "A trade union established under this Chapter shall have perpetual succession and may sue or be sued in its own name",
+  "refusal": false,
+  "bleu": 2.4542387682315194,
+  "rougeL": 14.814814814814813,
+  "grounding": 0.058823529411764705,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1891,
+  "topic": "misconduct",
+  "question": "A company in Chittagong with 50 employees is facing financial difficulties and wants to terminate the services of a 10-year employee due to alleged misconduct. What rights does the employee have under Bangladesh Labour Law?",
+  "reference": "The employee has the right to be heard before termination of employment, as per Section 61 of the Bangladesh Labour Act 2006 (amended up to 2018). The employer must provide a written notice of at least one month's salary and must follow the prescribed procedures for disciplinary action. However, the employer may also file an appeal against the employee if they dispute the allegations of misconduct.",
+  "gold_sections": [
+   61
+  ],
+  "expected_behavior": null,
+  "prediction": "The employee has the right to be heard before termination, as per Section 25(2) of the Bangladesh Labour Act 2006 (amended up to 2018). The company must provide written notice of at least one month's wages and follow the procedures for disciplinary action. Additionally, if the misconduct is found proven, the employee may be entitled to compensation under Section 33 of the Act.",
+  "refusal": false,
+  "bleu": 49.12875784610144,
+  "rougeL": 68.18181818181817,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 4.0,
+   "completeness": 4.0,
+   "usefulness": 4.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1951,
+  "topic": "trade_union",
+  "question": "What is the process for a trade union to apply to join a federation of trade unions?",
+  "reference": "A trade union can submit an application to join the federation, which will then consider the eligibility criteria and review the trade unions' constitutions and activities.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 4(1) of the Bangladesh Labour Act 2006 (amended up to 2018), any trade union can apply to join a federation of trade unions. The application should be made in writing, along with such documents and information as may be required by the federation.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 4.2216713515598245,
+  "rougeL": 24.65753424657534,
+  "grounding": 0.06976744186046512,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 1960,
+  "topic": "trade_union",
+  "question": "Can a federation of trade unions be registered if it has only one trade union constituent?",
+  "reference": "No, (3) of the Bangladesh Labour Act 2006, at least two trade unions must constitute a federation.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, according to Section 3(1) of the Bangladesh Labour Act 2006 (amended up to 2018), a federation of trade unions must have at least two trade union constituents.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 29.645911587284235,
+  "rougeL": 56.52173913043479,
+  "grounding": 0.04,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 1962,
+  "topic": "overtime",
+  "question": "A company in Bangladesh has a workforce of 200 employees in the manufacturing sector. The employees have raised concerns about overtime work and payment. How can HR address these grievances while ensuring compliance with Bangladesh Labour Law?",
+  "reference": "HR should first review the company's existing overtime pay policy to ensure it meets the provisions of 2006, which requires overtime pay to be at least 1.5 times the regular wage rate. HR should then communicate the new policy to all employees and provide necessary training on the correct procedures for requesting and approving overtime work. Additionally, HR must document all grievances and ensure that any agreements reached with the union are in writing and signed by authorized representatives of both parties.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The HR department should first review the company's overtime policy to ensure it complies with Section 114(1) of the Bangladesh Labour Act, which states that no worker shall be required or allowed to work more than 48 hours in any week. The HR team should also verify if the employees are receiving adequate compensation for their overtime work, as per Section 113(2), which requires payment at a rate not less than 1.5 times the normal rate of wages.\n\nTo address the grievances, HR can:\n\n1.  Conduct an audit to identify instances of excessive overtime work and ensure that all workers are being paid accordingly.\n2.  Review and update the company's overtime policy to align with the Bangladesh Labour Act.\n3.  Provide training to management and supervisors on the proper implementation of overtime rules.\n4.  Establish a system for reporting and tracking overtime work, including regular monitoring and feedback mechanisms.\n\nBy taking these steps, HR can help ensure that employees receive fair compensation for their work and that the company complies with relevant labour laws.",
+  "refusal": false,
+  "bleu": 6.346911149615514,
+  "rougeL": 28.89733840304182,
+  "grounding": 0.005714285714285714,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1970,
+  "topic": "trade_union",
+  "question": "Can a trade union of workers collaborate with a federation representing employers' associations?",
+  "reference": "No, a trade union of workers shall not join in a federation of trade unions of employers.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, under Section 4(1) of the Bangladesh Labour Act 2006 (amended to 2018), a trade union cannot collaborate with any federation or association that represents employers' interests. This provision aims to maintain the independence and neutrality of trade unions in their dealings with employers.",
+  "refusal": false,
+  "bleu": 7.894703307568675,
+  "rougeL": 29.03225806451613,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 1982,
+  "topic": "trade_union",
+  "question": "Can a trade union submit an amended general statement after the deadline has expired?",
+  "reference": "According to Section 3(2) of the Bangladesh Labour Act 2006, no registered trade union shall amend its General Statement submitted under sub-section (1). However, a trade union may submit a revised version of its General Statement within the specified timeframe for the next election, subject to certain conditions and requirements.",
+  "gold_sections": [
+   3
+  ],
+  "expected_behavior": null,
+  "prediction": "No, as per Section 12(2) of the Bangladesh Labour Act 2006 (amended to 2018), no trade union can submit an amended general statement after the specified period. The employer must be given at least 30 days' notice before submitting any changes to the general statement.",
+  "refusal": false,
+  "bleu": 17.67379309015755,
+  "rougeL": 36.73469387755102,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 2035,
+  "topic": "trade_union",
+  "question": "A small textile factory with 50 employees in Bangladesh, where all the workers are employed under the same employment contract and have no union representation. A new trade union federation is formed by some of the workers and they request the management to recognize them as their collective bargaining agent. However, the government recognizes a different trade union federation that has been operational in the country for several years. What should be done?",
+  "reference": "In this scenario, the employer should not recognize the new trade union federation without following the proper procedures of collective bargaining. According to the Bangladesh Labour Act 2006, a federation of trade unions can act as the collective bargaining agent if one of its federated unions authorizes it to do so in the establishment. Therefore, the employer should request the employees to vote on whether they want to recognize the new trade union federation or not. If the majority votes in favor of recognizing the new trade union federation, then the management can negotiate with them as the collective bargaining agent.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Bangladesh Labour Act 2006 does not explicitly provide for recognition of multiple trade unions operating in the same establishment. However, Section 4(1) states that any trade union federation shall have the right to represent workers employed in an establishment where it has been registered under this Chapter. Since there are two competing claims for recognition, the management should consider the following steps:\n\n1.  Review the registration process: The government-recognized trade union federation may have completed the necessary registration procedures and obtained approval from the relevant authorities.\n2.  Investigate the formation of the new trade union federation: Ensure that the new federation has followed the correct procedures for forming a trade union, including obtaining membership signatures and notifying the Labour Department.\n3.  Consult with the Labour Inspector or Department of Labour Affairs: Seek guidance on how to proceed with recognizing both trade unions, if possible.\n4.  Consider alternative dispute resolution methods: If recognition is not feasible, consider mediation or arbitration to resolve any disputes between the management and the workers.\n\nThe Bangladesh Labour Act does not provide a clear mechanism for resolving multiple claims for recognition. However, it is essential to follow established procedures and seek guidance from relevant authorities to ensure fairness and consistency in dealing with trade union matters.",
+  "refusal": false,
+  "bleu": 5.240942271600356,
+  "rougeL": 19.10828025477707,
+  "grounding": 0.014354066985645933,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 4.0,
+   "usefulness": 3.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2081,
+  "topic": "trade_union",
+  "question": "What happens if an employer or the trade union finds difficulties in implementing the recommendations of the participation committee within the specified time?",
+  "reference": "The employer or the trade union shall inform the committee about it and make all possible efforts to implement the same as early as possible, within the period specified by the committee.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(3) of the Bangladesh Labour Act 2006 (amended up to 2018), if any difficulty arises in implementing the recommendations of a participation committee, it may be reported to the Director General for necessary action. The Director General may then take such measures as he thinks fit to expedite the implementation of the recommendations.",
+  "refusal": false,
+  "bleu": 1.0364394271847823,
+  "rougeL": 20.224719101123593,
+  "grounding": 0.07547169811320754,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2089,
+  "topic": "other",
+  "question": "What is the timeframe for a party to respond to a communication under subsection (1) of the Labour Act, and what happens if they fail to do so?",
+  "reference": "Within 15 days of receiving the communication. If the party fails to arrange a meeting with the other party within this time, or no settlement is reached within a period of one month from the date of the first meeting, they may report the matter to a competent Conciliator.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "A party must respond within 30 days from the receipt of such notice or communication. If they fail to do so, it may be considered as an admission of liability for any amount payable under the Act.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  },
+  "bleu": 4.219022667623263,
+  "rougeL": 20.930232558139533,
+  "grounding": 0.030303030303030304,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2096,
+  "topic": "trade_union",
+  "question": "A garment factory in Chittagong with 200 employees is facing a dispute between two of its employees, A and B, regarding promotion opportunities. After conducting a meeting with both parties, no settlement can be reached within one month from the date of the first meeting. The HR manager has not received any communication from either party after the meeting. What should the HR manager do?",
+  "reference": "The HR manager should report the matter to a competent Conciliator of the Labour Act 2006, as the employees have failed to reach an agreement within the specified timeframe. The HR manager should also prepare a detailed complaint and submit it to the relevant authorities, such as the Department of Labor or the Bangladesh Industrial Relations Commission (BIRC), for assistance in resolving the dispute. The factory can also consider seeking advice from its legal department to understand the implications of not reaching an agreement.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The HR manager should refer the dispute to the Labour Court or Tribunal under Section 108(1) of the Bangladesh Labour Act, 2006 (amended up to 2018), as it is outside their scope to resolve disputes on promotion opportunities. The HR manager can provide guidance on the process and procedures for filing a complaint with the Labour Court or Tribunal, but ultimately, the decision lies with the court.",
+  "refusal": true,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 2.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  },
+  "bleu": 8.824397589397785,
+  "rougeL": 28.947368421052634,
+  "grounding": 0.109375,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2113,
+  "topic": "other",
+  "question": "How long does an Arbitrator have to give their award after receiving a request for arbitration, and what happens if they fail to do so?",
+  "reference": "Within 30 days from the date of receipt of the request or within such further period as may be agreed upon in writing by the parties. If the Conciliator determines that an Arbitrator's award is required but no agreement can be reached, they shall notify the Government.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Arbitrator shall deliver his award within 30 (thirty) days from the date of receipt of the application for arbitration. If he fails to do so, it is considered as an act of default and the parties can apply to the Labour Court for enforcement of their award. (Section 47(2), Bangladesh Labour Act, 2006)",
+  "refusal": false,
+  "bleu": 13.765070693189553,
+  "rougeL": 29.126213592233007,
+  "grounding": 0.1568627450980392,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2130,
+  "topic": "other",
+  "question": "How long does a Labour Court award remain in effect?",
+  "reference": "An award of the Labour Court shall remain in force for a period specified in the award, which shall not be more than 2 (two) years.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "A Labour Court's decision remains effective until it is appealed or revised by the High Court. However, if no appeal is filed within 30 days of receiving the judgment, the decision becomes final and binding on both parties (Section 143(2) of the Bangladesh Labour Act, 2006).",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  },
+  "bleu": 1.9405391848516151,
+  "rougeL": 13.513513513513514,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2162,
+  "topic": "trade_union",
+  "question": "Can an employee raise a new grievance related to the same labour dispute that was resolved more than twelve months ago?",
+  "reference": "No, (2) of the Bangladesh Labour Act, no fresh dispute on the same subject shall be raised within a period of one year from the date of cessation of such dispute.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, under Section 108 of the Bangladesh Labour Act 2006 (amended up to 2018), any complaint or application for settlement of a labour dispute must be made within one year from the date of receipt of notice of the decision in the previous case. Therefore, an employee cannot raise a new grievance related to the same labour dispute that was resolved more than twelve months ago.",
+  "refusal": false,
+  "bleu": 13.991219919268595,
+  "rougeL": 35.051546391752574,
+  "grounding": 0.06451612903225806,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2204,
+  "topic": "overtime",
+  "question": "A small-scale textile factory with 50 employees has issued a notice to one of its workers, alleging irregular working hours. The worker has received the notice and is now required to file a written statement or objection within 10 days. What steps should the HR manager take to ensure compliance with Labour Law?",
+  "reference": "The HR manager should provide the employee with a copy of the Bangladesh Labour Act 2006 (amended up to 2018) and explain the process for filing a written statement or objection, including the necessary documents required. The HR manager should also inform the employee about the potential consequences of not filing a response within the specified timeframe.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The HR manager should inform the employee about their rights under Section 108(1) of the Bangladesh Labour Act, which states that an employer shall not serve any notice on a worker without giving them at least 7 (seven) days' written notice. The HR manager should also ensure that the employee receives a copy of the notice and is aware of the process for filing a written statement or objection within the specified timeframe. Additionally, the HR manager may want to review the company's policies and procedures to ensure they align with Labour Law requirements and provide support to the worker if needed.",
+  "refusal": false,
+  "bleu": 24.54433343573061,
+  "rougeL": 34.78260869565218,
+  "grounding": 0.03,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 2.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2237,
+  "topic": "other",
+  "question": "What is the stipulated timeframe for a Tribunal to deliver its verdict in an appeal?",
+  "reference": "60 (sixty) days from the date of preferring an appeal, with an option to extend it to 90 (ninety) days with recording reasons.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Tribunal shall deliver its judgment within 6 (six) months from the date of receipt of the appeal. (Section 123(2), Bangladesh Labour Act, 2006)",
+  "refusal": false,
+  "bleu": 8.775257144620449,
+  "rougeL": 20.833333333333332,
+  "grounding": 0.19047619047619047,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 2240,
+  "topic": "other",
+  "question": "Can the Tribunal extend the judgment delivery time for more than 90 days in exceptional circumstances?",
+  "reference": "No, there is no provision to extend it further beyond 90 days as per Bangladesh Labour Act 2006.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, as per Section 26(2) of the Bangladesh Labour Act 2006 (amended to 2018), the Tribunal shall deliver its judgment within a period not exceeding 90 (ninety) days from the date of receipt of appeal.",
+  "refusal": false,
+  "bleu": 7.611137668875848,
+  "rougeL": 25.925925925925924,
+  "grounding": 0.125,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2245,
+  "topic": "other",
+  "question": "What is the procedure followed by the Tribunal when there is a disagreement among its members?",
+  "reference": "The matter is decided according to the opinion of the majority of members, and if they are equally divided, it is referred to the Chairman for hearing on such point.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 26(2) of the Bangladesh Labour Act 2006 (amended up to 2018), if any member of the Tribunal is absent or unable to attend, another member shall act in his place. However, if there are no other members present, the Chairman may adjourn the meeting until a member joins.",
+  "refusal": false,
+  "bleu": 2.300523215690485,
+  "rougeL": 24.39024390243902,
+  "grounding": 0.08333333333333333,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2251,
+  "topic": "trade_union",
+  "question": "Can an employee contest a Labour Court's ruling in a labour dispute?",
+  "reference": "Yes, the Tribunal may confirm, vary, modify, or set aside any judgment, decision, award, or sentence of a Labour Court.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Yes, an employee can appeal against the decision of the Labour Court to the Appellate Division within 30 (thirty) days from the date of receipt of the order. Bangladesh Labour Act, 2006 (amended up to 2018) Section 143(2).",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 2.579124920342433,
+  "rougeL": 20.33898305084746,
+  "grounding": 0.2571428571428571,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2263,
+  "topic": "overtime",
+  "question": "A small manufacturing company with 50 employees in the garment industry is found to be violating overtime work rules, as they are paying less than the minimum wage for 10 hours of work beyond the regular working hours. The employee complains to the Labour Department and a case is filed against the company. What is the company's liability?",
+  "reference": "The company must pay the employee the difference between the actual wages received and the minimum wage due, plus an additional 20% as overtime pay. Additionally, if the company is found guilty of violating labour laws, they may be required to pay a fine and face disciplinary action.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The company must pay the employees the additional wages for the overtime work at the rate of 1.5 times their normal hourly wage, as per Section 114(2) of the Bangladesh Labour Act 2006 (amended to 2018). The company should also provide proof of payment and submit it to the Labour Department within 7 days from the date of receipt of the complaint.",
+  "refusal": false,
+  "bleu": 6.91791023737071,
+  "rougeL": 26.785714285714285,
+  "grounding": 0.1,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2309,
+  "topic": "dismissal",
+  "question": "A multinational IT company operating in Bangladesh with 500 employees has an employment award that expired 6 months ago. If the management wants to terminate the award, how many months' written notice must they give to the union before it ceases to be binding?",
+  "reference": "The management needs to inform the union in writing of its intention not to be bound by the award within 2 months from the date of expiry. Since the award has already expired for 6 months, they need to give written notice immediately to prevent any further breach.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), an employment award shall cease to be binding after a period of six months from the date on which it was notified. Therefore, the management must give at least 6 months' written notice to the union before terminating the award.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  },
+  "bleu": 7.103493948596797,
+  "rougeL": 27.184466019417474,
+  "grounding": 0.0784313725490196,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2310,
+  "topic": "dismissal",
+  "question": "A small manufacturing company in Bangladesh with 20 employees has an employment agreement that is up for renewal. The employee union representative requests a higher wage increase than what the company can afford. If the company refuses, can it unilaterally terminate the agreement?",
+  "reference": "No, the company cannot unilaterally terminate the agreement. Since the employee union representative requested a wage increase, the employer must negotiate with the union to reach a mutually acceptable agreement. If the negotiation fails, either party may refer the dispute to an adjudication officer or arbitration, but not unilaterally terminate the agreement.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, under Section 26(2) of the Bangladesh Labour Act 2006 (amended to 2018), an employment agreement cannot be terminated without the consent of both parties. The employee union representative has a right to negotiate and request a higher wage increase, and the company must consider this request before making any decisions about terminating the agreement.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 6.619607755559859,
+  "rougeL": 33.33333333333333,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2342,
+  "topic": "trade_union",
+  "question": "Can the Labour Court prohibit a strike or lock-out that has already commenced due to an industrial dispute, even if it's not in relation to the specific application submitted?",
+  "reference": "No, (1), the prohibition can only be applied when the strike or lock-out is continuing at the time of submitting the application or when it's under consideration of the Labour Court.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, under Section 113(1) of the Bangladesh Labour Act 2006 (amended up to 2018), once a strike or lock-out commences, the Labour Court cannot prohibit it. However, this prohibition does not apply if the dispute is related to the specific application submitted before the court.",
+  "refusal": false,
+  "bleu": 7.822100624802098,
+  "rougeL": 29.999999999999993,
+  "grounding": 0.023255813953488372,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2369,
+  "topic": "other",
+  "question": "What is the minimum paid-up capital needed to qualify a company for Chapter XV provisions under the Bangladesh Labour Act 2006?",
+  "reference": "taka 1 (one) crore.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 2(1) of the Bangladesh Labour Act 2006 (amended up to 2018), any establishment with more than 10 workers shall be subject to the provisions of this Chapter. Therefore, there is no minimum paid-up capital requirement for a company to qualify for Chapter XV provisions.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 0.9176243255076387,
+  "rougeL": 3.7735849056603765,
+  "grounding": 0.08888888888888889,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2378,
+  "topic": "other",
+  "question": "Are there any specific provisions in the law that protect workers from being forced to participate in unfair labour practices, and what are the consequences for organizations that engage in such activities?",
+  "reference": "Yes, under Section 26 of the Bangladesh Labour Act 2006, no worker shall be compelled to join a trade union or participate in any activity of a trade union. Organizations found guilty of forcing workers to participate in unfair labour practices can face penalties and fines as per the law.",
+  "gold_sections": [
+   26
+  ],
+  "expected_behavior": null,
+  "prediction": "Yes, Section 26 of the Bangladesh Labour Act 2006 prohibits any person from compelling a worker to join or continue membership in a trade union. If an organization is found guilty of engaging in unfair labour practices, they may face penalties under Section 27, which includes fines and imprisonment for up to one year.",
+  "refusal": false,
+  "bleu": 26.351235649358504,
+  "rougeL": 53.84615384615385,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.5,
+   "cite_recall": 1.0,
+   "cite_f1": 0.6666666666666666
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2392,
+  "topic": "other",
+  "question": "What happens if there is ambiguity in interpreting a settlement agreement under the Bangladesh Labour Act 2006, and what steps should be taken by the parties involved?",
+  "reference": "The matter shall be referred to the Tribunal for decision after giving the parties concerned an opportunity of being heard.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "If there is ambiguity in interpreting a settlement agreement under the Bangladesh Labour Act 2006, it may lead to disputes between the parties. In such cases, the parties can refer the matter to an arbitrator or mediator for resolution. The arbitrator's decision will be binding on both parties. If no settlement agreement exists, the employer and employee can approach the Labour Court for a final decision (Section 113 of the Bangladesh Labour Act).",
+  "refusal": false,
+  "bleu": 1.3748927674190077,
+  "rougeL": 14.893617021276595,
+  "grounding": 0.014285714285714285,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 4.0,
+   "usefulness": 3.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2397,
+  "topic": "other",
+  "question": "How do the funds get replenished if an establishment fails to deposit the required amount into either the Participation Fund or the Welfare Fund?",
+  "reference": "If an establishment fails to deposit the required amount into either the Participation Fund or the Welfare Fund, the prescribed fine will be imposed on the employer (5) of the Bangladesh Labour Act 2006.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 123(3) of the Bangladesh Labour Act 2006 (amended up to 2018), if any employer fails to deposit the required amount into either the Participation Fund or the Welfare Fund, the Government may recover such amount from the employer's wages.",
+  "refusal": false,
+  "bleu": 44.75530368035091,
+  "rougeL": 48.717948717948715,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2470,
+  "topic": "other",
+  "question": "In what percentage of the total amount deposited in the Participation Fund is the distribution made to all beneficiaries annually?",
+  "reference": "Two-thirds.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The distribution is made at 50% of the total amount deposited in the Participation Fund annually.",
+  "refusal": false,
+  "bleu": 2.1476912089159055,
+  "rougeL": 0.0,
+  "grounding": 0.4166666666666667,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2484,
+  "topic": "wages",
+  "question": "What constitutes the Participation Fund, and how does it relate to bonus and right-issues?",
+  "reference": "The Participation Fund is a reserve created by an industrial enterprise with a minimum of 10% of its paid-up capital. It can be used for various purposes, including acquiring shares in other companies or converting into ordinary equity capital. When the Participation Fund is converted into ordinary equity capital, it can lead to a change in the company's ownership structure and potentially affect future bonus and right-issues.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Participation Fund refers to the amount of money set aside from an employer's profits for distribution among its employees as per section 33(2) of the Bangladesh Labour Act 2006. This fund is used to pay bonuses and also for other purposes such as providing assistance in case of accidents or sickness, etc. The Participation Fund is directly related to bonus payments, as it is a source of funds that employers use to distribute bonuses to their employees.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  },
+  "bleu": 4.88405797654415,
+  "rougeL": 21.333333333333332,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2491,
+  "topic": "other",
+  "question": "What happens to the Participation Fund if it exceeds the maximum limit of 25% or 50% of additional capital after conversion?",
+  "reference": "It will not be allowed and may be adjusted accordingly by the authorities, potentially requiring a revaluation of the company's structure.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The excess amount shall be transferred to the general fund of the establishment. (Section 64(3) of the Bangladesh Labour Act, 2006)",
+  "refusal": false,
+  "bleu": 3.5148478313698046,
+  "rougeL": 18.181818181818183,
+  "grounding": 0.05555555555555555,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2494,
+  "topic": "dismissal",
+  "question": "What happens to a beneficiary's share in the Funds if they are dismissed from service?",
+  "reference": "The beneficiary's share in the Funds shall be forfeited.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), if an employee dies or becomes incapable of working due to any cause other than his own fault, their surviving spouse and children shall be entitled to receive a share in the Funds. However, if the employee is dismissed from service, it's unclear how this would affect their share in the Funds. It might be best to consult with a legal expert for specific guidance on this situation.",
+  "refusal": false,
+  "bleu": 2.957583408751399,
+  "rougeL": 14.893617021276595,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2497,
+  "topic": "leave",
+  "question": "What consequences occur to an employee who leaves the organization before receiving his provident fund contribution?",
+  "reference": "The beneficiary's share in the Funds shall be forfeited if they are dismissed from service.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), if a worker leaves service without giving notice, he shall not be entitled to receive any part of his wages or provident fund contribution. However, if he had given notice, he would still be eligible for his wages and provident fund contribution, but only up to the amount received during that notice period.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 4.0,
+   "usefulness": 3.0,
+   "harm": 0.0
+  },
+  "bleu": 0.7140626482326374,
+  "rougeL": 9.523809523809524,
+  "grounding": 0.03125,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2504,
+  "topic": "other",
+  "question": "Are there any specific procedures that need to be followed when transferring a beneficiary's benefits from one office or unit to another?",
+  "reference": "Yes, the transfer should be done in accordance with the Labour Act 2006 and any other relevant guidelines. The employer should maintain proper records of the transfer, including documentation of the employee's service history and the reasons for the transfer.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Yes, as per Section 33 of the Bangladesh Labour Act 2006 (amended up to 2018), an employer must notify the Director General within 30 days of such transfer. The notification should include details of the transferred employee, their service history, and any other relevant information. Additionally, the employer is required to ensure that the beneficiary continues to receive benefits until the transfer is completed.",
+  "refusal": false,
+  "bleu": 7.85815763528361,
+  "rougeL": 34.285714285714285,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2508,
+  "topic": "other",
+  "question": "Who is entitled to receive the full benefits under the Welfare Fund in case of retirement or death during employment?",
+  "reference": "The beneficiary himself, or his nominee, shall receive full benefits under this Chapter.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The employee who was last employed before his retirement or death. (Section 34(1) of the Bangladesh Labour Act, 2006)",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 2.1601524349994397,
+  "rougeL": 12.121212121212123,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2532,
+  "topic": "compensation",
+  "question": "What is the process for the transfer of provident fund, gratuity, and other welfare funds of dockworkers when their management board is dissolved?",
+  "reference": "The provident fund, gratuity, and other welfare funds of dockworkers are transferred without any charge to the Chittagong Port Authority and Mongla Port Authority, respectively, which shall maintain and administer them.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), when a management board is dissolved, the provident fund, gratuity, and other welfare funds shall be transferred to the Government. The process involves the following steps:\n\n1. The dissolution of the management board is notified in writing to the Director General.\n2. The Director General shall cause the transfer of all assets and liabilities of the management board to the Government.\n3. The provident fund, gratuity, and other welfare funds shall be transferred to the Government within 30 (thirty) days from the date of receipt of such notification.\n\nIt is essential to note that this process requires strict adherence to the specified timeframe and procedural requirements to ensure a smooth transfer of funds and minimize any potential disputes or issues.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 6.740385231889314,
+  "rougeL": 18.072289156626503,
+  "grounding": 0.04580152671755725,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2541,
+  "topic": "other",
+  "question": "What happens if the government order is not implemented by the management board?",
+  "reference": "The government may take further action, such as issuing a notice or imposing penalties, to ensure compliance with its orders.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 26(2) of the Bangladesh Labour Act 2006 (amended up to 2018), failure to comply with a government order may result in penalties, fines, or even imprisonment for the employer. The specific consequences would depend on the nature and severity of non-compliance.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 2.063074386567063,
+  "rougeL": 15.151515151515152,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2558,
+  "topic": "compensation",
+  "question": "Amit, a newly hired employee at TechCorp, a software development company in Chittagong with 100 employees, receives BDT 20,000 as his monthly basic wages. Amit has been on the job for only two months and has not yet contributed to the provident fund. What is the minimum amount Amit must contribute to the provident fund?",
+  "reference": "2006 (amended up to 2018), workers are required to subscribe at least seven percent of their monthly basic wages to the provident fund every month. In this case, Amit's minimum contribution would be BDT 20,000 x 7% = BDT 1,400.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 12(1) of the Bangladesh Labour Act 2006 (amended up to 2018), an employee shall be required to deposit a sum of BDT 500 per month into the provident fund, starting from the first day of employment. Since Amit has been on the job for only two months, he must contribute BDT 1,000 (2 x BDT 500) to the provident fund within 30 days of receiving his monthly wages.",
+  "refusal": false,
+  "bleu": 13.153058301370873,
+  "rougeL": 29.565217391304348,
+  "grounding": 0.028985507246376812,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 2580,
+  "topic": "compensation",
+  "question": "What is the timeframe for an establishment to comply with the provident fund provision if a majority of its workers request its creation?",
+  "reference": "Within six months of the receipt of application; the provident fund shall start operation before the expiry of that period.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 26(2) of the Bangladesh Labour Act 2006 (amended up to 2018), an establishment must comply with the provisions within 30 days from the date of receipt of such application.",
+  "refusal": false,
+  "bleu": 3.2674392554094,
+  "rougeL": 18.867924528301888,
+  "grounding": 0.1724137931034483,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 2585,
+  "topic": "compensation",
+  "question": "A medium-sized garment factory with 150 employees requests to establish a provident fund due to dissatisfaction among workers. What should be the next step for the HR department?",
+  "reference": "The HR department should submit an application to the Labour Department within six months of receiving the request, stating the proposed provident fund scheme and the estimated amount to be contributed by the employer and employees. Once the application is approved, the provident fund shall start operation before its expiry.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The HR department should provide information on how to set up a provident fund under Section 26 of the Bangladesh Labour Act, 2006 (amended up to 2018). They can also guide the employer on the necessary procedures and documentation required.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  },
+  "bleu": 6.896257921656327,
+  "rougeL": 26.66666666666666,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2586,
+  "topic": "safety",
+  "question": "A small construction company with 25 employees has not provided health insurance coverage for its workers due to budget constraints. However, one of the workers was injured on the job site recently. What should be the next step for the HR department?",
+  "reference": "The HR department should immediately notify the Labour Department about the injury and provide proof of the incident. The company should then submit an application to the Labour Department requesting approval for the provision of health insurance coverage for its workers, as required under Section 49 of the Bangladesh Labour Act 2006 (amended up to 2018). The application should include details of the injured worker, the nature of the injury, and the proposed health insurance scheme.",
+  "gold_sections": [
+   49
+  ],
+  "expected_behavior": null,
+  "prediction": "The HR department should immediately notify the Labour Inspectorate about the injury and provide details of the incident, including the nature of the injury, date of occurrence, and any relevant medical treatment received by the worker. The company may also need to file a Form 3 (Accident Report) with the Labour Department within 7 days of receiving medical attention for the injured worker.\n\nAdditionally, since health insurance coverage is not provided, the HR department should explore options for providing alternative benefits or compensation to the injured worker, such as temporary disability benefit or other forms of support.",
+  "refusal": false,
+  "bleu": 23.316638010731133,
+  "rougeL": 38.150289017341045,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2619,
+  "topic": "other",
+  "question": "How often does the Government review and update the fixed rate of administrative charges for the Board of Trustees?",
+  "reference": "The Government reviews and updates the fixed rate of administrative charges periodically, usually in consultation with the Board of Trustees to ensure that it remains reasonable and aligned with industry standards.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Government reviews and updates the fixed rate of administrative charges for the Board of Trustees every 5 (five) years or as per the rules made under this Chapter, but not later than 6 (six) months after the commencement of this Act.",
+  "refusal": false,
+  "bleu": 26.162515996011628,
+  "rougeL": 41.0958904109589,
+  "grounding": 0.13157894736842105,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2624,
+  "topic": "wages",
+  "question": "Does this payment schedule apply only to registered employers or also to those who have applied for registration?",
+  "reference": "This payment schedule applies to all employers who are required to register with the Provident Fund, including both registered and unregistered employers.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The payment schedule applies to all establishments that are required to register under Section 2(1) of the Bangladesh Labour Act 2006, amended to 2018. Therefore, it is applicable to both registered and unregistered employers who have applied for registration. (See Section 3(4))",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 18.368244359301762,
+  "rougeL": 45.45454545454545,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2633,
+  "topic": "compensation",
+  "question": "What penalties can be imposed on an employer if it fails to pay its provident fund subscription or other charges as per the Bangladesh Labour Act 2006?",
+  "reference": "Damages at the rate not exceeding 25% (twenty five percent) of the amount of such arrear can be recovered by the Board of Trustees.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act, 2006 (amended up to 2018), if any person fails to pay any sum of money which he is required to pay under this Chapter, he shall be punishable with fine which may extend to taka 50,000 (fifty thousand).",
+  "refusal": false,
+  "bleu": 2.879460455234715,
+  "rougeL": 10.958904109589039,
+  "grounding": 0.044444444444444446,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2658,
+  "topic": "misconduct",
+  "question": "Can the penalty amount of 5,000 taka be waived or reduced under any circumstances?",
+  "reference": "The Bangladesh Labour Act does not specify any circumstances under which the penalty amount can be waived or reduced. However, the decision to waive or reduce the penalty lies with the relevant authorities and may depend on individual cases.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, as per Section 143(2) of the Bangladesh Labour Act 2006 (amended to 2018), the penalty amount cannot be waived or reduced. It is a fixed fine that must be paid by the employer for violating specific provisions of the Act.",
+  "refusal": false,
+  "bleu": 12.89871843805814,
+  "rougeL": 32.098765432098766,
+  "grounding": 0.02631578947368421,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 2667,
+  "topic": "other",
+  "question": "What is the procedure for an employer who has been found guilty of contravention of section 67?",
+  "reference": "[No specific answer provided in the text, but general information: The Court shall pass an order to the employer concerned to give the worker the benefit under Chapter IV of which he was deprived. Additionally, the Court may impose a fine ]",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "An employer who has been found guilty of contravention of Section 67 shall be liable to pay a fine which may extend to Taka 50,000 (fifty thousand) or imprisonment for a term which may extend to one year, or both.",
+  "refusal": false,
+  "bleu": 2.3808175615107556,
+  "rougeL": 14.634146341463413,
+  "grounding": 0.1891891891891892,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2676,
+  "topic": "other",
+  "question": "What constitutes a 'subordinate officer' under the Bangladesh Labour Act 2006?",
+  "reference": "A subordinate officer is an employee of the employer who has been assigned specific duties and powers by the employer, as approved by the competent authority.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "A subordinate officer means any person who holds an office or position in an establishment which is subject to the control of that establishment's management committee, as per Section 2(1) of the Bangladesh Labour Act 2006.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 5.60569929753793,
+  "rougeL": 21.875,
+  "grounding": 0.029411764705882353,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2694,
+  "topic": "other",
+  "question": "What are the possible penalties for employers who fail to comply with settlement provisions under the Bangladesh Labour Act 2006?",
+  "reference": "imprisonment or a fine of up to 10,000 taka.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 113 of the Bangladesh Labour Act 2006 (amended up to 2018), if an employer fails to comply with a settlement provision, they may be subject to penalties such as fines or imprisonment. The specific penalty amount and duration can vary depending on the nature of the non-compliance and the court's discretion.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 1.6535810454198991,
+  "rougeL": 9.090909090909092,
+  "grounding": 0.038461538461538464,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2733,
+  "topic": "misconduct",
+  "question": "A trade union is registered but its activities are restricted due to section 210(7). What is the penalty for non-compliance with this provision?",
+  "reference": "Imprisonment for a term which may extend to 3 (three) months, or with fine which may extend to 2,000 (two thousand) taka, or with both.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The penalty for non-compliance with section 210(7) of the Bangladesh Labour Act, 2006 (amended up to 2018), is not explicitly stated in the provided information. However, according to Section 210(7), a trade union can be dissolved if it fails to comply with certain requirements. The specific penalty for non-compliance would depend on the details of the violation and may involve fines or other disciplinary actions as per the Labour Court's decision.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 0.8234915220635702,
+  "rougeL": 11.76470588235294,
+  "grounding": 0.013888888888888888,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2744,
+  "topic": "other",
+  "question": "A worker is fined 500 taka for contravening a provision of the Act. Is this amount considered low?",
+  "reference": "Yes, according to 2006, if any worker employed in an establishment contravenes any provision of the Act or any rules, regulations or schemes, he shall be punished with fine which may extend to 500 (five hundred) taka.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 108(1) of the Bangladesh Labour Act 2006 (amended up to 2018), any fine imposed on an employee shall not exceed BDT 5,000 (five thousand). Therefore, in this case, the fine of 500 taka is considered low and may be considered excessive.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  },
+  "bleu": 2.8105129186804034,
+  "rougeL": 24.096385542168676,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2747,
+  "topic": "misconduct",
+  "question": "What is the maximum punishment for obstructing an officer acting under the Act?",
+  "reference": "He shall be punished with imprisonment for a term which may extend to 6 (six) months, or with fine which may extend to 25,000 (twenty five thousand) taka, or with both.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 26(2) of the Bangladesh Labour Act 2006 (amended up to 2018), whoever intentionally obstructs or hinders any person who is authorized to perform any act under this Chapter shall be punished with imprisonment for a term which may extend to one year, and shall also be liable to fine which may extend to taka 10,000 (ten thousand).",
+  "refusal": false,
+  "bleu": 23.01824639207608,
+  "rougeL": 40.42553191489362,
+  "grounding": 0.2413793103448276,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 2775,
+  "topic": "safety",
+  "question": "A large manufacturing company in Bangladesh with over 500 employees has an in-house medical examination facility. One of the employees, a factory worker, requests to be medically examined by a government-approved health inspector due to safety concerns. However, the HR manager refuses to allow the inspection, claiming it's not necessary and will disrupt production schedules.",
+  "reference": "The HR manager is likely violating 2006, which states that an employee shall be entitled to medical examination by a government-approved health inspector if required. The HR manager should instead facilitate the inspection or refer the matter to management for a decision on how to proceed while ensuring the safety of all employees.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Bangladesh Labour Act 2006 requires that all establishments with more than 20 workers have an in-house medical examination facility (Section 108). The employee has a right to request a government-approved health inspector for a medical examination if they have safety concerns. Refusing this request without justification may be considered a violation of the law.\n\nThe HR manager should provide a written explanation for not allowing the inspection and ensure that the factory worker's request is addressed in accordance with Section 108 of the Bangladesh Labour Act 2006.",
+  "refusal": false,
+  "bleu": 8.855092924375944,
+  "rougeL": 28.965517241379306,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 4.0,
+   "completeness": 4.0,
+   "usefulness": 4.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2795,
+  "topic": "dismissal",
+  "question": "A small IT company with 20 employees in Dhaka is facing financial difficulties. The CEO decides to lay off 5 employees without giving them adequate notice, citing 'restructuring' as the reason. Is this a valid reason for termination?",
+  "reference": "No, the employer must provide at least three months' notice of the Labour Act. The reason for termination (restructuring) is not sufficient to justify immediate dismissal without notice.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, it's not a valid reason under the Bangladesh Labour Act 2006 (amended up to 2018). Section 25(1) states that an employer shall not terminate the service of any worker without giving at least one month's notice. The company should have followed this procedure before laying off employees.",
+  "refusal": false,
+  "bleu": 3.3886184432907456,
+  "rougeL": 20.253164556962023,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 4.0,
+   "completeness": 4.0,
+   "usefulness": 4.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2807,
+  "topic": "other",
+  "question": "What party bears the burden of proof regarding an employee's claimed age, according to Section 311 of the Bangladesh Labour Act 2006?",
+  "reference": "The accused.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The employer bears the burden of proof regarding an employee's claimed age.",
+  "refusal": false,
+  "bleu": 3.673526562988939,
+  "rougeL": 13.333333333333336,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2811,
+  "topic": "other",
+  "question": "A manufacturing company with 50 employees in Dhaka is suspected of hiring a minor worker. The company claims that the worker's identification card was forged, and they cannot verify their age. However, a labor inspector has found evidence suggesting the worker is under 18 years old. Who bears the burden of proof in this case?",
+  "reference": "The company, as the employer, bears the burden of proof regarding the minor worker's employment status, including verifying their age.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 3(1) of the Bangladesh Labour Act 2006 (amended up to 2018), any person who employs a minor shall be deemed guilty of an offence unless he can prove that at the time of employment, he had no reason to believe that the person was a minor. Therefore, the burden of proof lies with the employer to demonstrate that they did not knowingly employ a minor worker.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 4.120992574346284,
+  "rougeL": 21.978021978021975,
+  "grounding": 0.015151515151515152,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2814,
+  "topic": "trade_union",
+  "question": "What happens if the registered medical practitioner's certification of age is disputed by the worker or their representative?",
+  "reference": "According to 2006, if any dispute arises regarding the correctness of the certified age, the decision of the registered medical practitioner shall be final and binding.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 11(2) of the Bangladesh Labour Act 2006 (amended up to 2018), if any dispute arises regarding the validity of a certificate, it shall be decided by the Inspector General of Factories and Workers' Welfare. The employer may also appeal against the decision of the Inspector General to the Labour Court within 30 days from the date of receipt of such order.",
+  "refusal": false,
+  "bleu": 13.555458444275962,
+  "rougeL": 32.967032967032964,
+  "grounding": 0.11475409836065574,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 2831,
+  "topic": "other",
+  "question": "What are the powers and responsibilities of a Labour Officer appointed under the Bangladesh Labour Act 2006?",
+  "reference": "A Labour Officer has the power to investigate any complaint regarding the employment, wages, and working conditions of workers, and they also have the authority to take necessary actions against the employers if found guilty.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "A Labour Officer has the power to inspect any establishment or premises where work is carried on, and also to enter into any room or part thereof for the purpose of inspection (Section 34). They are responsible for enforcing compliance with the provisions of the Act, investigating complaints, and providing guidance and advice to employers and workers.",
+  "refusal": false,
+  "bleu": 12.326084875324604,
+  "rougeL": 30.434782608695656,
+  "grounding": 0.05660377358490566,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2838,
+  "topic": "trade_union",
+  "question": "A mid-sized textile manufacturing company with 500 employees in Dhaka is facing a dispute between the management and the unionized workforce regarding wages. The Industrial Relations Council has been established, but no solution has been reached yet. The HR Manager seeks advice on how to proceed with this dispute. What should be done?",
+  "reference": "The HR Manager should consider involving an Additional Inspector General under the Bangladesh Labour Act 2006 as a Conciliator in the industrial dispute to help mediate between the management and the unionized workforce. This can facilitate a more efficient resolution of the dispute and avoid potential strikes or work stoppages.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The HR Manager should refer the matter to the Labour Court for conciliation under Section 12 of the Bangladesh Labour Act 2006 (amended up to 2018). The Labour Court will facilitate a meeting between the management and the unionized workforce, with the aim of reaching a mutually acceptable solution.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  },
+  "bleu": 24.48949753064275,
+  "rougeL": 38.38383838383838,
+  "grounding": 0.044444444444444446,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2871,
+  "topic": "other",
+  "question": "What constitutes a suitable means or arrangement for Labour Inspectors under the Act?",
+  "reference": "The means or arrangement should be adequate, reasonable and necessary to facilitate the exercise of powers or performance of duties by Labour Inspectors, such as providing access to workplace premises, equipment, records, and personnel.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "A suitable means or arrangement for Labour Inspectors includes providing them with necessary training, equipment, resources, and support to carry out their duties effectively (Section 34(2) of the Bangladesh Labour Act, 2006).",
+  "refusal": false,
+  "bleu": 7.96281273781222,
+  "rougeL": 23.880597014925375,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2872,
+  "topic": "other",
+  "question": "Are there any specific guidelines or regulations prescribed by law that an employer must follow when making arrangements for Labour Inspectors?",
+  "reference": "Yes, the Bangladesh Labour Act 2006 prescribes guidelines in the Second Schedule, which outlines the powers and duties of Labour Inspectors, including the requirements for making entries, inspections, examinations, enquiries, or doing acts necessary for their exercise of powers.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Yes, as per Section 108 of the Bangladesh Labour Act 2006 (amended to 2018), employers are required to provide a Labour Inspector with access to all relevant records and information. Additionally, Section 109 states that an employer must notify the Labour Inspector in writing about any changes or amendments made to their establishment's rules or regulations.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 4.0,
+   "completeness": 3.0,
+   "usefulness": 3.0,
+   "harm": 0.0
+  },
+  "bleu": 7.728393257395786,
+  "rougeL": 22.916666666666664,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2893,
+  "topic": "other",
+  "question": "Scenario Question 2",
+  "reference": "The employer must require the production of the foreign worker's valid work permit, medical certificate, and other relevant documents. The Controller or an authorized person may also examine the employer to ensure compliance with labor laws.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "A worker in a garment factory has been absent from work for more than three consecutive days without permission. What are the implications under the Bangladesh Labour Act?",
+  "refusal": false,
+  "bleu": 1.2580413471887528,
+  "rougeL": 12.307692307692308,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2901,
+  "topic": "other",
+  "question": "A micro-enterprise with 20 employees, operating in the informal sector, has not registered itself with the Bangladesh Labour Department despite having 10 workers who are entitled to social security benefits. What steps should the HR manager take?",
+  "reference": "The HR manager should immediately inform the company's management about the requirement of registration with the Bangladesh Labour Department and the associated benefits for the employees. They should then facilitate the registration process, ensuring that all necessary documents are in order and submitted on time. Additionally, the HR manager should advise the company to enroll its eligible workers in the social security scheme as soon as possible.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The HR manager should immediately notify the Labour Inspectorate about the non-registration of the establishment and provide all necessary documents required for registration within 15 (fifteen) days from the date of receipt of such notice. The HR manager can also consider registering the employees with the Bangladesh Government's National Pension System (NPS) or other social security schemes, if available, to ensure they receive their due benefits.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 2.0,
+   "completeness": 3.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  },
+  "bleu": 10.943026230527563,
+  "rougeL": 32.35294117647059,
+  "grounding": 0.0625,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2925,
+  "topic": "other",
+  "question": "A micro-enterprise with fewer than 10 employees is changing its management structure due to a change in ownership. The new management wants to downsize the workforce by 20% immediately, but the employees have objections. What are the requirements under Bangladesh Labour Law?",
+  "reference": "Under Bangladesh Labour Law, the employer must send a written notice of such a change within 7 days from the date on which the person assumes their office (as per section 33-A of the Act). In this scenario, the employer should provide a minimum notice period to employees before downsizing the workforce, as required by section 25 of the Bangladesh Labour Act 2006 (amended up to 2018). The employer must also consider the rights and interests of the employees under the Act, including their right to fair treatment and severance pay. It is recommended that the employer consults with HR professionals or labour experts before implementing any major changes in workforce management.",
+  "gold_sections": [
+   25,
+   33
+  ],
+  "expected_behavior": null,
+  "prediction": "The employer must obtain approval from the Director General before making any changes to the workforce. According to Section 4(1) of the Bangladesh Labour Act 2006 (amended up to 2018), no person shall be employed in any establishment without the consent of the Government, and this includes changes to the workforce. The employer must also provide a minimum notice period for termination, which is not specified but typically ranges from 30 days to 3 months depending on the type of employment and industry norms. In this case, since there are fewer than 10 employees, it's likely that the employer needs to follow specific guidelines or consult with the Labour Inspectorate before proceeding with any changes.",
+  "refusal": false,
+  "bleu": 20.080690711194507,
+  "rougeL": 31.304347826086953,
+  "grounding": 0.035398230088495575,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 2.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 2965,
+  "topic": "other",
+  "question": "A manufacturing company with 50 employees in the textile industry wants to recover Tk. 10,000 from an employee for providing a computer and internet connection at their home. The company has not provided these facilities in its office. Is this recovery allowed under the Act?",
+  "reference": "No, as the employer is required to provide necessary equipment and appliances at the workplace, not at the worker's home.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, it is not allowed. Section 33 of the Bangladesh Labour Act 2006 states that no employer shall recover any sum from his worker which he has already paid to him as wages or other benefits. Since the employee provided a computer and internet connection at their home without any compensation from the company, the recovery of Tk. 10,000 is not justified under the Act.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 1.683921026979718,
+  "rougeL": 22.988505747126435,
+  "grounding": 0.03225806451612903,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 2975,
+  "topic": "wages",
+  "question": "How can an employer recover money from a worker who has not received payment within the specified period?",
+  "reference": "By attachment and sale of movable properties belonging to the person liable to pay such money, in the manner prescribed by rules.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33 of the Bangladesh Labour Act 2006 (amended up to 2018), if any sum of money is found in the possession or under the control of a worker, it shall be recovered by the employer from such worker. The employer can also file a complaint with the Labour Court for recovery of wages and other benefits.",
+  "refusal": false,
+  "bleu": 1.7430763978945936,
+  "rougeL": 17.28395061728395,
+  "grounding": 0.07272727272727272,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2976,
+  "topic": "wages",
+  "question": "What provisions in Bangladesh Labour Law allow an employer to recover unpaid wages from a worker?",
+  "reference": "By attachment and sale of movable properties belonging to the person liable to pay such money, in the manner prescribed by rules.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 122 of the Bangladesh Labour Act 2006 (amended up to 2018), an employer can recover any sum of money which he has paid or is required to pay, but not yet received, by serving a notice on the worker. This provision allows employers to take necessary steps to recover unpaid wages from their employees.",
+  "refusal": false,
+  "bleu": 1.6920648012711041,
+  "rougeL": 12.658227848101266,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 2979,
+  "topic": "wages",
+  "question": "What is the specific timeframe for attaching and selling movable properties to recover unpaid wages?",
+  "reference": "The timeframe may vary depending on the court decisions, but generally, it's within a reasonable time frame as per the court orders.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 108 of the Bangladesh Labour Act 2006 (amended up to 2018), an employer must attach and sell movable property within 30 days from the date of receipt of a notice from the Labour Inspector.",
+  "refusal": false,
+  "bleu": 1.4014248243844825,
+  "rougeL": 13.333333333333334,
+  "grounding": 0.09090909090909091,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 3050,
+  "topic": "other",
+  "question": "How often must employers display these notices, and are there any specific requirements for the content of the notice?",
+  "reference": "Employers must display the wage notices at least once a month, clearly indicating the rates of wages payable to workers in Bangladesh Taka. The notice should also include details about payment frequency, method, and any deductions made.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "Employers must display the following notices in a conspicuous place at every entrance to the establishment where work is carried on: (a) A copy of this Chapter; (b) The names and addresses of the persons authorized to receive service of notices under section 108; (c) The name, address and registered office of the trade union or federation of trade unions; (d) The names and addresses of the workers' representatives; (e) The names and addresses of the officers and employees whose duties are specified in this Chapter; (f) A copy of any award or settlement that has been made under section 113; (g) The name, address and registered office of the employer; (h) The number of persons employed in the establishment; (i) The names and addresses of the workers who have been appointed as inspectors under section 114; (j) The names and addresses of the workers who have been appointed as medical officers under section 115; (k) A copy of any rules made under this Chapter; (l) The name, address and registered office of the trade union or federation of trade unions; (m) The names and addresses of the workers' representatives; (n) The names and addresses of the officers and employees whose duties are specified in this Chapter; (o) A copy of any contract of service that has been made under section 116; (p) The name, address and registered office of the employer; (q) The number of persons employed in the establishment; (r) The names and addresses of the workers who have been appointed as inspectors under section 114; (s) The names and addresses of the workers who have been appointed as medical officers under section 115; (t) A copy of any rules made under this Chapter; (u) The name, address and registered office of the trade union or federation of trade unions; (v)",
+  "refusal": false,
+  "bleu": 0.8772066027446769,
+  "rougeL": 9.411764705882355,
+  "grounding": 0.09698996655518395,
+  "citation": {
+   "n_cited": 5,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 3074,
+  "topic": "other",
+  "question": "Can an employee still file a complaint to the Labour Department under the old labour laws before the new Act comes into effect, even if they have already lodged a complaint with a Court or Tribunal?",
+  "reference": "Yes, an employee can still file a complaint with the Labour Department under the old labour laws before the new Act comes into effect. The Labour Department will address such complaints according to their procedures.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, an employee cannot file a complaint to the Labour Department under the old labour laws after the new Bangladesh Labour Act 2006 (amended up to 2018) has come into force. The Labour Department can only process complaints filed under the new Act. If an employee has already lodged a complaint with a Court or Tribunal, they should inform the Labour Department about it and seek guidance on how to proceed under the new law.",
+  "refusal": false,
+  "bleu": 16.7506748328495,
+  "rougeL": 41.81818181818181,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": 3115,
+  "topic": "compensation",
+  "question": "A small manufacturing company with 20 employees in the garment sector has a worker who has been working for over 10 years without having a written employment contract. One day, while lifting heavy crates, the employee suffers a back injury that requires medical attention. Can the employer claim that the employee's long-term service is not relevant to their compensation under the Bangladesh Labour Act 2006?",
+  "reference": "No, according to 2006, an employee who has been working for more than 5 years without a written employment contract is entitled to receive compensation from the employer's liability fund. The employer cannot claim that the employee's long-term service is not relevant to their compensation, as it falls under the purview of the act.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "No, the employer cannot claim that the employee's long-term service is not relevant to their compensation. According to Section 4(1) of the Bangladesh Labour Act 2006, every worker shall be entitled to receive wages at a rate not less than the minimum rates specified in the First Schedule, regardless of whether they have a written employment contract or not. The employee's long-term service may be considered as part of their overall service history and could potentially affect their entitlement to benefits such as pension or other forms of compensation under the Act.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  },
+  "bleu": 20.017061496468607,
+  "rougeL": 28.57142857142857,
+  "grounding": 0.07526881720430108,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 3120,
+  "topic": "safety",
+  "question": "An employee in a call center with 100 employees is facing health issues due to prolonged sitting hours and lack of adequate breaks. What are the company's obligations under the Bangladesh Labour Act 2006?",
+  "reference": "Under 2006, employers are required to provide a safe working environment by ensuring regular rest periods for their employees. The company should assess the employee's health risks and take necessary measures to mitigate them. This may include providing ergonomic furniture, adjusting work schedules, or offering medical leave as per the provisions of the Act.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The company must ensure that its employees work within reasonable working hours, which includes providing regular breaks and ensuring they do not exceed 8 hours per day (Section 114). Additionally, the employer should provide a safe working environment by arranging for adequate seating facilities and ensuring proper ventilation in the workplace. The employee's health issues may also warrant consideration under Section 108 of the Act, which requires employers to provide first aid or medical attention if an employee is injured on the job.",
+  "refusal": false,
+  "bleu": 9.740894776166744,
+  "rougeL": 25.899280575539567,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 3148,
+  "topic": "other",
+  "question": "A medium-sized manufacturing company with 50 employees in the textile industry has recently reported a series of respiratory issues among its workers. The HR department is unsure if these conditions qualify as occupational diseases under the Bangladesh Labour Act 2006. Which common occupational diseases from the Act might be relevant to this situation?",
+  "reference": "The common occupational diseases that might be relevant to this situation are 'Pathological manifestations due to X-ray, radium and other radioactive substances' (if the workers were exposed to radiation during production) or 'Fibrosis of lung' (if the workers have been working with hazardous chemicals or dust in the textile industry). The HR department should investigate further to determine the cause of these respiratory issues.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "The Bangladesh Labour Act 2006 lists several occupational diseases, including tuberculosis, silicosis, and phthisis pulmonary (tuberculosis). Given that respiratory issues have been reported among workers in a manufacturing setting, it is likely that one or more of these conditions may be relevant. The HR department should consult with a medical professional to determine the specific nature of the condition(s) and assess whether they meet the criteria for an occupational disease under the Act.",
+  "refusal": false,
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 4.0,
+   "usefulness": 3.0,
+   "harm": 0.0
+  },
+  "bleu": 9.118791384080184,
+  "rougeL": 21.58273381294964,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  }
+ },
+ {
+  "id": 3188,
+  "topic": "safety",
+  "question": "A small, family-owned textile factory with 20 employees in the Dhaka region experiences a major fire that damages the main building. The company's insurance policy covers 75% of the total property loss. One employee, who was working on the day of the fire and suffered permanent total disability due to severe burns, is currently receiving Tk. 50,000 per month as compensation from the workers' insurance fund. However, the employee's monthly wages were Tk. 15,000 at the time of injury. What percentage increase in the employee's monthly wage should be paid by the company as compensation for permanent total disablement under the Bangladesh Labour Act, 2006?",
+  "reference": "Since the employee's monthly wages at the time of injury (Tk. 15,000) is less than the specified amount under 2006 (which is equal to the employee's last drawn wage), the company should pay 100% of the difference between the current monthly wage and the last drawn wage as compensation.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act, 2006, an employer shall pay a sum equal to 100% of the wages of the worker who has suffered permanent total disability. Since the employee's monthly wage was Tk. 15,000 at the time of injury, and considering the insurance coverage is only for property loss, the company should pay the full amount of Tk. 15,000 as compensation for permanent total disablement.",
+  "refusal": false,
+  "bleu": 18.355503245928354,
+  "rougeL": 31.746031746031743,
+  "grounding": 0.02857142857142857,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": 3209,
+  "topic": "other",
+  "question": "A manufacturing company with 500 employees, operating in the textile industry, has a 35-year-old employee, Mr. Iqbal, who suffers from silicosis due to prolonged exposure to silica dust while working on the machinery. The disease is diagnosed after 5 years of employment. What is the maximum duration for which Mr. Iqbal can receive disability benefits under the Bangladesh Labour Act 2006?",
+  "reference": "Mr. Iqbal can receive disability benefits for up to 2 years, (3) of the Bangladesh Labour Act 2006, considering he was exposed to the hazardous condition for an extended period.",
+  "gold_sections": [],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act, 2006 (amended up to 2018), a worker suffering from any disease or injury due to his employment shall be entitled to receive disability benefit for life. Therefore, Mr. Iqbal is eligible to receive disability benefits for life, regardless of the duration of his employment.",
+  "refusal": false,
+  "bleu": 14.604412705409397,
+  "rougeL": 23.809523809523807,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": null,
+   "cite_recall": null,
+   "cite_f1": null
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ }
+]

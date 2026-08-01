@@ -1,0 +1,202 @@
+[
+ {
+  "id": "oos_01",
+  "topic": "out_of_scope",
+  "question": "What is the personal income tax rate for a salaried employee earning 80,000 taka per month in Bangladesh?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I can provide information on employment matters under the Bangladesh Labour Act, but I am not qualified to answer questions about taxation or other matters outside the scope of the Act. If you have any further questions regarding employment-related issues, feel free to ask!",
+  "refusal": true
+ },
+ {
+  "id": "oos_02",
+  "topic": "out_of_scope",
+  "question": "My colleague assaulted me outside the office. What is the punishment for assault under the Penal Code?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I can provide information on the Bangladesh Labour Act 2006, but I'm not qualified to provide legal advice or discuss matters under the Penal Code. The incident you've described falls under criminal law, and I recommend consulting a lawyer or relevant authorities for guidance on this matter.",
+  "refusal": false
+ },
+ {
+  "id": "oos_03",
+  "topic": "out_of_scope",
+  "question": "What is the maximum weekly working time under the European Union Working Time Directive?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "The European Union Working Time Directive sets a maximum of 48 hours per week for adults, with some exceptions for certain professions such as seafarers, pilots, and medical doctors. However, this directive does not directly apply to Bangladesh Labour Act 2006, which has its own provisions regarding working hours. Under the Bangladesh Labour Act, the maximum working time is 50 hours in a week, but it can be reduced by an employer with prior permission from the Director General or Inspector General of Factories.",
+  "refusal": false
+ },
+ {
+  "id": "oos_04",
+  "topic": "out_of_scope",
+  "question": "One of my workers has chest pain and shortness of breath. What medication should I give him right now?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I can't provide medical advice. Is there anything else I can help you with under the Bangladesh Labour Act 2006, amended to 2018?",
+  "refusal": true
+ },
+ {
+  "id": "oos_05",
+  "topic": "out_of_scope",
+  "question": "How do I register a new private limited company with the RJSC in Bangladesh?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "Registration of a new private limited company with the Registrar of Joint Stock Companies (RJSC) involves several steps:\n\n1.  Filing an application for registration: The applicant must submit an application to the RJSC, which includes providing details such as company name, address, and authorized capital.\n2.  Payment of registration fee: The applicant must pay a registration fee, which varies depending on the type of company being registered.\n3.  Issuance of Certificate of Registration: Once the application is approved, the RJSC will issue a certificate of registration, which confirms the company's existence and its authorized capital.\n\nPlease note that this information is general in nature and may not be up-to-date or accurate. For specific guidance, it is recommended to consult with an HR consultant or legal professional familiar with the Bangladesh Labour Act 2006, amended to 2018.",
+  "refusal": false
+ },
+ {
+  "id": "oos_06",
+  "topic": "out_of_scope",
+  "question": "What VAT rate applies to garment exports from Bangladesh?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not sure about the specific VAT rate for garment exports from Bangladesh as my knowledge cutoff is limited to the Bangladesh Labour Act 2006 (amended up to 2018). I can provide information on employment-related matters under this act, but for detailed queries on taxation and other areas outside its scope, it's best to consult a tax expert or relevant authorities.",
+  "refusal": true
+ },
+ {
+  "id": "oos_07",
+  "topic": "out_of_scope",
+  "question": "What are the visa requirements for a foreign national to work in Bangladesh?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not able to provide information on visa requirements as it falls outside my expertise in the Bangladesh Labour Act 2006, amended to 2018. However, I can suggest consulting the official government website or contacting the relevant authorities for accurate and up-to-date information on employment regulations and visa requirements.",
+  "refusal": true
+ },
+ {
+  "id": "oos_08",
+  "topic": "out_of_scope",
+  "question": "What is the capital city of Bangladesh and what is its population?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not sure about the current population figures for Dhaka as they can fluctuate over time due to various factors such as migration and urbanization. However, I can tell you that Dhaka is indeed the capital city of Bangladesh and has a significant impact on employment laws under the Labour Act 2006 (amended in 2018).",
+  "refusal": true
+ },
+ {
+  "id": "oos_09",
+  "topic": "out_of_scope",
+  "question": "Can you write a Python script to calculate payroll for me?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not qualified to provide technical assistance on software development or programming tasks. However, I can guide you on how to approach this task under the Bangladesh Labour Act 2006 (amended to 2018). You may need to consult with an IT professional or use existing payroll management systems that comply with the Act's requirements for calculating wages and other benefits.",
+  "refusal": false
+ },
+ {
+  "id": "oos_10",
+  "topic": "out_of_scope",
+  "question": "Under US federal law, what is the current federal minimum wage per hour?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not familiar with US federal labor laws, but I can tell you that this falls outside my area of expertise as a Bangladesh Labour Act expert.",
+  "refusal": false
+ },
+ {
+  "id": "oos_11",
+  "topic": "out_of_scope",
+  "question": "What is the process for filing for divorce under Muslim family law in Bangladesh?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not equipped to provide legal advice on matters outside the scope of my expertise, including specific procedures for divorce under Muslim family law in Bangladesh. For accurate and up-to-date information, I recommend consulting a qualified lawyer or legal professional who specializes in Bangladeshi law.",
+  "refusal": true
+ },
+ {
+  "id": "oos_12",
+  "topic": "out_of_scope",
+  "question": "Should I invest my company's provident fund money in the Dhaka Stock Exchange?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "No, according to Section 33(1) of the Bangladesh Labour Act 2006 (amended up to 2018), a worker's provident fund shall be invested only in a bank account or other approved investment instruments. Investing it in the stock market may not be compliant with this provision.",
+  "refusal": false
+ },
+ {
+  "id": "oos_13",
+  "topic": "out_of_scope",
+  "question": "How do I transfer ownership of a piece of land in Dhaka to my business?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I can't provide legal advice on property law or any other matter outside the scope of the Bangladesh Labour Act 2006. For information on transferring ownership of land, you may want to consult with a qualified lawyer or real estate expert who specializes in property law.",
+  "refusal": true
+ },
+ {
+  "id": "oos_14",
+  "topic": "out_of_scope",
+  "question": "What makes a commercial supply contract legally binding under the Contract Act 1872?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "A commercial supply contract is considered legally binding if it is made in writing and signed by both parties, as per Section 12 of the Bangladesh Labour Act 2006 (amended to 2018).",
+  "refusal": false
+ },
+ {
+  "id": "oos_15",
+  "topic": "out_of_scope",
+  "question": "Will it rain in Chittagong tomorrow so I can plan an outdoor staff event?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not capable of providing weather forecasts or information about external events like rainfall. However, I can help you with any HR-related queries under the Bangladesh Labour Act 2006, amended to 2018. Please feel free to ask about employment matters such as wages, leave, working hours, overtime, termination, maternity benefit, misconduct, probation, safety, compensation, or trade unions.",
+  "refusal": true
+ },
+ {
+  "id": "oos_16",
+  "topic": "out_of_scope",
+  "question": "Translate the full text of the United Nations Universal Declaration of Human Rights into Bengali.",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I can't provide a translation of the entire document as it exceeds my capabilities. However, I can assist with specific sections or phrases if needed. Is there a particular part you'd like me to translate?",
+  "refusal": true
+ },
+ {
+  "id": "oos_17",
+  "topic": "out_of_scope",
+  "question": "What import duty applies to industrial sewing machines brought into Bangladesh?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not aware of any specific information regarding import duty on industrial sewing machines under the Bangladesh Labour Act 2006 (amended to 2018). As an HR consultant, I can provide guidance on employment-related matters within the scope of the Act. However, for detailed information on customs duties and regulations, I recommend consulting the Bangladesh Government's official website or relevant trade authorities.",
+  "refusal": true
+ },
+ {
+  "id": "oos_18",
+  "topic": "out_of_scope",
+  "question": "What effluent discharge limits does the Department of Environment set for a dyeing factory?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not aware of any specific effluent discharge limits set by the Department of Environment for a dyeing factory under the Bangladesh Labour Act 2006, amended to 2018. The Bangladesh Labour Act primarily deals with employment matters and workplace safety, but it does not specify environmental regulations or effluent discharge limits. If you're looking for information on environmental standards, I recommend consulting the Bangladesh Government's official website or contacting the Department of Environment directly for accurate and up-to-date information.",
+  "refusal": true
+ },
+ {
+  "id": "oos_19",
+  "topic": "out_of_scope",
+  "question": "My manager is rude to me and I feel stressed. Can you act as my therapist and counsel me?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not qualified to provide therapy or counseling services. However, I can offer general guidance on how to address the situation with your manager. Would you like some advice on how to report the incident or seek support from HR?",
+  "refusal": false
+ },
+ {
+  "id": "oos_20",
+  "topic": "out_of_scope",
+  "question": "What is the current lending interest rate offered by commercial banks in Bangladesh for an SME loan?",
+  "reference": null,
+  "gold_sections": [],
+  "expected_behavior": "refuse",
+  "prediction": "I'm not aware of any specific information on lending interest rates from commercial banks in Bangladesh as it can vary depending on several factors such as bank, location, and type of loan. However, I can provide general guidance on the Labour Act 2006 (amended to 2018) if that's helpful.",
+  "refusal": true
+ }
+]

@@ -1,0 +1,1119 @@
+[
+ {
+  "id": "scn_leave_01",
+  "topic": "leave",
+  "question": "An adult worker in a private textile factory has completed 12 months of continuous service. During the year he actually worked 216 days. How many days of paid annual leave has he earned, and under which provision?",
+  "reference": "Annual leave with wages for an adult worker accrues at one day for every 18 days of work performed during the previous 12 months (Section 117). For 216 days worked, that is 216/18 = 12 days of paid annual leave.",
+  "gold_sections": [
+   117
+  ],
+  "expected_behavior": null,
+  "prediction": "The employee should have earned 30 (thirty) days of paid annual leave for every 365 (three hundred sixty-five) days of actual work. Since the employee worked 216 days out of 365, he would be entitled to 216/365 * 30 = 14.86 days of paid annual leave. However, since you can't pay a fraction of a day, it's likely that the employer will round down to 14 days. The provision under the Bangladesh Labour Act for calculating paid annual leave is Section 25(2), which states that an adult worker shall be entitled to 30 (thirty) days of paid annual leave for every 365 (three hundred sixty-five) days of actual work.",
+  "refusal": false,
+  "bleu": 6.581497508259919,
+  "rougeL": 22.07792207792208,
+  "grounding": 0.00909090909090909,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_leave_02",
+  "topic": "leave",
+  "question": "A garment worker asks how many days of casual leave and how many days of sick leave she is entitled to in a calendar year. What should HR tell her?",
+  "reference": "A worker is entitled to 10 days of casual leave with full wages in a calendar year, which is not accumulable (Section 115), and 14 days of sick leave with full wages in a year (Section 116).",
+  "gold_sections": [
+   115,
+   116
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 25(1) of the Bangladesh Labour Act, 2006 (amended up to 2018), an employee shall be allowed 30 (thirty) days of casual leave and 15 (fifteen) days of sick leave in a calendar year.",
+  "refusal": false,
+  "bleu": 17.06461271374554,
+  "rougeL": 35.13513513513514,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_leave_03",
+  "topic": "leave",
+  "question": "Our company wants to deny festival holidays to workers who were absent the previous day. Is that allowed, and how many festival holidays are required?",
+  "reference": "Every worker is entitled to 11 days of paid festival holidays in a calendar year; the employer fixes the dates (Section 118). Festival holidays are a statutory entitlement and cannot be denied for a prior-day absence, though a worker may be required to work on a festival holiday with substitute holiday and compensation.",
+  "gold_sections": [
+   118
+  ],
+  "expected_behavior": null,
+  "prediction": "No, denying festival holidays to workers who were absent the previous day is not allowed under Section 21(2) of the Bangladesh Labour Act 2006 (amended up to 2018). According to this section, a worker shall be entitled to at least one festival holiday in every year.",
+  "refusal": false,
+  "bleu": 3.3475857129082334,
+  "rougeL": 21.782178217821784,
+  "grounding": 0.023255813953488372,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 4.0,
+   "usefulness": 4.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_overtime_01",
+  "topic": "overtime",
+  "question": "A factory worker's ordinary hourly wage is 50 taka. He worked 3 hours of overtime. How much overtime pay is he owed and under what rule?",
+  "reference": "Overtime must be paid at twice the ordinary rate of basic wage plus dearness and ad-hoc allowances (Section 108). At an ordinary rate of 50 taka/hour, overtime is 100 taka/hour, so 3 hours = 300 taka.",
+  "gold_sections": [
+   108
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 113(1) of the Bangladesh Labour Act, 2006 (amended up to 2018), an employee shall receive overtime wages at a rate not less than twice the ordinary rate for work exceeding normal working hours. Since the worker worked 3 hours of overtime, he is entitled to overtime pay at a rate of 2 x 50 taka = 100 taka per hour. Therefore, his total overtime pay would be 3 x 100 taka = 300 taka.",
+  "refusal": false,
+  "bleu": 7.9323049255523745,
+  "rougeL": 31.57894736842105,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_overtime_02",
+  "topic": "overtime",
+  "question": "What is the maximum ordinary daily and weekly working hours for an adult worker in a factory before overtime applies?",
+  "reference": "An adult worker may ordinarily work up to 8 hours a day (Section 100) and 48 hours a week (Section 102). Work beyond this attracts overtime, and total hours including overtime should not exceed 10 hours a day, with the weekly average not exceeding 56 hours (Section 102).",
+  "gold_sections": [
+   100,
+   102
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 114(1) of the Bangladesh Labour Act 2006 (amended up to 2018), an adult worker shall not be allowed to work more than 9 hours in any day or 48 hours in a week.",
+  "refusal": false,
+  "bleu": 3.024207084314898,
+  "rougeL": 23.52941176470588,
+  "grounding": 0.030303030303030304,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_overtime_03",
+  "topic": "overtime",
+  "question": "Can HR schedule an adult worker for 12 hours in a single day if the worker agrees in writing?",
+  "reference": "No. Section 100 fixes the daily ceiling: an adult worker shall not ordinarily work more than 8 hours in a day, and even with overtime under Section 108 the worker may work up to 10 hours in a day. A written agreement by the worker cannot override that statutory ceiling, so 12 hours in a single day is not permitted.",
+  "gold_sections": [
+   100,
+   108
+  ],
+  "expected_behavior": null,
+  "prediction": "No, according to Section 114 of the Bangladesh Labour Act 2006 (amended up to 2018), no person shall be required or allowed to work more than 9 (nine) hours in any day. While an adult worker may agree to work for 12 hours in a single day in writing, this would still violate the law and could result in disciplinary action against the HR department.",
+  "refusal": false,
+  "bleu": 12.730868480115134,
+  "rougeL": 30.4,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_termination_01",
+  "topic": "termination",
+  "question": "A permanent monthly-rated worker is being terminated by the employer through simple notice (not for misconduct). What notice period or pay in lieu applies?",
+  "reference": "For termination of a permanent worker by the employer through notice, a monthly-rated worker must be given 120 days' written notice, or wages in lieu of that notice (Section 26). The worker is also entitled to compensation of 30 days' wages for every completed year of service (or gratuity, whichever is higher).",
+  "gold_sections": [
+   26,
+   27
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 25(2) of the Bangladesh Labour Act 2006, a worker shall not be dismissed without giving at least one month's notice. Since the termination was done without proper notice, it is considered illegal and may lead to further consequences for the employer. The employee may also be entitled to receive their full wages in lieu of notice, as per Section 25(3).",
+  "refusal": false,
+  "bleu": 6.734428210674351,
+  "rougeL": 21.848739495798316,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_termination_02",
+  "topic": "termination",
+  "question": "Our company must reduce headcount due to genuine redundancy. What is the process and compensation for retrenchment of a worker with 5 years of service?",
+  "reference": "Retrenchment of a worker who has been in continuous service for at least one year requires one month's written notice (or pay in lieu) stating reasons, notice to the Chief Inspector, and compensation of 30 days' wages for every completed year of service (Section 20). For 5 years' service that is 150 days' wages, and 'last in, first out' ordinarily applies (Section 20).",
+  "gold_sections": [
+   20
+  ],
+  "expected_behavior": null,
+  "prediction": "The employer shall give at least one month's wages in cash or equivalent to the retrenched worker, as per Section 25(2) of the Bangladesh Labour Act 2006 (amended up to 2018). Additionally, the employer must provide a written notice of retrenchment and ensure that the retrenched worker receives their full wages for the period of notice.",
+  "refusal": false,
+  "bleu": 4.32291201843345,
+  "rougeL": 19.672131147540988,
+  "grounding": 0.037037037037037035,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_wages_01",
+  "topic": "wages",
+  "question": "By what date must wages be paid to workers, and who is responsible for timely payment?",
+  "reference": "Wages must be paid before the expiry of the 7th working day after the end of the wage period for which they are payable (Section 123). The employer (or a person designated by the employer) is responsible for the timely payment of wages.",
+  "gold_sections": [
+   123
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 108 of the Bangladesh Labour Act 2006 (amended up to 2018), wages should be paid within 30 days from the last working day of a month. The employer is responsible for ensuring timely payment of wages to their workers.",
+  "refusal": false,
+  "bleu": 11.603422892641925,
+  "rougeL": 40.0,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_wages_02",
+  "topic": "wages",
+  "question": "An employer wants to deduct the cost of a damaged machine from a worker's wages. Is that a lawful deduction?",
+  "reference": "Deductions from wages are only permitted on the grounds specified in the Act (Section 125). A deduction for damage to or loss of goods or money entrusted to the worker is allowed only where the damage or loss is directly attributable to the worker's neglect or default, and only after the worker has been given an opportunity to show cause; the deduction cannot exceed the value of the damage (Section 126).",
+  "gold_sections": [
+   125,
+   126
+  ],
+  "expected_behavior": null,
+  "prediction": "No, it is not a lawful deduction under Section 33(1) of the Bangladesh Labour Act 2006 (amended up to 2018), which states that no deduction shall be made from any wages of a worker except for the following: (a) cost of repair or replacement of tools or equipment; (b) cost of medical treatment; (c) cost of accident insurance premium; (d) cost of training or retraining; and (e) cost of any other expense incurred by the employer in relation to the employment of a worker.",
+  "refusal": false,
+  "bleu": 1.5686904243320687,
+  "rougeL": 17.8343949044586,
+  "grounding": 0.04938271604938271,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_wages_03",
+  "topic": "wages",
+  "question": "When a worker's employment ends, within how many days must all wages due be paid?",
+  "reference": "Where a worker's employment is terminated (by retirement, dismissal, retrenchment, discharge or otherwise), all wages payable to the worker must be paid within 30 working days of the termination (Section 123(2)).",
+  "gold_sections": [
+   123
+  ],
+  "expected_behavior": null,
+  "prediction": "Within 7 (seven) days from the date of termination of service. - Section 26(1)(a) Bangladesh Labour Act, 2006",
+  "refusal": false,
+  "bleu": 1.5117169034671794,
+  "rougeL": 19.230769230769234,
+  "grounding": 0.06666666666666667,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_maternity_01",
+  "topic": "maternity",
+  "question": "A pregnant employee has worked for our company for 7 months. She asks about her maternity benefit and leave. What is she entitled to?",
+  "reference": "A woman who has worked for the employer for at least 6 months preceding her delivery is entitled to maternity benefit for 16 weeks total — 8 weeks preceding the expected delivery and 8 weeks immediately following delivery (Section 46). Maternity benefit is payable at the rate of her average daily/weekly/monthly wages (Section 48).",
+  "gold_sections": [
+   46,
+   48
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(1) of the Bangladesh Labour Act 2006 (amended up to 2018), a woman shall be entitled to maternity benefit for at least 12 weeks, which includes 4 (four) weeks of wages during her pregnancy and 8 (eight) weeks after delivery. Additionally, she is also entitled to leave under Section 25(1)(a) of the Act, which allows for up to 3 months of paid leave before and after childbirth.",
+  "refusal": false,
+  "bleu": 7.153822747439366,
+  "rougeL": 25.0,
+  "grounding": 0.028985507246376812,
+  "citation": {
+   "n_cited": 2,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_maternity_02",
+  "topic": "maternity",
+  "question": "Can we terminate a woman worker while she is on maternity leave, citing restructuring?",
+  "reference": "No. It is unlawful for an employer to dismiss or terminate a woman worker during the period of her maternity leave, or to give notice of dismissal such that it expires during that period, without sufficient cause; doing so also forfeits the employer's ability to withhold maternity benefit (Section 50). Restructuring is not sufficient cause to remove protection of maternity benefit.",
+  "gold_sections": [
+   50
+  ],
+  "expected_behavior": null,
+  "prediction": "No, under Section 4(1) of the Bangladesh Labour Act 2006 (amended to 2018), no person shall be dismissed or reduced in rank during any period of maternity leave. This provision aims to protect women workers' rights during this critical period.",
+  "refusal": false,
+  "bleu": 2.317015879759605,
+  "rougeL": 23.300970873786405,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_maternity_03",
+  "topic": "maternity",
+  "question": "A woman worker had two surviving children at the time she applied for maternity benefit for a third child. Is she eligible for cash maternity benefit?",
+  "reference": "Maternity benefit (cash payment) is not payable to a woman who, at the time of her delivery, already has two or more surviving children, though she remains entitled to the leave itself (Section 46(2)). She may take the maternity leave but the cash maternity benefit is not payable in that circumstance.",
+  "gold_sections": [
+   46
+  ],
+  "expected_behavior": null,
+  "prediction": "No, as per section 33(2) of the Bangladesh Labour Act 2006 (amended to 2018), only one child is entitled to receive cash maternity benefits.",
+  "refusal": false,
+  "bleu": 2.961808560601781,
+  "rougeL": 15.584415584415584,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_misconduct_01",
+  "topic": "misconduct",
+  "question": "A worker is accused of theft at the workplace. Can we dismiss him immediately, or is a procedure required?",
+  "reference": "A worker may be dismissed for misconduct such as theft, but only after a proper procedure: a written charge, an opportunity to explain, and a formal inquiry in which the worker can defend himself (Section 24). Dismissal for misconduct without following this procedure is unlawful. Theft is listed among acts constituting misconduct (Section 23).",
+  "gold_sections": [
+   23,
+   24
+  ],
+  "expected_behavior": null,
+  "prediction": "No, according to Section 3(1) of the Bangladesh Labour Act 2006 (amended), no person shall be dismissed from service without giving them an opportunity of being heard by the employer in relation to the charge made against them. The worker should be given a chance to explain themselves before any disciplinary action is taken.",
+  "refusal": false,
+  "bleu": 2.670072351194563,
+  "rougeL": 14.678899082568805,
+  "grounding": 0.0196078431372549,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_misconduct_02",
+  "topic": "misconduct",
+  "question": "During a disciplinary inquiry, can the employer suspend the worker, and for how long, and what payment applies?",
+  "reference": "Yes. Pending an inquiry into misconduct, the employer may suspend the worker; the period of such suspension must not ordinarily exceed 60 days (Section 24). During suspension the worker is entitled to a subsistence allowance equal to half of his average wages (Section 24).",
+  "gold_sections": [
+   24
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), an employee may be suspended during the pendency of any proceedings under this Chapter. The suspension period is not specified in terms of days or hours, but it can be decided by the employer based on the nature of the inquiry and the severity of the misconduct. However, the worker should receive their full wages during the suspension period.",
+  "refusal": false,
+  "bleu": 2.220107828290234,
+  "rougeL": 18.64406779661017,
+  "grounding": 0.05714285714285714,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_misconduct_03",
+  "topic": "misconduct",
+  "question": "What punishments other than dismissal can an employer impose on a worker found guilty of misconduct after inquiry?",
+  "reference": "Instead of dismissal, an employer may impose lesser punishments such as removal, reduction to a lower post, stoppage of promotion, withholding of increment, fine, suspension without wages, or censure/warning, depending on the gravity of the misconduct (Section 23). The punishment must follow a valid inquiry.",
+  "gold_sections": [
+   23
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), if any worker is found guilty of misconduct, the employer may impose a fine or deduct wages for a period not exceeding one month's wages.",
+  "refusal": false,
+  "bleu": 3.985808199111572,
+  "rougeL": 18.390804597701152,
+  "grounding": 0.02702702702702703,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_probation_01",
+  "topic": "probation",
+  "question": "We hired a worker for a clerical role. How long can the probation period last before he becomes permanent?",
+  "reference": "For a worker whose function is of a clerical nature, the probationary period is 6 months. For other (non-clerical) workers it is 3 months, which may be extended by a further 3 months. On satisfactory completion of probation the worker is confirmed as permanent (Section 4).",
+  "gold_sections": [
+   4
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 4(1) of the Bangladesh Labour Act 2006 (amended up to 2018), the probation period is 3 months, which means that after this period, if the worker continues to work without any misconduct or breach of contract, they can be considered permanent employees.",
+  "refusal": false,
+  "bleu": 10.657542272150003,
+  "rougeL": 21.50537634408602,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 1.0,
+   "cite_recall": 1.0,
+   "cite_f1": 1.0
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_probation_02",
+  "topic": "probation",
+  "question": "Can an employer extend the probation of a non-clerical worker beyond the initial period, and by how much?",
+  "reference": "Yes. For a non-clerical worker the initial probation period is 3 months, and it may be extended by an additional 3 months where the employer cannot assess the worker's performance within the first period (Section 4). If the worker continues to be employed after the probationary period without confirmation, he is deemed to be a permanent worker.",
+  "gold_sections": [
+   4
+  ],
+  "expected_behavior": null,
+  "prediction": "No, an employer cannot extend the probationary period for a non-clerical worker beyond 6 (six) months. According to Section 4(2) of the Bangladesh Labour Act 2006 (amended up to 2018), \"The probationary period shall not exceed six months.\"",
+  "refusal": false,
+  "bleu": 5.367510246189046,
+  "rougeL": 26.26262626262626,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 1.0,
+   "cite_recall": 1.0,
+   "cite_f1": 1.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_safety_01",
+  "topic": "safety",
+  "question": "At what number of workers does a factory become legally required to provide certain welfare facilities such as a canteen and a childcare room?",
+  "reference": "Under the Act, a canteen must be provided where 100 or more workers are ordinarily employed (Section 92). A room for children (childcare/creche) must be provided where 40 or more women workers are employed (Section 94). These are welfare requirements under Chapter VIII.",
+  "gold_sections": [
+   92,
+   94
+  ],
+  "expected_behavior": null,
+  "prediction": "A factory with 50 or more workers must provide these facilities (Section 108(1) of the Bangladesh Labour Act, 2006).",
+  "refusal": false,
+  "bleu": 3.2576057195366213,
+  "rougeL": 21.875,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_safety_02",
+  "topic": "safety",
+  "question": "A worker was injured because a dangerous machine part was not fenced. What does the Act require regarding fencing of machinery?",
+  "reference": "Section 63 requires that the specified dangerous machinery, while in motion or in use, be securely fenced by safeguards of substantial construction, and that the fencing be kept in position while the part is in motion or in use. This covers moving parts of prime movers and fly wheels, water wheels and turbines, projecting stock-bars, and transmission machinery unless it is so positioned or constructed as to be equally safe.",
+  "gold_sections": [
+   63
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 108(1) of the Bangladesh Labour Act 2006 (amended up to 2018), \"No person shall operate any machinery or plant without first ensuring that it is properly fenced and guarded.\" This means that employers are responsible for ensuring that all machinery and plants are safely fenced and guarded to prevent accidents.",
+  "refusal": false,
+  "bleu": 1.5911426768573627,
+  "rougeL": 16.0,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_safety_03",
+  "topic": "safety",
+  "question": "Is the employer required to insure workers against workplace injury, and from what number of workers?",
+  "reference": "The Act provides for compulsory group insurance in establishments where a minimum number of workers (100 or more permanent workers) are employed, to cover death and injury (Section 99). This is in addition to the employer's liability to pay compensation for employment injury under Chapter XII.",
+  "gold_sections": [
+   99
+  ],
+  "expected_behavior": null,
+  "prediction": "Yes, an employer must provide insurance for every worker employed in his establishment. The insurance should be provided by a registered insurance company approved by the Government. (Section 34)",
+  "refusal": false,
+  "bleu": 1.9878940502670126,
+  "rougeL": 15.789473684210526,
+  "grounding": 0.04,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_compensation_01",
+  "topic": "compensation",
+  "question": "A worker died in a workplace accident arising out of and in the course of employment. Is the employer liable to pay compensation, and under what provision?",
+  "reference": "Yes. An employer is liable to pay compensation where personal injury or death is caused to a worker by an accident arising out of and in the course of his employment (Section 150). The amount for death is fixed by the Act's schedule, and the claim is dealt with under Chapter XII.",
+  "gold_sections": [
+   150
+  ],
+  "expected_behavior": null,
+  "prediction": "Yes, the employer is liable to pay compensation as per Section 3(1) of the Bangladesh Labour Act 2006 (amended up to 2018), which states that every worker shall be entitled to receive compensation for death arising out of and in the course of employment. The amount of compensation will depend on the specific circumstances of the accident, including the duration of service and any prior medical history.",
+  "refusal": false,
+  "bleu": 18.990292420503398,
+  "rougeL": 36.36363636363637,
+  "grounding": 0.0625,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 2.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_compensation_02",
+  "topic": "compensation",
+  "question": "How many years of continuous service qualify a worker for gratuity, and how is it calculated?",
+  "reference": "Gratuity is payable to a worker who has completed at least one year of continuous service, calculated as wages of 30 days for every completed year of service (or any part in excess of six months), based on the wages last drawn (Section 2(10) definition of gratuity, applied on termination/retirement). For workers with longer service the rate may be higher under applicable rules.",
+  "gold_sections": [
+   2
+  ],
+  "expected_behavior": null,
+  "prediction": "A worker must have completed at least 5 (five) years of continuous service to be eligible for gratuity. The amount of gratuity is calculated as follows: (a) For every year of service, the worker shall receive an amount equal to 1/3rd of his last monthly wages; (b) If a worker dies during service, his widow or widower shall receive half of the total gratuity; (c) If a worker dies due to accident caused by the employer's negligence, he shall be entitled to receive full gratuity",
+  "refusal": false,
+  "bleu": 4.924913732515212,
+  "rougeL": 30.263157894736842,
+  "grounding": 0.012048192771084338,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_childlabour_01",
+  "topic": "child_labour",
+  "question": "A contractor wants to employ a 13-year-old in our factory. Is that permitted?",
+  "reference": "No. No child (a person who has not completed 14 years of age) may be employed or permitted to work in any occupation or establishment (Section 34). An adolescent (14 to under 18) may work only subject to restrictions and with a certificate of fitness (Sections 34-44).",
+  "gold_sections": [
+   34
+  ],
+  "expected_behavior": null,
+  "prediction": "No, according to Section 108 of the Bangladesh Labour Act 2006 (amended up to 2018), no person shall be employed in any establishment if he is less than 14 years old. The contractor should not proceed with this plan as it violates the law.",
+  "refusal": false,
+  "bleu": 2.7587416131335085,
+  "rougeL": 21.73913043478261,
+  "grounding": 0.075,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_trade_union_01",
+  "topic": "trade_union",
+  "question": "A group of workers wants to form a trade union. What is the minimum membership requirement for registration?",
+  "reference": "A trade union of workers in an establishment may apply for registration; it generally must have a minimum membership of a prescribed proportion of the total workers (20% of the total number of workers) to be registered, and no union with fewer than the required members can be registered (Section 179). Registration is granted by the Registrar of Trade Unions.",
+  "gold_sections": [
+   179
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 4(1) of the Bangladesh Labour Act 2006 (amended up to 2018), at least 10 members must be registered with the Director General before forming a trade union.",
+  "refusal": false,
+  "bleu": 1.9389980941576674,
+  "rougeL": 19.78021978021978,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_trade_union_02",
+  "topic": "trade_union",
+  "question": "Where there are several registered unions in one establishment, how is the collective bargaining agent determined?",
+  "reference": "Where there is more than one registered trade union in an establishment, the collective bargaining agent (CBA) is determined by the Registrar through a secret ballot, and the union receiving the highest number of votes (not less than one-third of the total workers) is certified as the CBA (Section 202).",
+  "gold_sections": [
+   202
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 26(1) of the Bangladesh Labour Act 2006 (amended up to 2018), if there are multiple trade unions registered in an establishment, the collective bargaining agent shall be determined by a majority vote among the members of all such trade unions.",
+  "refusal": false,
+  "bleu": 15.656942049394289,
+  "rougeL": 31.57894736842105,
+  "grounding": 0.05,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_weekly_holiday_01",
+  "topic": "leave",
+  "question": "Is a weekly holiday mandatory for factory workers, and is it paid?",
+  "reference": "Yes. An adult worker in a factory is entitled to one day of weekly holiday, and it is a paid holiday; wages cannot be deducted for the weekly holiday (Section 103). If a worker is required to work on the weekly holiday, a substitute holiday must be provided.",
+  "gold_sections": [
+   103
+  ],
+  "expected_behavior": null,
+  "prediction": "Yes, according to Section 108 of the Bangladesh Labour Act 2006 (amended up to 2018), every worker shall be entitled to at least one day's rest in every week. This means that factory workers are required to have a weekly holiday, which is also payable as part of their wages.",
+  "refusal": false,
+  "bleu": 4.743571775734883,
+  "rougeL": 22.222222222222225,
+  "grounding": 0.0425531914893617,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 5.0,
+   "completeness": 5.0,
+   "usefulness": 5.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_working_conditions_01",
+  "topic": "safety",
+  "question": "How many hours can an adult worker work continuously before being entitled to a rest interval?",
+  "reference": "An adult worker cannot be required to work for more than 6 hours in a day without a rest or meal interval of at least one hour, or more than 5 hours without an interval of at least half an hour (Section 101). Total spread-over of work in a day, including intervals, should not exceed the limit set by the Act.",
+  "gold_sections": [
+   101
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 114(1) of the Bangladesh Labour Act 2006 (amended up to 2018), an adult worker shall not be allowed to work more than 9 (nine) hours in any day. However, this does not apply if the worker is working overtime. The worker should receive a rest interval after every 5 (five) hours of work.",
+  "refusal": false,
+  "bleu": 3.2060702025687204,
+  "rougeL": 30.252100840336134,
+  "grounding": 0.018867924528301886,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 2.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_termination_03",
+  "topic": "termination",
+  "question": "Is a worker who resigns entitled to any benefit, and what notice must the worker give?",
+  "reference": "A permanent worker who wishes to resign must give 60 days' written notice to the employer (Section 27). On resignation after at least 5 years of continuous service, the worker is entitled to compensation/gratuity as provided (Section 27 read with Section 26), typically 14 days' wages for each completed year of service for resignation, depending on length of service.",
+  "gold_sections": [
+   27,
+   26
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 4(2) of the Bangladesh Labour Act 2006 (amended up to 2018), a worker who resigns shall be entitled to receive wages for the period of notice. The worker is required to give at least one month's written notice to their employer before quitting their job.",
+  "refusal": false,
+  "bleu": 4.649709268729975,
+  "rougeL": 20.0,
+  "grounding": 0.043478260869565216,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 3.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_leave_04",
+  "topic": "leave",
+  "question": "Can unused annual leave be carried forward or encashed?",
+  "reference": "Un-availed annual leave with wages may be accumulated up to a limit (for adults, up to 40 days), and a worker who is refused leave or whose service ends is entitled to be paid wages in lieu of the un-availed annual leave (Section 117). Accumulation beyond the statutory ceiling lapses.",
+  "gold_sections": [
+   117
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 25(2) of the Bangladesh Labour Act 2006 (amended up to 2018), an employee's accrued but unused annual leave can be carried forward for a period not exceeding 3 months from the date of accrual. However, it cannot be encashed.",
+  "refusal": false,
+  "bleu": 3.170982927284353,
+  "rougeL": 12.499999999999996,
+  "grounding": 0.05,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_wages_04",
+  "topic": "wages",
+  "question": "What is the minimum wage mechanism under the Act — who fixes minimum wages?",
+  "reference": "Minimum rates of wages for workers are recommended by the Minimum Wages Board constituted by the Government, and the Government declares minimum wages by notification in the official Gazette for different industries or classes of workers (Sections 138-140). Paying below the declared minimum wage is an offence.",
+  "gold_sections": [
+   138,
+   139,
+   140
+  ],
+  "expected_behavior": null,
+  "prediction": "The minimum wage is determined by the Government of Bangladesh through notification in the official Gazette. The rate of minimum wages may be adjusted periodically based on recommendations from the Labour Department or other relevant authorities. (Section 2(1) and 2(3) of the Bangladesh Labour Act, 2006)",
+  "refusal": false,
+  "bleu": 12.285946074705661,
+  "rougeL": 29.166666666666668,
+  "grounding": 0.022727272727272728,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 2.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_overtime_04",
+  "topic": "overtime",
+  "question": "Must an employer keep a record of overtime worked, and where?",
+  "reference": "Section 108(3) provides that, for ensuring compliance with the overtime provisions, the Government may by rules prescribe the register to be maintained by the employer. The Act itself therefore does not set out the register's form; the specific record-keeping obligation is fixed by the rules made under this section.",
+  "gold_sections": [
+   108
+  ],
+  "expected_behavior": null,
+  "prediction": "Yes, an employer must maintain a register of overtime work for at least 3 (three) years from the date of entry in such register. The register should be kept separately from other records and shall contain details of the following: (1) Name and address of the establishment; (2) Date, time, and duration of overtime worked; (3) Number of hours worked; (4) Name and designation of worker who worked overtime; (5) Reason for working overtime; (6) Signature of the worker; (7) Signature of the person in charge of the establishment. Bangladesh Labour Act 2006",
+  "refusal": false,
+  "bleu": 1.9825709676929142,
+  "rougeL": 13.793103448275861,
+  "grounding": 0.033707865168539325,
+  "citation": {
+   "n_cited": 0,
+   "cited_valid_frac": null,
+   "has_citation": false,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_misconduct_04",
+  "topic": "misconduct",
+  "question": "A worker was absent without leave for 12 consecutive days. Can this be treated as misconduct or abandonment?",
+  "reference": "Habitual absence without leave, or absence without leave for more than 10 days, is listed as misconduct (Section 23). The employer must still follow the inquiry procedure — issue a notice/charge, give the worker an opportunity to explain, and hold an inquiry — before imposing any punishment (Section 24).",
+  "gold_sections": [
+   23,
+   24
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 3(1) of the Bangladesh Labour Act 2006 (amended up to 2018), absence from work without permission is considered an offence and can lead to disciplinary action, including termination of employment. However, it's essential to investigate the circumstances surrounding the employee's absence before making any decisions. The employer should consider providing evidence or proof of the employee's reasons for absence and ensure that they have followed the proper procedures for reporting absences.",
+  "refusal": false,
+  "bleu": 2.6781658197634397,
+  "rougeL": 12.698412698412698,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 2.0,
+   "completeness": 2.0,
+   "usefulness": 2.0,
+   "harm": 0.0
+  }
+ },
+ {
+  "id": "scn_maternity_04",
+  "topic": "maternity",
+  "question": "Can we assign heavy or arduous work to a pregnant worker in the weeks before her delivery?",
+  "reference": "No. An employer must not knowingly employ a woman in any establishment during the 8 weeks immediately following the day of her delivery, and must not require a pregnant woman to do work that is arduous, involves long hours of standing, or is likely to interfere with her pregnancy in the period preceding delivery (Section 45).",
+  "gold_sections": [
+   45
+  ],
+  "expected_behavior": null,
+  "prediction": "No, according to Section 108 of the Bangladesh Labour Act 2006 (amended up to 2018), no woman shall be employed in any establishment during pregnancy unless she has obtained a medical certificate from an authorized medical practitioner. This provision aims to protect pregnant workers' health and well-being.",
+  "refusal": false,
+  "bleu": 5.388221404598917,
+  "rougeL": 15.384615384615383,
+  "grounding": 0.022727272727272728,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_safety_04",
+  "topic": "safety",
+  "question": "Is the employer required to provide first-aid facilities, and at what worker count must a dispensary/medical facility be provided?",
+  "reference": "First-aid boxes or cupboards must be provided and maintained in every establishment, at a rate of at least one for every 150 workers (Section 89). Where 300 or more workers are employed, a dispensary/medical room with prescribed medical staff and equipment must be maintained (Section 89).",
+  "gold_sections": [
+   89
+  ],
+  "expected_behavior": null,
+  "prediction": "According to Section 34 of the Bangladesh Labour Act 2006 (amended up to 2018), an establishment with more than 20 workers shall have a medical officer or a registered medical practitioner on its staff. Additionally, it is mandatory for every establishment to provide first-aid facilities and a dispensary/medical facility if there are more than 50 workers.",
+  "refusal": false,
+  "bleu": 6.3631841253627295,
+  "rougeL": 15.09433962264151,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_wages_05",
+  "topic": "wages",
+  "question": "Are workers entitled to any annual bonus or profit participation under the Act?",
+  "reference": "In establishments to which Chapter XV applies (companies with a certain paid-up capital or fixed assets), workers are entitled to participate in the company's profits through a Workers' Participation Fund and Welfare Fund, with a prescribed percentage (5%) of net profit allocated (Sections 232-234). This is separate from festival bonus, which is governed by rules and practice.",
+  "gold_sections": [
+   232,
+   234
+  ],
+  "expected_behavior": null,
+  "prediction": "Yes, as per Section 33(2) of the Bangladesh Labour Act 2006 (amended up to 2018), a worker shall be entitled to receive an annual bonus or profit-sharing. The amount of this bonus is determined by the employer and must not exceed 10% of their total wages for that year.",
+  "refusal": false,
+  "bleu": 2.348813383316533,
+  "rougeL": 21.62162162162162,
+  "grounding": 0.02127659574468085,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 1.0
+  }
+ },
+ {
+  "id": "scn_termination_04",
+  "topic": "termination",
+  "question": "What is the difference between 'termination', 'dismissal', and 'discharge' of a worker under the Act?",
+  "reference": "Termination (Section 26) is ending employment by notice or pay in lieu without alleging misconduct. Dismissal (Section 23) is removal for proven misconduct after inquiry, and may be without notice. Discharge (Section 22) is ending employment on grounds of physical or mental incapacity or continued ill-health, certified by a registered medical practitioner. Each carries different notice and compensation consequences.",
+  "gold_sections": [
+   22,
+   23,
+   26
+  ],
+  "expected_behavior": null,
+  "prediction": "Under Section 4(1) of the Bangladesh Labour Act 2006 (amended to 2018), \"termination\" refers to the termination of employment by an employer for any reason other than misconduct, while \"dismissal\" specifically means termination due to misconduct. On the other hand, \"discharge\" is a broader term that encompasses both voluntary and involuntary termination of employment, including cases where an employee resigns or retires.",
+  "refusal": false,
+  "bleu": 1.9296831216677213,
+  "rougeL": 16.260162601626018,
+  "grounding": 0.0,
+  "citation": {
+   "n_cited": 1,
+   "cited_valid_frac": 1.0,
+   "has_citation": true,
+   "cite_precision": 0.0,
+   "cite_recall": 0.0,
+   "cite_f1": 0.0
+  },
+  "judge": {
+   "faithfulness": 1.0,
+   "completeness": 1.0,
+   "usefulness": 1.0,
+   "harm": 0.0
+  }
+ }
+]
