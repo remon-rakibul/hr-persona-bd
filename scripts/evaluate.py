@@ -131,6 +131,25 @@ def run_provenance(systems):
     return prov
 
 
+def _record_judge_model(judge_model):
+    """Add the judge identity to the provenance record, updating in place.
+
+    Judging runs in a separate phase from generation, often days later, so it
+    cannot write the provenance file wholesale without destroying what the
+    generation phase recorded there.
+    """
+    path = RESULTS / "run_provenance.json"
+    try:
+        prov = json.load(open(path, encoding="utf-8")) if path.exists() else {}
+    except Exception:
+        prov = {}
+    if prov.get("judge_model") == judge_model:
+        return
+    prov["judge_model"] = judge_model
+    RESULTS.mkdir(parents=True, exist_ok=True)
+    json.dump(prov, open(path, "w"), indent=1)
+
+
 def estimate(systems, sets, limit=None):
     """Print projected wall-clock so a long run is a deliberate choice."""
     total = 0.0
@@ -329,6 +348,12 @@ def phase_score(systems, sets, judge_model=None, act_norm=None):
         return
     print(f"judging {total} items with {judge_model} "
           f"(item-major; safe to interrupt)", flush=True)
+
+    # The judge identity belongs in the provenance record, not only in the log.
+    # It is a reported result - the paper names the judge and argues it is from
+    # a different model family than any system under test - so it has to be
+    # recoverable from an artifact rather than from a console scrollback.
+    _record_judge_model(judge_model)
 
     t0 = time.time()
     dirty = set()

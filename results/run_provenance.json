@@ -24,5 +24,6 @@
    "digest": "5682aa1fe109d4fc9f1442a75ee5d5ba0ede6400e032e7bac4919072100f36b7"
   }
  },
- "ollama_version": "ollama version is 0.20.2"
+ "ollama_version": "ollama version is 0.20.2",
+ "judge_model": "qwen3.5:4b"
 }

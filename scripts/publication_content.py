@@ -940,9 +940,19 @@ overlap rather than legal correctness, we report citation validity and citation
 F1 against gold sections, lexical grounding in the statute, and LLM-judged
 faithfulness, completeness, usefulness and harmfulness, together with an error
 analysis of the failure modes. We compare the fine-tuned model against the base
-model, retrieval-augmented generation over the Act, and their combination. The
-system is positioned as statute-grounded informational support for HR practice,
-not legal advice.
+model, retrieval-augmented generation[[ref_rag]] over the Act, and their
+combination. On the practitioner scenarios, fine-tuning alone does not
+significantly improve citation accuracy or any judged quality dimension over the
+base model, while retrieval improves all of them; the advantage of fine-tuning
+that is visible on the statute-derived hold-out set disappears on scenarios,
+because hold-out questions tend to name the provision they concern and so give
+the citation away. Retrieval carries a cost the same benchmark makes visible:
+every configuration that cites better also declines fewer out-of-scope
+questions. These results align with the broader finding that retrieval
+outperforms fine-tuning for knowledge injection, and extend it to a
+citation-level criterion and to the scope discipline that a deployed statutory
+assistant requires. The system is positioned as statute-grounded informational
+support for HR practice, not legal advice.
 """
 
 INTRO = """
@@ -971,9 +981,11 @@ pass rates reported rather than asserted. (2) A leakage-free evaluation benchmar
 for Bangladesh labour law consisting of a topic-stratified hold-out set,
 hand-authored HR scenarios with gold section labels, and out-of-scope probes -
 together with a metric suite appropriate to legal QA rather than to translation.
-(3) A comparison of domain fine-tuning against retrieval-augmented generation over
-the same statute and against their combination, with an error analysis that
-characterises how each configuration fails.
+(3) A comparison of domain fine-tuning against retrieval-augmented
+generation[[ref_rag]] over the same statute and against their combination,
+scored on whether the answer cites the correct provision rather than on factual
+agreement alone, with an error analysis that characterises how each
+configuration fails.
 
 We are deliberately careful about what is claimed. The system provides
 statute-grounded informational support; it is not legal advice, and the
@@ -993,6 +1005,37 @@ DISC-LawLLM[[ref_disclaw]] for Chinese law, and ALKAFI-LLaMA3[[ref_alkafi]] for
 Palestinian law. ALKAFI-LLaMA3 is the closest analogue to this work: a small
 model fine-tuned on a single jurisdiction's material for practical use under
 limited compute.
+
+\\paragraph{Retrieval versus fine-tuning.} Whether domain knowledge is better
+injected by training on it or by retrieving it at inference time is an open
+question with a substantial literature, and our central comparison sits inside
+that debate rather than opening it. Retrieval-augmented
+generation[[ref_rag]] conditions the generator on passages fetched at query
+time. Ovadia et al.[[ref_ragvsft]] compare unsupervised fine-tuning against
+retrieval for knowledge injection on MMLU-style factual tasks and find retrieval
+consistently ahead; Soudani et al.[[ref_ragft_popularity]] report the same
+ordering across twelve models and show the margin widens as the target knowledge
+gets less popular; Balaguer et al.[[ref_ragft_agri]] run the comparison as an
+industrial case study in agriculture and characterise the trade-offs of each
+pipeline. The consistent finding across these is that retrieval wins on
+knowledge, while fine-tuning contributes format, style and task behaviour.
+
+Our results agree with that consensus, so the contribution is not the direction
+of the effect but what it is measured on. Three differences matter. First, the
+prior comparisons score whether the answer is factually right; a statutory
+assistant is used differently, because the user's recourse is to read the
+provision themselves, so we score whether the answer cites the \\emph{correct
+section} of the governing statute -- a check the reader can perform and a
+stricter target than factual agreement. Second, our test items are not drawn
+from the same distribution as the training data: we report the same systems on
+statute-derived hold-out questions and on hand-authored practitioner scenarios,
+and show that the two disagree sharply about fine-tuning, which is a property of
+the evaluation design that a single in-distribution test set cannot expose.
+Third, we measure what the comparison costs in scope discipline -- retrieval
+markedly reduces the model's willingness to decline out-of-scope questions --
+which the knowledge-injection literature does not report because its benchmarks
+contain no out-of-scope items. To our knowledge these three have not been
+reported together for any statute.
 
 Work on Bangladesh is comparatively sparse. BanglaBERT[[ref_banglabert]]
 established general Bangla language understanding benchmarks, and recent studies
@@ -1083,11 +1126,14 @@ EVAL_SETUP = """
 \\paragraph{Systems compared.} We compare five configurations, all served locally
 through the same interface so that differences reflect the model rather than the
 harness: the base Llama 3.2 3B Instruct model; the fine-tuned model; a
-retrieval-augmented baseline in which the base model answers from the top-4
-passages retrieved from the Act; the fine-tuned model with the same retrieval;
-and Qwen2.5 7B as a larger general-purpose reference point. Retrieval uses
-cosine similarity over 800-character chunks of the Act embedded with
-nomic-embed-text.
+retrieval-augmented[[ref_rag]] baseline in which the base model answers from the
+top-4 passages retrieved from the Act; the fine-tuned model with the same
+retrieval; and Qwen2.5 7B as a larger general-purpose reference point. Retrieval
+uses cosine similarity over 800-character chunks of the Act embedded with
+nomic-embed-text[[ref_nomic]]. The two retrieval configurations share one index,
+so the base and fine-tuned models see identical passages for a given question
+and any difference between them is attributable to the model rather than to
+retrieval.
 
 Comparison against commercial APIs (ChatGPT, Claude, Gemini) was not performed:
 no API access was available for this study. We report this as a limitation rather
@@ -1138,12 +1184,20 @@ stands in place of an answer rather than following one.
 {refusal_validation}
 
 \\paragraph{LLM-as-judge.} Faithfulness, completeness, usefulness to an HR
-professional, and harmfulness are scored 1--5 (harm 0--1) by a local judge model
-from a different family than any system under test, at temperature 0. This is an
-automatic proxy and is labelled as such throughout; the fraction of judgements
-that parsed successfully is reported alongside the scores so that a silently
-failing judge cannot be mistaken for a low score. It is not a substitute for
-expert human evaluation, which is set out below as the primary remaining gap.
+professional, and harmfulness are scored 1--5 (harm 0--1) by {JUDGE_MODEL}, run
+locally at temperature 0, following the LLM-as-judge protocol of Zheng et
+al.[[ref_llmjudge]]. Two of the biases they
+document are controlled by construction: the judge is a different model family
+from every system it scores, which removes the self-enhancement case, and it
+grades one answer at a time against the reference rather than ranking answers
+side by side, so position bias does not arise. Verbosity bias is not controlled
+and remains a caveat on the judged columns. This is an automatic proxy and is
+labelled as such throughout; the fraction of judgements that parsed successfully
+is reported alongside the scores so that a silently failing judge cannot be
+mistaken for a low score. Zheng et al. validate such judges by agreement with
+human preferences, and we have not run that validation here -- expert human
+evaluation is set out below as the primary remaining gap, and until it is
+collected the judged columns should be read as an unvalidated proxy.
 
 \\paragraph{Statistical comparison.} Because every system answers the same
 questions, systems are compared per item rather than by comparing two means.
@@ -1180,6 +1234,21 @@ habit of citing a section at all, and its register - and it does so without
 requiring an index at serving time. Those are real benefits for deployment, but
 they are not the same as being right about which section applies, and reporting
 them as though they were is how a system evaluation overstates its case.
+
+This reproduces, on a statute and with a citation-level criterion, what the
+knowledge-injection literature reports on factual
+benchmarks[[ref_ragvsft],[ref_ragft_popularity],[ref_ragft_agri]]: retrieval is
+the effective route for getting domain knowledge into a model's answers, and
+fine-tuning contributes behaviour rather than facts. The agreement is worth
+stating plainly, because it means the result here should not be read as
+particular to Bangladeshi labour law. Two things do not carry over from that
+literature and are specific to this setting. Retrieval's advantage is larger
+when scored on citing the correct section than on the reference-overlap metrics,
+which is the criterion a statutory assistant is actually held to. And the
+in-distribution hold-out set conceals the effect entirely -- fine-tuning's
+citation F1 advantage is visible there and gone on practitioner scenarios -- so
+a study of this kind that reports only a hold-out set can arrive at the opposite
+conclusion from the same trained model.
 
 The error profiles show the two failure modes are also different in kind, not
 merely in size. On the scenarios, the base and fine-tuned models fail almost
@@ -1296,6 +1365,12 @@ REFERENCES = [
     ("ref_bengali_reliability", "S. Aftahee, A. F. M. Farhad, A. Mallik, R. Dhar, J. Karim, N. B. Noor, and I. A. Solaiman. Assessing the Reliability of Large Language Models in the Bengali Legal Context: A Comparative Evaluation Using LLM-as-Judge and Legal Experts. arXiv:2511.05627, 2025."),
     ("ref_bleu", "K. Papineni, S. Roukos, T. Ward, and W.-J. Zhu. BLEU: a Method for Automatic Evaluation of Machine Translation. In Proc. ACL, 2002, pp. 311--318."),
     ("ref_rouge", "C.-Y. Lin. ROUGE: A Package for Automatic Evaluation of Summaries. In Text Summarization Branches Out, ACL Workshop, 2004, pp. 74--81."),
+    ("ref_rag", "P. Lewis, E. Perez, A. Piktus, F. Petroni, V. Karpukhin, N. Goyal, H. K\\\"{u}ttler, M. Lewis, W.-t. Yih, T. Rockt\\\"{a}schel, S. Riedel, and D. Kiela. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. In Advances in Neural Information Processing Systems (NeurIPS), 2020. arXiv:2005.11401."),
+    ("ref_ragvsft", "O. Ovadia, M. Brief, M. Mishaeli, and O. Elisha. Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs. arXiv:2312.05934, 2024."),
+    ("ref_ragft_agri", "A. Balaguer, V. Benara, R. L. de Freitas Cunha, R. de M. Estev\\~{a}o Filho, T. Hendry, D. Holstein, J. Marsman, N. Mecklenburg, S. Malvar, L. O. Nunes, R. Padilha, M. Sharp, B. Silva, S. Sharma, V. Aski, and R. Chandra. RAG vs Fine-tuning: Pipelines, Tradeoffs, and a Case Study on Agriculture. arXiv:2401.08406, 2024."),
+    ("ref_ragft_popularity", "H. Soudani, E. Kanoulas, and F. Hasibi. Fine Tuning vs. Retrieval Augmented Generation for Less Popular Knowledge. In Proc. Annual International ACM SIGIR Conference on Research and Development in Information Retrieval in the Asia Pacific Region (SIGIR-AP), 2024. arXiv:2403.01432."),
+    ("ref_llmjudge", "L. Zheng, W.-L. Chiang, Y. Sheng, S. Zhuang, Z. Wu, Y. Zhuang, Z. Lin, Z. Li, D. Li, E. P. Xing, H. Zhang, J. E. Gonzalez, and I. Stoica. Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. In NeurIPS Datasets and Benchmarks Track, 2023. arXiv:2306.05685."),
+    ("ref_nomic", "Z. Nussbaum, J. X. Morris, B. Duderstadt, and A. Mulyar. Nomic Embed: Training a Reproducible Long Context Text Embedder. arXiv:2402.01613, 2024."),
 ]
 
 def eval_setup_text():
@@ -1338,7 +1413,12 @@ def strip_latex(text):
     text = re.sub(r"\\paragraph\{([^}]*)\}", r"\1 ", text)
     text = re.sub(r"\\emph\{([^}]*)\}", r"\1", text)
     text = re.sub(r"\\textbf\{([^}]*)\}", r"\1", text)
+    text = re.sub(r"\\texttt\{([^}]*)\}", r"\1", text)
+    text = re.sub(r"\\url\{([^}]*)\}", r"\1", text)
+    text = re.sub(r"``([^']*)''", r'"\1"', text)
     text = text.replace("\\%", "%").replace("\\_", "_").replace("\\&", "&")
+    text = text.replace("\\~{a}", "a").replace('\\"{u}', "u").replace('\\"{a}', "a")
+    text = text.replace("\\`{e}", "e").replace("--", "-")
     return text
 
 
@@ -1349,8 +1429,20 @@ _COUNT_PLACEHOLDERS = {
     "N_TOTAL": lambda: sum(set_size(s) for s in ("heldout", "scenario", "oos")),
     "N_HELDOUT_GOLD": lambda: gold_count("heldout"),
     "N_SCENARIO_GOLD": lambda: gold_count("scenario"),
+    # Named here rather than written into the prose because the paper argues
+    # the judge is from a different model family than any system it scores;
+    # that argument is only checkable if the name comes from the run record.
+    #
+    # Substituted text must be format-neutral. The DOCX path runs strip_latex
+    # *before* paragraphs(), which is where substitution happens, so any LaTeX
+    # emitted here is past the point where it would have been stripped and
+    # reaches the Word file verbatim.
+    "JUDGE_MODEL": lambda: (load_provenance() or {}).get(
+        "judge_model", "a local judge model"),
 }
-_COUNT_RE = re.compile(r"\{(N_[A-Z_]+)\}")
+# Matches any all-caps placeholder, but substitutes only known ones - LaTeX
+# such as \textbf{ABC} would match the pattern and must survive untouched.
+_COUNT_RE = re.compile(r"\{([A-Z][A-Z_0-9]*)\}")
 
 
 def fill_counts(text):
