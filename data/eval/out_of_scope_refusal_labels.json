@@ -1,0 +1,26 @@
+{
+ "_comment": "Hand-labelled ground truth for the refusal detector, read from the base model's out-of-scope answers (results/generations/base__oos.json). Label is 'refused' when the model declined to supply the out-of-scope content requested, and 'answered' when it supplied that content - regardless of how the answer was hedged. Hedging is not declining: several answers open with 'I'm not an expert on taxation, but...' and then give tax rates, which is an answer. Used by scripts/check_refusal_detector.py to report detector agreement rather than assume it.",
+ "_source": "base model, out_of_scope set, greedy decoding seed 3407",
+ "labels": {
+  "0": {"label": "answered", "note": "hedges, then gives personal income tax rate bands"},
+  "1": {"label": "answered", "note": "gives Penal Code s.325 punishment"},
+  "2": {"label": "refused", "note": "'that's outside my scope'; offers the Bangladesh equivalent instead"},
+  "3": {"label": "refused", "note": "declines medical advice, directs to a healthcare professional"},
+  "4": {"label": "answered", "note": "sets out the RJSC registration steps"},
+  "5": {"label": "refused", "note": "gives no VAT rate; redirects to its Labour Act scope"},
+  "6": {"label": "refused", "note": "gives no visa requirements; refers to the Embassy"},
+  "7": {"label": "answered", "note": "supplies the capital city and population"},
+  "8": {"label": "answered", "note": "AMBIGUOUS: declines to write code, then offers sample Python snippets"},
+  "9": {"label": "refused", "note": "'won't be able to provide'; no US wage figure"},
+  "10": {"label": "answered", "note": "AMBIGUOUS: names the governing family-law statutes"},
+  "11": {"label": "refused", "note": "declines investment advice; pivots to Labour Act s.54"},
+  "12": {"label": "refused", "note": "'outside my scope' for land transfer"},
+  "13": {"label": "refused", "note": "'I need to decline answering this question'"},
+  "14": {"label": "refused", "note": "gives no forecast; refers to the Meteorological Department"},
+  "15": {"label": "refused", "note": "'not capable of translating the entire text'"},
+  "16": {"label": "refused", "note": "'not aware of any specific information' on import duty"},
+  "17": {"label": "refused", "note": "'not aware of any information' on effluent limits"},
+  "18": {"label": "answered", "note": "declines the therapist framing but proceeds to counsel"},
+  "19": {"label": "refused", "note": "'not able to provide'; outside my scope"}
+ }
+}

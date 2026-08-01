@@ -25,6 +25,13 @@ accelerate
 # JSON parsing
 json5
 
+# Evaluation: automatic metrics, statistics, figures
+sacrebleu
+rouge-score
+numpy
+scipy
+matplotlib
+
 # Utilities
 tqdm
 pyyaml
