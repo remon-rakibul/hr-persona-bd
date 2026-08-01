@@ -106,10 +106,18 @@ transformers_cache/
 
 # Training Outputs
 wandb/
-runs/
+runs/**
 logs/
 *.log
 *.out
+*.pid
+
+# ...but the paper reads its training numbers out of runs/, so the two small
+# JSON files it needs must survive the rule above. Re-including a file whose
+# parent directory is excluded is impossible in git, hence `!runs/**/` first.
+!runs/**/
+!runs/**/trainer_state.json
+!runs/**/all_results.json
 tensorboard/
 lightning_logs/
 
@@ -121,6 +129,10 @@ lightning_logs/
 inference_results.json
 *_results.json
 *_output.json
+
+# The ablation table in the paper is built from this file, so it is evidence,
+# not a scratch inference dump. Exempt it from *_results.json above.
+!ablation_results.json
 
 # Temporary Files
 tmp/

@@ -1,0 +1,430 @@
+{
+ "systems": [
+  "base",
+  "finetuned",
+  "rag_base",
+  "rag_finetuned"
+ ],
+ "set": "scenario",
+ "seed": 3407,
+ "items": [
+  {
+   "item": 0,
+   "source_id": "scn_maternity_04",
+   "set": "scenario",
+   "mapping": {
+    "A": "base",
+    "B": "rag_base",
+    "C": "rag_finetuned",
+    "D": "finetuned"
+   }
+  },
+  {
+   "item": 1,
+   "source_id": "scn_leave_02",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "rag_finetuned",
+    "C": "base",
+    "D": "finetuned"
+   }
+  },
+  {
+   "item": 2,
+   "source_id": "scn_wages_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "base",
+    "C": "rag_base",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 3,
+   "source_id": "scn_trade_union_02",
+   "set": "scenario",
+   "mapping": {
+    "A": "base",
+    "B": "rag_base",
+    "C": "finetuned",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 4,
+   "source_id": "scn_compensation_02",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "rag_finetuned",
+    "C": "base",
+    "D": "rag_base"
+   }
+  },
+  {
+   "item": 5,
+   "source_id": "scn_wages_02",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "rag_base",
+    "C": "base",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 6,
+   "source_id": "scn_childlabour_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "rag_finetuned",
+    "C": "rag_base",
+    "D": "base"
+   }
+  },
+  {
+   "item": 7,
+   "source_id": "scn_misconduct_04",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "rag_finetuned",
+    "C": "base",
+    "D": "rag_base"
+   }
+  },
+  {
+   "item": 8,
+   "source_id": "scn_overtime_03",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "base",
+    "C": "rag_finetuned",
+    "D": "finetuned"
+   }
+  },
+  {
+   "item": 9,
+   "source_id": "scn_weekly_holiday_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "rag_finetuned",
+    "C": "rag_base",
+    "D": "base"
+   }
+  },
+  {
+   "item": 10,
+   "source_id": "scn_misconduct_02",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "finetuned",
+    "C": "rag_finetuned",
+    "D": "base"
+   }
+  },
+  {
+   "item": 11,
+   "source_id": "scn_compensation_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "rag_finetuned",
+    "C": "base",
+    "D": "finetuned"
+   }
+  },
+  {
+   "item": 12,
+   "source_id": "scn_termination_04",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "rag_base",
+    "C": "base",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 13,
+   "source_id": "scn_safety_03",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "rag_finetuned",
+    "C": "base",
+    "D": "rag_base"
+   }
+  },
+  {
+   "item": 14,
+   "source_id": "scn_leave_03",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_finetuned",
+    "B": "rag_base",
+    "C": "finetuned",
+    "D": "base"
+   }
+  },
+  {
+   "item": 15,
+   "source_id": "scn_leave_04",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "rag_base",
+    "C": "rag_finetuned",
+    "D": "base"
+   }
+  },
+  {
+   "item": 16,
+   "source_id": "scn_maternity_03",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "base",
+    "C": "finetuned",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 17,
+   "source_id": "scn_working_conditions_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "rag_finetuned",
+    "C": "finetuned",
+    "D": "base"
+   }
+  },
+  {
+   "item": 18,
+   "source_id": "scn_trade_union_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "base",
+    "C": "finetuned",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 19,
+   "source_id": "scn_probation_02",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "base",
+    "C": "rag_finetuned",
+    "D": "rag_base"
+   }
+  },
+  {
+   "item": 20,
+   "source_id": "scn_wages_05",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "rag_base",
+    "C": "base",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 21,
+   "source_id": "scn_wages_04",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "base",
+    "C": "finetuned",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 22,
+   "source_id": "scn_wages_03",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_finetuned",
+    "B": "finetuned",
+    "C": "base",
+    "D": "rag_base"
+   }
+  },
+  {
+   "item": 23,
+   "source_id": "scn_overtime_02",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_finetuned",
+    "B": "rag_base",
+    "C": "finetuned",
+    "D": "base"
+   }
+  },
+  {
+   "item": 24,
+   "source_id": "scn_safety_02",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "base",
+    "C": "rag_base",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 25,
+   "source_id": "scn_overtime_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "rag_finetuned",
+    "C": "base",
+    "D": "rag_base"
+   }
+  },
+  {
+   "item": 26,
+   "source_id": "scn_safety_04",
+   "set": "scenario",
+   "mapping": {
+    "A": "base",
+    "B": "rag_finetuned",
+    "C": "finetuned",
+    "D": "rag_base"
+   }
+  },
+  {
+   "item": 27,
+   "source_id": "scn_maternity_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "base",
+    "B": "rag_base",
+    "C": "finetuned",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 28,
+   "source_id": "scn_misconduct_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "base",
+    "C": "finetuned",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 29,
+   "source_id": "scn_termination_03",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "rag_finetuned",
+    "C": "finetuned",
+    "D": "base"
+   }
+  },
+  {
+   "item": 30,
+   "source_id": "scn_overtime_04",
+   "set": "scenario",
+   "mapping": {
+    "A": "base",
+    "B": "finetuned",
+    "C": "rag_base",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 31,
+   "source_id": "scn_probation_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_base",
+    "B": "base",
+    "C": "finetuned",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 32,
+   "source_id": "scn_termination_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_finetuned",
+    "B": "finetuned",
+    "C": "base",
+    "D": "rag_base"
+   }
+  },
+  {
+   "item": 33,
+   "source_id": "scn_misconduct_03",
+   "set": "scenario",
+   "mapping": {
+    "A": "finetuned",
+    "B": "base",
+    "C": "rag_finetuned",
+    "D": "rag_base"
+   }
+  },
+  {
+   "item": 34,
+   "source_id": "scn_safety_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "rag_finetuned",
+    "B": "finetuned",
+    "C": "base",
+    "D": "rag_base"
+   }
+  },
+  {
+   "item": 35,
+   "source_id": "scn_maternity_02",
+   "set": "scenario",
+   "mapping": {
+    "A": "base",
+    "B": "rag_finetuned",
+    "C": "rag_base",
+    "D": "finetuned"
+   }
+  },
+  {
+   "item": 36,
+   "source_id": "scn_termination_02",
+   "set": "scenario",
+   "mapping": {
+    "A": "base",
+    "B": "finetuned",
+    "C": "rag_base",
+    "D": "rag_finetuned"
+   }
+  },
+  {
+   "item": 37,
+   "source_id": "scn_leave_01",
+   "set": "scenario",
+   "mapping": {
+    "A": "base",
+    "B": "finetuned",
+    "C": "rag_base",
+    "D": "rag_finetuned"
+   }
+  }
+ ]
+}

@@ -294,6 +294,175 @@ The validation script (`scripts/validate_and_improve_dataset.py`) performs:
 - 72% high confidence (≥0.8)
 - 0% failures
 
+## Evaluation
+
+The benchmark and every number in the paper are produced by scripts; nothing is
+transcribed by hand. Run the steps in order.
+
+### 1. Build the leakage-free split
+
+```bash
+python scripts/build_test_split.py \
+    --input data/final/bangladesh_labour_act_chatml_clean.json \
+    --heldout data/eval/heldout_test.json \
+    --train-pool data/final/train_pool.json \
+    --n 150 --seed 3407
+```
+
+Carves a topic-stratified hold-out set out of the cleaned dataset *before*
+training and verifies by hash-set intersection that the two are disjoint. Train
+only on `data/final/train_final.json` afterwards.
+
+### 2. Verify the scenario gold standard
+
+```bash
+python scripts/verify_scenarios.py --apply
+```
+
+Checks every hand-authored scenario against the Act: that each gold section
+exists, that the numeric entitlements the reference asserts are traceable to the
+cited section (digits or words, and arithmetic derived from the question), and
+how much of the reference is lexically supported. Writes
+`results/scenario_verification.json`.
+
+### 3. Build the RAG index (once)
+
+```bash
+python scripts/rag_baseline.py --build
+```
+
+### 4. Run the benchmark
+
+```bash
+# Check the projected wall-clock first
+python scripts/evaluate.py --dry-run
+
+# The four 3B systems (~3.5 h on a GTX 1050; resumable)
+python scripts/evaluate.py --phase generate
+
+# Score, including the LLM judge
+python scripts/evaluate.py --phase score
+
+# results/comparison.csv and results/comparison.md
+python scripts/evaluate.py --phase aggregate
+```
+
+Generations are cached per item, so an interrupted run resumes where it stopped.
+Decoding is greedy (`temperature=0`) with a fixed seed, and
+`results/run_provenance.json` records model digests, versions and the exact
+system prompt.
+
+`qwen_general` (Qwen2.5 7B) is excluded by default: at 4.7 GB it does not fit a
+4 GB GPU and offloads to CPU at roughly 2 minutes per item. Request it
+explicitly when you have the VRAM and the time:
+
+```bash
+python scripts/evaluate.py --phase all --systems qwen_general
+```
+
+### 5. Error analysis
+
+```bash
+python scripts/error_analysis.py
+```
+
+Categorises every failure (hallucinated section, wrong section, missing
+citation, weak grounding, unfaithful, incomplete, not useful, harmful,
+over-refusal, failure to refuse) into `results/error_analysis.{json,csv}` and
+writes verbatim examples to `results/error_examples.md`.
+
+### 6. Significance testing
+
+```bash
+python scripts/significance.py --set heldout --reference base
+```
+
+Every system answers the same questions, so systems are compared *per item*.
+Reports the mean paired difference against the reference, a 95% paired-bootstrap
+CI over items (10,000 resamples), a Wilcoxon signed-rank test (the judge scores
+are ordinal, so a t-test's assumptions do not hold), Holm correction across the
+systems compared within each metric, and a rank-biserial effect size.
+
+A difference counts as significant only when the adjusted p < 0.05 **and** the CI
+excludes zero. Note that the CI is unadjusted, so it can exclude zero while the
+adjusted p does not — that case is reported as not significant. Significance is
+not importance: read the mean difference and CI for whether a gap matters.
+
+### 7. Human evaluation (blind)
+
+```bash
+python scripts/build_human_eval.py --n 40 --systems base finetuned rag_finetuned
+```
+
+Produces `human_eval/rate.html`, a self-contained offline rating app in which
+answers appear under neutral labels whose order is randomised per question, plus
+`protocol.md` (rubric, sampling, agreement) and `answer_key.json`.
+**Send raters `rate.html` only** — the answer key deblinds the study.
+
+Once the rater CSVs come back:
+
+```bash
+python scripts/score_human_eval.py human_eval/rater*.csv
+```
+
+Deblinds via the answer key, then reports inter-annotator agreement
+(Krippendorff's alpha — ordinal for the 1–5 scales, nominal for the harm flag)
+**first**, followed by per-system means with bootstrap CIs and paired Wilcoxon
+comparisons. Agreement leads because means from raters who disagree are not
+interpretable; below about 0.67 the ratings do not support conclusions.
+
+### Metrics
+
+| Metric | What it catches |
+|---|---|
+| BLEU, ROUGE-L | Surface overlap with the reference (reported for comparability) |
+| Citation validity | Cited sections that do not exist in the Act — fabricated authority |
+| Citation F1 | Agreement with gold sections (scenario set, where gold labels are complete) |
+| Grounding | Fraction of answer 5-grams occurring verbatim in the Act |
+| Faithfulness / completeness / usefulness / harm | LLM judge, 1–5 (harm 0–1) |
+| Refusal rate | In-scope over-refusal and out-of-scope failure to decline |
+
+The judge runs with thinking disabled: reasoning models spend the whole token
+budget on thinking tokens and return empty content, which would silently produce
+an unscored judge column. `judge_ok` in `comparison.csv` reports the fraction of
+judgements that parsed.
+
+Two metric definitions are worth knowing, because the obvious implementation of
+each is wrong:
+
+- **Valid sections** are parsed from the Act's section *headings*
+  (`117. Annual leave with wages`) as well as its cross-references
+  (`under section 117`). Matching only cross-references finds 96 of 354
+  sections, which makes most correct citations look fabricated.
+- **Refusal** means declining to answer, not appending a disclaimer. An answer
+  that addresses an out-of-scope question in full and then says "consult a
+  professional" has not refused it — counting it as a refusal overstates scope
+  discipline exactly where the metric matters.
+
+Because refusal is the safety-relevant metric and is computed heuristically, it
+is validated against hand labels:
+
+```bash
+python scripts/check_refusal_detector.py
+```
+
+Reports precision/recall against `data/eval/out_of_scope_refusal_labels.json`
+(20 answers labelled by hand) and lists every disagreement. Re-run it after
+changing `eval_metrics.is_refusal`.
+
+## Regenerating the paper
+
+```bash
+python scripts/make_figures.py              # all 8 figures
+python scripts/generate_publication_latex.py  # Overleaf ZIP + main.tex
+python scripts/generate_publication_docx.py   # DOCX
+```
+
+Prose and tables live once, in `scripts/publication_content.py`; both generators
+import it, and every results table is read from the artifacts above at build
+time. A table renders as an explicit "not yet measured" note rather than a
+plausible number when its artifact is absent.
+
 ## Model Comparison
 
 | Model | Parameters | VRAM (4-bit) | GGUF Size | Best For |
