@@ -1,0 +1,16 @@
+{
+ "name": "data_25pct",
+ "n_train": 741,
+ "lora_r": 16,
+ "epochs": 3,
+ "lr": 0.0002,
+ "train_loss": 1.0119881510307285,
+ "train_runtime_s": 754.0746,
+ "eval_loss": 1.033987283706665,
+ "perplexity": 2.8122567747630316,
+ "global_step": 279,
+ "best_checkpoint_step": "runs/data_25pct/checkpoint-250",
+ "best_eval_loss": 1.0339884757995605,
+ "peak_gpu_gb": 4.945,
+ "wall_clock_s": 804.6
+}

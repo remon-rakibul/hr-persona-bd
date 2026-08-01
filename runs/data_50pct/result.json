@@ -1,0 +1,16 @@
+{
+ "name": "data_50pct",
+ "n_train": 1482,
+ "lora_r": 16,
+ "epochs": 3,
+ "lr": 0.0002,
+ "train_loss": 0.9081115705565312,
+ "train_runtime_s": 1507.5395,
+ "eval_loss": 0.9017215967178345,
+ "perplexity": 2.463841202895935,
+ "global_step": 558,
+ "best_checkpoint_step": "runs/data_50pct/checkpoint-550",
+ "best_eval_loss": 0.9017214179039001,
+ "peak_gpu_gb": 5.588,
+ "wall_clock_s": 1556.7
+}

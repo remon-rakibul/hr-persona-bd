@@ -1,0 +1,16 @@
+{
+ "name": "main_full",
+ "n_train": 2964,
+ "lora_r": 16,
+ "epochs": 3,
+ "lr": 0.0002,
+ "train_loss": 0.887046999650843,
+ "train_runtime_s": 2280.454,
+ "eval_loss": 0.8047305941581726,
+ "perplexity": 2.2360940008786865,
+ "global_step": 850,
+ "best_checkpoint_step": "runs/main_full/checkpoint-700",
+ "best_eval_loss": 0.8047306537628174,
+ "peak_gpu_gb": 3.338,
+ "wall_clock_s": 2374.7
+}

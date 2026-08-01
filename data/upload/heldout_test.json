@@ -95,13 +95,6 @@
     "gold_sections": []
   },
   {
-    "id": 197,
-    "topic": "trade_union",
-    "question": "What constitutes an industrial dispute under the Bangladesh Labour Act 2006?",
-    "reference": "Any industrial dispute or any matter relating thereto, including disputes arising out of wage rates, working hours, conditions of work, and other terms and conditions of employment.",
-    "gold_sections": []
-  },
-  {
     "id": 204,
     "topic": "other",
     "question": "Which sectors are covered under the Labour Act of Bangladesh?",
@@ -321,13 +314,6 @@
     "topic": "other",
     "question": "What is the consequence for workers in export-oriented industrial sectors with a government-established central fund on their financial obligations towards group insurance, as per Section 99(3) of the Bangladesh Labour Act 2006?",
     "reference": "The workers shall be paid from such fund equal to the money of group insurance.",
-    "gold_sections": []
-  },
-  {
-    "id": 966,
-    "topic": "other",
-    "question": "How many hours can an adult worker work in a week under the Bangladesh Labour Act?",
-    "reference": "48 (forty-eight) hours.",
     "gold_sections": []
   },
   {
@@ -775,13 +761,6 @@
     "gold_sections": []
   },
   {
-    "id": 2494,
-    "topic": "dismissal",
-    "question": "What happens to a beneficiary's share in the Funds if they are dismissed from service?",
-    "reference": "The beneficiary's share in the Funds shall be forfeited.",
-    "gold_sections": []
-  },
-  {
     "id": 2497,
     "topic": "leave",
     "question": "What consequences occur to an employee who leaves the organization before receiving his provident fund contribution?",
@@ -977,13 +956,6 @@
     "topic": "other",
     "question": "Are there any specific guidelines or regulations prescribed by law that an employer must follow when making arrangements for Labour Inspectors?",
     "reference": "Yes, the Bangladesh Labour Act 2006 prescribes guidelines in the Second Schedule, which outlines the powers and duties of Labour Inspectors, including the requirements for making entries, inspections, examinations, enquiries, or doing acts necessary for their exercise of powers.",
-    "gold_sections": []
-  },
-  {
-    "id": 2893,
-    "topic": "other",
-    "question": "Scenario Question 2",
-    "reference": "The employer must require the production of the foreign worker's valid work permit, medical certificate, and other relevant documents. The Controller or an authorized person may also examine the employer to ensure compliance with labor laws.",
     "gold_sections": []
   },
   {

@@ -27,8 +27,11 @@ import hashlib
 import json
 import random
 import re
+import shutil
 from collections import defaultdict, Counter
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
 
 # Topic buckets in priority order: each item is assigned to the FIRST bucket
 # whose keywords match its question, so counts are disjoint. Order puts more
@@ -189,6 +192,32 @@ def main():
     Path(args.train_pool).parent.mkdir(parents=True, exist_ok=True)
     json.dump(heldout, open(args.heldout, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
     json.dump(train_pool, open(args.train_pool, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+
+    # data/upload/ is the staging copy that gets uploaded to the Colab runtime.
+    # It is a copy, so it drifts: it still held the pre-repair 150-item hold-out
+    # set after the split was corrected, which is exactly the kind of stale
+    # duplicate that produces a training run evaluated against the wrong file.
+    # Refresh it here rather than leaving it to be remembered.
+    upload = ROOT / "data" / "upload"
+    if upload.is_dir():
+        mine = {Path(p).name: Path(p) for p in (args.heldout, args.train_pool)}
+        refreshed = []
+        for dst in sorted(upload.glob("*.json")):
+            src = mine.get(dst.name)
+            if src:
+                shutil.copyfile(src, dst)
+                refreshed.append(dst.name)
+                continue
+            # Files this script did not produce are left alone - overwriting
+            # them from a guessed source could push staleness the other way -
+            # but a silent mismatch is what caused the problem, so say so.
+            for cand in (ROOT / "data" / "eval" / dst.name,
+                         ROOT / "data" / "final" / dst.name):
+                if cand.exists() and cand.read_bytes() != dst.read_bytes():
+                    print(f"WARNING: {dst} differs from {cand}; regenerate it "
+                          f"with the script that owns it before uploading.")
+        if refreshed:
+            print(f"Refreshed staging copies in {upload}: {', '.join(refreshed)}")
 
     held_topics = Counter(h["topic"] for h in heldout)
     with_cite = sum(1 for h in heldout if h["gold_sections"])

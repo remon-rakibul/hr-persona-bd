@@ -1,0 +1,19 @@
+{
+ "seed": 3407,
+ "python": "3.12.13",
+ "platform": "Linux-6.6.122+-x86_64-with-glibc2.35",
+ "torch": "2.11.0+cu128",
+ "cuda": "12.8",
+ "gpu_name": "Tesla T4",
+ "gpu_total_gb": 14.56,
+ "packages": {
+  "transformers": "4.56.2",
+  "trl": "0.22.2",
+  "peft": "0.19.1",
+  "unsloth": "2026.7.6",
+  "datasets": "4.3.0",
+  "bitsandbytes": "0.50.0",
+  "accelerate": "1.14.0",
+  "torch": "2.11.0+cu128"
+ }
+}

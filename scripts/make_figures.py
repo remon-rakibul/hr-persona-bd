@@ -205,12 +205,19 @@ def _training_curves(trainer_state_path):
     """(steps, train_loss, eval_steps, eval_loss) from a run, else the pilot."""
     tm = P.load_training_metrics(trainer_state_path)
     if tm:
-        st, tl, es, el = [], [], [], []
+        st, tl, es, el, seen = [], [], [], [], set()
         for e in tm["log"]:
             if "loss" in e:
                 st.append(e.get("step", len(st)))
                 tl.append(e["loss"])
             if "eval_loss" in e:
+                # load_best_model_at_end re-evaluates the restored checkpoint
+                # under the final step number. Plotting that point would draw
+                # validation loss dropping at the end of a run that was stopped
+                # precisely because validation loss had started rising.
+                if e.get("step") in seen:
+                    continue
+                seen.add(e.get("step"))
                 es.append(e.get("step", len(es)))
                 el.append(e["eval_loss"])
         if st and es:
@@ -220,19 +227,63 @@ def _training_curves(trainer_state_path):
             steps, [b for _, _, b in P.PILOT_STEPS], True)
 
 
+def _early_stop_marks(trainer_state_path=None):
+    """(best_step, stop_step) if the run was halted by early stopping."""
+    tm = P.load_training_metrics(trainer_state_path)
+    if not tm:
+        return None, None
+    state = tm["state"]
+    ck = str(state.get("best_model_checkpoint") or "")
+    tail = ck.rsplit("-", 1)
+    best = int(tail[1]) if len(tail) == 2 and tail[1].isdigit() else None
+    ran, budget = state.get("global_step"), state.get("max_steps")
+    return best, (ran if ran and budget and ran < budget else None)
+
+
 def figure4_training_loss(out_path: Path, trainer_state_path=None) -> Path:
     st, tl, es, el, pilot = _training_curves(trainer_state_path)
-    fig, ax = plt.subplots(figsize=(5.2, 3.4))
-    ax.plot(st, tl, "-o", color=SERIES[0], linewidth=2, markersize=5,
+    best, stop = (None, None) if pilot else _early_stop_marks(trainer_state_path)
+
+    # Two panels. On a single axis the run's whole story is invisible: training
+    # loss starts near 3.5, so the divergence between the curves - which happens
+    # inside a 0.08 band - is a few pixels tall. The right panel is the same
+    # validation curve on its own scale, which is where the reader can actually
+    # see the minimum and the rise that stopped the run.
+    fig, (ax, ax2) = plt.subplots(1, 2, figsize=(7.4, 3.3),
+                                  gridspec_kw={"width_ratios": [1.15, 1]})
+    ax.plot(st, tl, "-o", color=SERIES[0], linewidth=2, markersize=3,
             label="Training loss")
-    ax.plot(es, el, "--s", color=SERIES[1], linewidth=2, markersize=5,
+    ax.plot(es, el, "--s", color=SERIES[1], linewidth=2, markersize=4,
             label="Validation loss")
     ax.set_xlabel("Step")
     ax.set_ylabel("Loss")
-    ax.set_title("Figure 4: Training and validation loss"
-                 + (" (pilot run)" if pilot else ""), fontsize=10)
-    ax.legend(frameon=False)
+    ax.set_title("Full range", fontsize=9, color=MUTED)
+    ax.legend(frameon=False, fontsize=8)
     _despine(ax)
+
+    ax2.plot(es, el, "--s", color=SERIES[1], linewidth=2, markersize=4)
+    ax2.set_xlabel("Step")
+    ax2.set_ylabel("Validation loss")
+    ax2.set_title("Validation loss, own scale", fontsize=9, color=MUTED)
+    if best is not None:
+        by = el[es.index(best)] if best in es else None
+        if by is not None:
+            ax2.plot([best], [by], "o", color=SERIES[3], markersize=8,
+                     zorder=5)
+            ax2.annotate(f"best: step {best}", (best, by),
+                         textcoords="offset points", xytext=(-6, -14),
+                         ha="right", fontsize=8, color=SERIES[3])
+        if stop is not None:
+            ax2.axvspan(best, stop, color=SERIES[3], alpha=0.10, lw=0)
+            ax2.annotate("patience window\n(stopped here)",
+                         ((best + stop) / 2, max(el)),
+                         textcoords="offset points", xytext=(0, -4),
+                         ha="center", va="top", fontsize=7, color=MUTED)
+    ax2.margins(y=0.28)
+    _despine(ax2)
+
+    fig.suptitle("Figure 4: Training and validation loss"
+                 + (" (pilot run)" if pilot else ""), fontsize=10)
     fig.tight_layout()
     return _save(fig, out_path)
 
@@ -251,7 +302,15 @@ def figure5_eval_loss_perplexity(out_path: Path, trainer_state_path=None) -> Pat
         ax.plot(es, ys, "-o", color=col, linewidth=2, markersize=5)
         ax.set_xlabel("Step")
         ax.set_ylabel(lab)
-        for x, y in zip(es, ys):
+        # Label every point only while there are few of them. The pilot logged
+        # 4 evaluations; the full run logs 17, and labelling all of those
+        # produces overlapping text that hides the curve it annotates.
+        if len(es) <= 6:
+            mark = list(zip(es, ys))
+        else:
+            lo = min(range(len(ys)), key=lambda i: ys[i])
+            mark = [(es[i], ys[i]) for i in sorted({0, lo, len(ys) - 1})]
+        for x, y in mark:
             ax.annotate(f"{y:.2f}", (x, y), textcoords="offset points",
                         xytext=(0, 7), ha="center", fontsize=7, color=MUTED)
         ax.margins(y=0.22)

@@ -1,0 +1,16 @@
+{
+ "name": "no_refusal_data",
+ "n_train": 2919,
+ "lora_r": 16,
+ "epochs": 3,
+ "lr": 0.0002,
+ "train_loss": 0.8870691669688505,
+ "train_runtime_s": 2304.7136,
+ "eval_loss": 0.8558290600776672,
+ "perplexity": 2.3533246195224065,
+ "global_step": 850,
+ "best_checkpoint_step": "runs/no_refusal_data/checkpoint-700",
+ "best_eval_loss": 0.8558290600776672,
+ "peak_gpu_gb": 7.822,
+ "wall_clock_s": 2350.1
+}

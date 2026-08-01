@@ -69,6 +69,8 @@ Splitting happens before training, not after. An earlier version of this pipelin
 \midrule
 Training pool & 3119 & LoRA fine-tuning (includes refusal examples) \\
   of which refusal examples & 50 & Teach declining out-of-scope questions \\
+  of which seen in training & 2964 & After the trainer's validation hold-out \\
+  of which validation split & 155 & Early stopping and model selection \\
 Hold-out test & 146 & Leakage-free, topic-stratified evaluation \\
 HR scenario test & 38 & Hand-authored realistic HR situations \\
 Out-of-scope probes & 20 & Refusal behaviour \\
@@ -117,7 +119,7 @@ Three representative items, one per topic, are shown below.
 \textit{Reference:} For termination of a permanent worker by the employer through notice, a monthly-rated worker must be given 120 days' written notice, or wages in lieu of that notice (Section 26). The worker is also entitled to compensation of 30 days' wages for every completed year of service (or gratuity, whichever is higher). \quad \textit{Gold sections:} 26, 27\\[6pt]
 \end{quote}
 \subsection{Model and training}
-We fine-tune Llama 3.2 3B Instruct\cite{ref_llama3} with LoRA\cite{ref_lora} adapters (rank 16, alpha 16, no dropout) applied to the attention and MLP projection matrices, using 4-bit base weights\cite{ref_qlora} and Unsloth\cite{ref_unsloth} for memory-efficient training with gradient checkpointing at a 2048-token context. Optimisation uses AdamW (8-bit) at a 2e-4 learning rate with linear decay, an effective batch size of 8 (batch size 2, gradient accumulation 4), and a fixed seed of 3407 for data order, initialisation and sampling. Training runs for up to three epochs over the training pool with evaluation every 50 steps on a held-out 5% validation split, early stopping on validation loss with patience 3, and the best checkpoint restored at the end - so the reported model is selected on validation loss rather than by where a fixed step budget happened to stop. Library versions, GPU model and peak memory are recorded automatically into a run manifest alongside the trainer state.
+We fine-tune Llama 3.2 3B Instruct\cite{ref_llama3} with LoRA\cite{ref_lora} adapters (rank 16, alpha 16, no dropout) applied to the attention and MLP projection matrices, using 4-bit base weights\cite{ref_qlora} and Unsloth\cite{ref_unsloth} for memory-efficient training with gradient checkpointing at a 2048-token context. Optimisation uses AdamW (8-bit) at a 2e-4 learning rate with linear decay, an effective batch size of 8 (batch size 2, gradient accumulation 4), and a fixed seed of 3407 for data order, initialisation and sampling. Training runs for up to three epochs over the training pool with evaluation every 50 steps on a held-out 5% validation split, early stopping on validation loss with patience 3, and the best checkpoint restored at the end - so the reported model is selected on validation loss rather than by where a fixed step budget happened to stop. The seed, GPU model, Python version and the versions of every training library are recorded automatically into a run manifest alongside the trainer state, so the reported configuration is read from the run rather than transcribed from it.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth,height=0.42\textheight,keepaspectratio]{figures/figure2_finetuning_pipeline.png}
@@ -159,18 +161,21 @@ Refusal is scored as declining to answer, which we distinguish from appending a 
 \begin{table}[htbp]
 \centering
 \renewcommand{\arraystretch}{1.15}
-\caption{Training metrics for the pilot run. This was a fixed 100-step budget without early stopping, not a converged full-training run; the full run and ablation are specified in the accompanying notebook and are reported as pending.}
+\caption{Training metrics for the full run. Early stopping monitored validation loss (patience 3, evaluated every 50 steps) and the best checkpoint was restored at the end, so the reported model is the one at the best step rather than the last.}
 \label{tab:training}
 \begin{tabular}{@{}lc@{}}
 \toprule
 \textbf{Metric} & \textbf{Value} \\
 \midrule
-Final training loss & 1.3637 \\
-Final eval loss & 0.9522 \\
-Final eval perplexity & 2.59 \\
-Steps completed & 100 (fixed budget, no early stopping) \\
-Total training time (s) & 465.9 \\
-GPU & Tesla T4 (peak 5.33 GB / 14.74 GB) \\
+Final training loss & 0.4977 \\
+Best validation loss & 0.8047 \\
+Perplexity at best & 2.24 \\
+Best checkpoint step & 700 \\
+Steps run / budget & 850 / 1113 \\
+Stopped early & yes, at 2.29 epochs \\
+Seed & 3407 \\
+GPU & Tesla T4 (14.56 GB) \\
+Key versions & torch 2.11.0+cu128, transformers 4.56.2, peft 0.19.1, trl 0.22.2 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -178,16 +183,29 @@ GPU & Tesla T4 (peak 5.33 GB / 14.74 GB) \\
 \begin{table}[htbp]
 \centering
 \renewcommand{\arraystretch}{1.15}
-\caption{Loss at each evaluation step. (Pilot run.)}
+\caption{Loss at each evaluation step.}
 \label{tab:trainsteps}
 \begin{tabular}{@{}lcc@{}}
 \toprule
 \textbf{Step} & \textbf{Training loss} & \textbf{Validation loss} \\
 \midrule
-25 & 1.8568 & 1.3950 \\
-50 & 1.2597 & 1.1217 \\
-75 & 1.0083 & 0.9772 \\
-100 & 0.8798 & 0.9522 \\
+50 & 1.2940 & 1.2349 \\
+100 & 1.0571 & 1.0690 \\
+150 & 0.9852 & 1.0172 \\
+200 & 1.0035 & 0.9903 \\
+250 & 0.9505 & 0.9609 \\
+300 & 0.9420 & 0.9377 \\
+350 & 0.9180 & 0.9037 \\
+400 & 0.7676 & 0.8812 \\
+450 & 0.7657 & 0.8735 \\
+500 & 0.7385 & 0.8605 \\
+550 & 0.7341 & 0.8503 \\
+600 & 0.7393 & 0.8368 \\
+650 & 0.7467 & 0.8138 \\
+700 & 0.7299 & 0.8047 \\
+750 & 0.5394 & 0.8094 \\
+800 & 0.5697 & 0.8220 \\
+850 & 0.4977 & 0.8239 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -331,7 +349,7 @@ Usefulness (judge) & RAG + fine-tuned & +1.32 & [+0.74, +1.92] & 0.001 & yes \\
 \begin{table}[htbp]
 \centering
 \renewcommand{\arraystretch}{1.15}
-\caption{Citation behaviour on the scenario set, the subset for which gold section numbers are complete (38/38 items; only 15/146 hold-out items carry gold sections, so citation F1 is not reported there). "Valid" means the cited section exists in the Act; F1 is against the gold sections for the question.}
+\caption{Citation behaviour on the scenario set, the subset for which gold section numbers are complete (38/38 items; only 15/146 hold-out items carry gold sections, so citation F1 is not reported there). ``Valid'' means the cited section exists in the Act; F1 is against the gold sections for the question.}
 \label{tab:citation}
 \small
 \begin{tabular}{@{}lccc@{}}
@@ -392,8 +410,35 @@ RAG + fine-tuned & 146 & 1 & 5 & 93 & 63 & 70 & 16 \\
 \end{figure}
 
 \subsection{Ablation}
-\begin{quote}\itshape Not yet run. Execute notebooks/finetune\_llama32\_3b\_full.ipynb on a GPU runtime and place the resulting runs/ablation\_results.json in the project root to populate this table.\end{quote}
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.15}
+\caption{Ablation over training-set size, LoRA rank, and the inclusion of the refusal examples. All arms share seed 3407 and the same schedule, and all use early stopping on validation loss (patience 3, evaluated every 50 steps) with the best checkpoint restored. \emph{Best step} is where validation loss bottomed out and \emph{ran to} is where training halted; the gap is the patience window. Rows marked ``same run'' are not a separate training run: one reference run serves as the 100\%, rank-16 and with-refusals point on all three axes, so the table reports six training runs rather than eight.}
+\label{tab:ablation}
+\small
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+\textbf{Axis} & \textbf{Configuration} & \textbf{Train ex.} & \textbf{Rank} & \textbf{Best step} & \textbf{Ran to} & \textbf{Eval loss} & \textbf{Perplexity} \\
+\midrule
+Training-set size & 25\% of pool & 741 & 16 & 250 & 279 & 1.0340 & 2.81 \\
+ & 50\% of pool & 1482 & 16 & 550 & 558 & 0.9017 & 2.46 \\
+ & 100\% of pool & 2964 & 16 & 700 & 850 & 0.8047 & 2.24 \\
+LoRA rank & rank 8 & 2964 & 8 & 700 & 850 & 0.8311 & 2.30 \\
+ & rank 16 (same run) & 2964 & 16 & 700 & 850 & 0.8047 & 2.24 \\
+ & rank 32 & 2964 & 32 & 700 & 850 & 0.7814 & 2.18 \\
+Refusal examples & without & 2919 & 16 & 700 & 850 & 0.8558 & 2.35 \\
+ & with (same run) & 2964 & 16 & 700 & 850 & 0.8047 & 2.24 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
+Training does not benefit from the full three-epoch budget. Validation loss falls until step 700 and then rises for three consecutive evaluations while training loss keeps falling, which is overfitting rather than noise; early stopping halted the run at step 850 of a 1113-step budget, at 2.29 epochs, and the checkpoint from step 700 was restored. The evaluation in this paper measures that checkpoint. A fixed step budget without validation monitoring, as used in the pilot run, would have reported a strictly worse model.
+
+Dataset size still pays. Validation loss improves monotonically from 1.034 at a quarter of the pool (741 examples) to 0.902 at half and 0.805 at the full pool (2964 examples), with no sign of a plateau. The curve is still descending at the largest size available, so the dataset is a bottleneck before the method is: more verified QA pairs would likely help more than further tuning of this recipe.
+
+LoRA rank matters less. Going from rank 8 to 16 to 32 moves validation loss 0.831 to 0.805 to 0.781 -- a total span of 0.050, against 0.229 spanned by dataset size. Rank 32 is the best of the three, but the gain over the rank 16 used throughout this paper is small relative to its extra parameters, and an ordering in validation loss does not establish that the difference would survive on downstream answer quality, which is what the comparison in the results section measures.
+
+The refusal examples are cheap. Removing all 45 of them changes validation loss from 0.805 to 0.856. This comparison should not be over-read in either direction: the two arms differ in training-set size as well as in content, and validation loss is computed over a split that contains refusal items, so an arm never trained on them is expected to score worse on exactly those items. What the refusal examples are for is out-of-scope behaviour, and that is measured directly on the out-of-scope set rather than here.
 \section{Discussion}
 The central result is a dissociation between fluency and citation accuracy. Fine-tuning clearly changes how the model writes: on the hold-out set it improves surface agreement with the reference answers and reduces unnecessary refusals. It does not, however, reliably improve the one thing an HR user must be able to check. On the hand-authored scenarios, the fine-tuned model's citation F1 differs from the base model's by +0.05 (p = 0.157), which is not significant after correction, whereas retrieval over the same statute improves it by +0.30 (p = 0.002) and retrieval combined with fine-tuning by +0.26 (p = 0.004). On this benchmark, supplying the statute at inference time is what makes the citation correct; training on statute-derived question-answer pairs mainly makes the answer sound correct. The LLM judge, which never sees the gold section labels and so measures something the citation metric does not, agrees: on the scenarios the fine-tuned model is not significantly better than the base model on any judged dimension (faithfulness, completeness, usefulness), while retrieval is significantly better on all of them. Two independent measurements pointing the same way is the reason we read this as a property of the systems rather than of one brittle metric.
 

@@ -213,6 +213,7 @@ def build_document(fig_dir, trainer_state_path=None) -> Document:
     doc.add_heading("5.7 Ablation", level=2)
     if add_table(doc, P.table_ablation(), tno):
         tno += 1
+    add_body(doc, P.training_findings_text())
 
     doc.add_heading("6. Discussion", level=1)
     add_body(doc, P.discussion_text())

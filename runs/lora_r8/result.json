@@ -1,0 +1,16 @@
+{
+ "name": "lora_r8",
+ "n_train": 2964,
+ "lora_r": 8,
+ "epochs": 3,
+ "lr": 0.0002,
+ "train_loss": 0.9415483901079963,
+ "train_runtime_s": 2202.5694,
+ "eval_loss": 0.831098198890686,
+ "perplexity": 2.2958386437850975,
+ "global_step": 850,
+ "best_checkpoint_step": "runs/lora_r8/checkpoint-700",
+ "best_eval_loss": 0.8310983180999756,
+ "peak_gpu_gb": 5.588,
+ "wall_clock_s": 2250.3
+}

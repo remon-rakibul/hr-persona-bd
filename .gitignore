@@ -117,7 +117,9 @@ logs/
 # parent directory is excluded is impossible in git, hence `!runs/**/` first.
 !runs/**/
 !runs/**/trainer_state.json
-!runs/**/all_results.json
+!runs/**/result.json
+!runs/run_manifest.json
+!runs/ablation_results.json
 tensorboard/
 lightning_logs/
 

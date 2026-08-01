@@ -144,6 +144,12 @@ def load_scenario_verification():
     return json.load(open(p, encoding="utf-8")) if p.exists() else None
 
 
+def load_run_manifest():
+    """Seeds, hardware and library versions captured by the training notebook."""
+    p = ROOT / "runs" / "run_manifest.json"
+    return json.load(open(p, encoding="utf-8")) if p.exists() else None
+
+
 def load_ablation():
     for p in (ROOT / "runs" / "ablation_results.json",
               RESULTS / "ablation_results.json"):
@@ -241,7 +247,7 @@ def table_citation(setname="scenario"):
                f"gold section numbers are complete ({gold_count('scenario')}/"
                f"{set_size('scenario')} items; only {gold_count('heldout')}/"
                f"{set_size('heldout')} hold-out items carry gold sections, so "
-               "citation F1 is not reported there). \"Valid\" means the cited "
+               "citation F1 is not reported there). ``Valid'' means the cited "
                "section exists in the Act; F1 is against the gold sections for "
                "the question.")
     if not comp:
@@ -404,6 +410,83 @@ def _sig_phrase(c):
     return f"{c['mean_diff']:+.2f} ({ptxt})"
 
 
+def training_findings_text():
+    """What the training run and the ablation show, read from the artifacts."""
+    tm = load_training_metrics()
+    abl = load_ablation()
+    if not tm and not abl:
+        return ""
+    out = []
+
+    if tm:
+        state = tm["state"]
+        ck = str(state.get("best_model_checkpoint") or "")
+        tail = ck.rsplit("-", 1)
+        best_step = tail[1] if len(tail) == 2 and tail[1].isdigit() else None
+        ran, budget = state.get("global_step"), state.get("max_steps")
+        if best_step and ran and budget and ran < budget:
+            out.append(
+                f"Training does not benefit from the full three-epoch budget. "
+                f"Validation loss falls until step {best_step} and then rises "
+                f"for three consecutive evaluations while training loss keeps "
+                f"falling, which is overfitting rather than noise; early "
+                f"stopping halted the run at step {ran} of a {budget}-step "
+                f"budget, at {state.get('epoch', 0):.2f} epochs, and the "
+                f"checkpoint from step {best_step} was restored. The evaluation "
+                f"in this paper measures that checkpoint. A fixed step budget "
+                f"without validation monitoring, as used in the pilot run, "
+                f"would have reported a strictly worse model.")
+
+    if abl:
+        by = {r.get("name"): r for r in abl}
+
+        def loss(n):
+            return (by.get(n) or {}).get("eval_loss")
+
+        d25, d50, d100 = loss("data_25pct"), loss("data_50pct"), loss("data_100pct")
+        if None not in (d25, d50, d100):
+            out.append(
+                f"Dataset size still pays. Validation loss improves "
+                f"monotonically from {d25:.3f} at a quarter of the pool "
+                f"({by['data_25pct']['n_train']} examples) to {d50:.3f} at half "
+                f"and {d100:.3f} at the full pool "
+                f"({by['data_100pct']['n_train']} examples), with no sign of a "
+                f"plateau. The curve is still descending at the largest size "
+                f"available, so the dataset is a bottleneck before the method "
+                f"is: more verified QA pairs would likely help more than "
+                f"further tuning of this recipe.")
+
+        r8, r16, r32 = loss("lora_r8"), loss("lora_r16"), loss("lora_r32")
+        if None not in (r8, r16, r32, d25, d100):
+            out.append(
+                f"LoRA rank matters less. Going from rank 8 to 16 to 32 moves "
+                f"validation loss {r8:.3f} to {r16:.3f} to {r32:.3f} -- a total "
+                f"span of {abs(r8 - r32):.3f}, against {abs(d25 - d100):.3f} "
+                f"spanned by dataset size. Rank 32 is the best of the three, "
+                f"but the gain over the rank 16 used throughout this paper is "
+                f"small relative to its extra parameters, and an ordering in "
+                f"validation loss does not establish that the difference would "
+                f"survive on downstream answer quality, which is what the "
+                f"comparison in the results section measures.")
+
+        nr, wr = loss("no_refusal_data"), loss("with_refusal_data")
+        if None not in (nr, wr):
+            out.append(
+                f"The refusal examples are cheap. Removing all "
+                f"{by['with_refusal_data']['n_train'] - by['no_refusal_data']['n_train']} "
+                f"of them changes validation loss from {wr:.3f} to {nr:.3f}. "
+                f"This comparison should not be over-read in either direction: "
+                f"the two arms differ in training-set size as well as in "
+                f"content, and validation loss is computed over a split that "
+                f"contains refusal items, so an arm never trained on them is "
+                f"expected to score worse on exactly those items. What the "
+                f"refusal examples are for is out-of-scope behaviour, and that "
+                f"is measured directly on the out-of-scope set rather than "
+                f"here.")
+
+    return "\n\n".join(p for p in out if p)
+
+
 def key_findings_text():
     """
     State what the evaluation actually found, derived from the artifacts.
@@ -550,24 +633,79 @@ def key_findings_text():
         "The measured comparisons are reported in the tables above.")
 
 
+# Ablation arms, grouped by the axis each one varies, with the label to print.
+# The notebook reuses the main run as the shared reference point of all three
+# axes, so ablation_results.json lists it three times under three names. Printed
+# verbatim that would show eight rows for six actual training runs and imply
+# more evidence than exists; the duplicates are collapsed and the shared row is
+# marked instead.
+ABLATION_GROUPS = [
+    ("Training-set size", [("data_25pct", "25% of pool"),
+                           ("data_50pct", "50% of pool"),
+                           ("data_100pct", "100% of pool")]),
+    ("LoRA rank", [("lora_r8", "rank 8"),
+                   ("lora_r16", "rank 16"),
+                   ("lora_r32", "rank 32")]),
+    ("Refusal examples", [("no_refusal_data", "without"),
+                          ("with_refusal_data", "with")]),
+]
+
+
+def _best_step(rec):
+    """Step of the best checkpoint, which is not the step training ran to.
+
+    With load_best_model_at_end the trainer re-evaluates the restored model and
+    logs it under the *final* step, so taking the minimum eval_loss over the log
+    reports where training halted rather than where the model peaked. The main
+    run peaked at 700 and halted at 850; only the checkpoint path distinguishes
+    them.
+    """
+    ck = rec.get("best_checkpoint_step") or ""
+    tail = str(ck).rsplit("-", 1)
+    return tail[1] if len(tail) == 2 and tail[1].isdigit() else None
+
+
 def table_ablation():
     abl = load_ablation()
-    header = ["Configuration", "Training examples", "LoRA rank", "Steps",
-              "Eval loss", "Perplexity"]
+    header = ["Axis", "Configuration", "Train ex.", "Rank", "Best step",
+              "Ran to", "Eval loss", "Perplexity"]
     caption = ("Ablation over training-set size, LoRA rank, and the inclusion of "
-               "refusal examples. Each arm is trained with identical seeds and "
-               "early stopping on validation loss.")
+               "the refusal examples. All arms share seed 3407 and the same "
+               "schedule, and all use early stopping on validation loss "
+               "(patience 3, evaluated every 50 steps) with the best checkpoint "
+               "restored. \\emph{Best step} is where validation loss bottomed "
+               "out and \\emph{ran to} is where training halted; the gap is the "
+               "patience window. Rows marked ``same run'' are not a separate "
+               "training run: one reference run serves as the 100\\%, rank-16 "
+               "and with-refusals point on all three axes, so the table reports "
+               "six training runs rather than eight.")
     note = ("Not yet run. Execute notebooks/finetune_llama32_3b_full.ipynb on a "
             "GPU runtime and place the resulting runs/ablation_results.json in "
             "the project root to populate this table.")
     if not abl:
         return caption, header, [], note
+
+    by_name = {r.get("name"): r for r in abl}
+    # Arms sharing a checkpoint are literally the same run, not a replication.
+    seen_ckpt = {}
     rows = []
-    for r in abl:
-        rows.append([str(r.get("name")), str(r.get("n_train")), str(r.get("lora_r")),
-                     str(r.get("global_step")),
-                     _fmt(round(r["eval_loss"], 4) if r.get("eval_loss") else None),
-                     _fmt(round(r["perplexity"], 2) if r.get("perplexity") else None)])
+    for axis, arms in ABLATION_GROUPS:
+        first = True
+        for name, label in arms:
+            r = by_name.get(name)
+            if not r:
+                continue
+            ck = r.get("best_checkpoint_step")
+            shared = ck in seen_ckpt
+            seen_ckpt.setdefault(ck, name)
+            rows.append([
+                axis if first else "",
+                label + (" (same run)" if shared else ""),
+                str(r.get("n_train")), str(r.get("lora_r")),
+                _best_step(r) or "--", str(r.get("global_step")),
+                f"{r['eval_loss']:.4f}" if r.get("eval_loss") else "--",
+                f"{r['perplexity']:.2f}" if r.get("perplexity") else "--"])
+            first = False
     return caption, header, rows, None
 
 
@@ -593,21 +731,46 @@ def table_training(trainer_state_path=None):
     header = ["Metric", "Value"]
     tm = load_training_metrics(trainer_state_path)
     if tm:
+        import math
         state, log = tm["state"], tm["log"]
         tl = [e["loss"] for e in log if "loss" in e]
-        ev = [e for e in log if "eval_loss" in e]
         rows = []
         if tl:
             rows.append(["Final training loss", f"{tl[-1]:.4f}"])
-        if ev:
-            import math
-            rows.append(["Final eval loss", f"{ev[-1]['eval_loss']:.4f}"])
-            rows.append(["Final eval perplexity", f"{math.exp(ev[-1]['eval_loss']):.2f}"])
-        if state.get("best_metric") is not None:
-            rows.append(["Best validation loss", f"{state['best_metric']:.4f}"])
-        rows.append(["Steps completed", str(state.get("global_step", "--"))])
-        caption = ("Training metrics for the full run with early stopping on "
-                   "validation loss.")
+        best = state.get("best_metric")
+        if best is not None:
+            # The best checkpoint is what was kept and what was exported, so it
+            # is the model the evaluation section measures. Reporting the loss
+            # at the last step instead would describe a model that was thrown
+            # away - and here it would flatter nothing, since the last step is
+            # worse than the best.
+            rows.append(["Best validation loss", f"{best:.4f}"])
+            rows.append(["Perplexity at best", f"{math.exp(best):.2f}"])
+        ck = str(state.get("best_model_checkpoint") or "")
+        tail = ck.rsplit("-", 1)
+        if len(tail) == 2 and tail[1].isdigit():
+            rows.append(["Best checkpoint step", tail[1]])
+        ran, budget = state.get("global_step"), state.get("max_steps")
+        if ran and budget:
+            rows.append(["Steps run / budget", f"{ran} / {budget}"])
+            if ran < budget:
+                rows.append(["Stopped early", f"yes, at {state.get('epoch', 0):.2f} epochs"])
+        man = load_run_manifest()
+        if man:
+            rows.append(["Seed", str(man.get("seed", "--"))])
+            gpu = man.get("gpu_name")
+            if gpu:
+                rows.append(["GPU", f"{gpu} ({man.get('gpu_total_gb', '--')} GB)"])
+            pk = man.get("packages", {})
+            if pk:
+                rows.append(["Key versions",
+                             ", ".join(f"{k} {pk[k]}" for k in
+                                       ("torch", "transformers", "peft", "trl")
+                                       if k in pk)])
+        caption = ("Training metrics for the full run. Early stopping monitored "
+                   "validation loss (patience 3, evaluated every 50 steps) and "
+                   "the best checkpoint was restored at the end, so the reported "
+                   "model is the one at the best step rather than the last.")
         return caption, header, rows, None
     caption = ("Training metrics for the pilot run. This was a fixed 100-step "
                "budget without early stopping, not a converged full-training "
@@ -622,11 +785,19 @@ def table_training_steps(trainer_state_path=None):
     tm = load_training_metrics(trainer_state_path)
     if tm:
         log = tm["log"]
-        last_train, rows = None, []
+        last_train, rows, seen = None, [], set()
         for e in log:
             if "loss" in e:
                 last_train = e["loss"]
             if "eval_loss" in e:
+                # load_best_model_at_end re-evaluates the restored checkpoint
+                # and logs it under the final step, so the last step appears
+                # twice with different losses. Keeping both would show
+                # validation loss dropping at the end of a run that was stopped
+                # for getting worse.
+                if e.get("step") in seen:
+                    continue
+                seen.add(e.get("step"))
                 rows.append([str(e.get("step")),
                              f"{last_train:.4f}" if last_train else "--",
                              f"{e['eval_loss']:.4f}"])
@@ -718,6 +889,24 @@ def table_dataset():
          "LoRA fine-tuning (includes refusal examples)"],
         ["  of which refusal examples", count("data/final/refusal_examples.json"),
          "Teach declining out-of-scope questions"],
+    ]
+
+    # The trainer holds back a validation split from the pool, so the number of
+    # examples the model actually sees is smaller than the pool. Without these
+    # two rows the ablation table's "2964" contradicts the "3119" here for no
+    # visible reason.
+    pool = count("data/final/train_final.json")
+    abl = load_ablation() or []
+    main = next((r for r in abl if r.get("name") == "data_100pct"), None)
+    if main and pool.isdigit() and main.get("n_train"):
+        rows += [
+            ["  of which seen in training", str(main["n_train"]),
+             "After the trainer's validation hold-out"],
+            ["  of which validation split", str(int(pool) - main["n_train"]),
+             "Early stopping and model selection"],
+        ]
+
+    rows += [
         ["Hold-out test", count("data/eval/heldout_test.json"),
          "Leakage-free, topic-stratified evaluation"],
         ["HR scenario test", count("data/eval/scenario_test.json"),
@@ -876,8 +1065,9 @@ three epochs over the training pool with evaluation every 50 steps on a held-out
 5% validation split, early stopping on validation loss with patience 3, and the
 best checkpoint restored at the end - so the reported model is selected on
 validation loss rather than by where a fixed step budget happened to stop.
-Library versions, GPU model and peak memory are recorded automatically into a run
-manifest alongside the trainer state.
+The seed, GPU model, Python version and the versions of every training library
+are recorded automatically into a run manifest alongside the trainer state, so
+the reported configuration is read from the run rather than transcribed from it.
 """
 
 METHOD_DEPLOY = """

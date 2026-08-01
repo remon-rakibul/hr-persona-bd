@@ -213,6 +213,7 @@ def build_main_tex(trainer_state_path, fig_dir) -> str:
     add(r"\subsection{Ablation}")
     c, h, r, n = P.table_ablation()
     add(table(c, h, r, n, "tab:ablation"))
+    add(prose(P.training_findings_text()))
 
     add(r"\section{Discussion}")
     add(prose(P.discussion_text()))
