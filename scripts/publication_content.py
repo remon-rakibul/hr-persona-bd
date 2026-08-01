@@ -1065,7 +1065,7 @@ Validation is the step that determines whether the dataset can support any claim
 at all, so it is reported explicitly. Each generated answer is checked back
 against the source text: section numbers mentioned in an answer must exist in the
 Act, and answer content must be lexically supported by the Act's text. Items
-failing these checks are corrected or discarded; the pipeline reports a 99.7%
+failing these checks are corrected or discarded; the pipeline reports a 99.7\\%
 verification rate against the source document for the retained set. Duplicate and
 near-duplicate questions are removed so that the hold-out set cannot be answered
 by memorising a paraphrase of a training item.
@@ -1105,7 +1105,7 @@ Optimisation uses AdamW (8-bit) at a 2e-4 learning rate with linear decay, an
 effective batch size of 8 (batch size 2, gradient accumulation 4), and a fixed
 seed of 3407 for data order, initialisation and sampling. Training runs for up to
 three epochs over the training pool with evaluation every 50 steps on a held-out
-5% validation split, early stopping on validation loss with patience 3, and the
+5\\% validation split, early stopping on validation loss with patience 3, and the
 best checkpoint restored at the end - so the reported model is selected on
 validation loss rather than by where a fixed step budget happened to stop.
 The seed, GPU model, Python version and the versions of every training library
@@ -1237,7 +1237,7 @@ them as though they were is how a system evaluation overstates its case.
 
 This reproduces, on a statute and with a citation-level criterion, what the
 knowledge-injection literature reports on factual
-benchmarks[[ref_ragvsft],[ref_ragft_popularity],[ref_ragft_agri]]: retrieval is
+benchmarks[[ref_ragvsft]][[ref_ragft_popularity]][[ref_ragft_agri]]: retrieval is
 the effective route for getting domain knowledge into a model's answers, and
 fine-tuning contributes behaviour rather than facts. The agreement is worth
 stating plainly, because it means the result here should not be read as

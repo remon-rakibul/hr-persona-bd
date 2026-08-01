@@ -18,6 +18,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import re
 import shutil
 import sys
 import zipfile
@@ -236,6 +237,33 @@ def build_main_tex(trainer_state_path, fig_dir) -> str:
     return "\n".join(x for x in L if x is not None) + "\n"
 
 
+def check_output(tex: str) -> list[str]:
+    """Catch the mistakes that survive a successful build but ruin the PDF.
+
+    Neither of these is visible in the generated file unless looked for, and
+    both shipped once. A stray ``%`` is the worse of the two: it comments out
+    the rest of its line, so the paper silently loses a sentence rather than
+    failing to compile. An unrendered ``[[key]]`` means a citation marker was
+    written in a form render_citations does not match - it merges *adjacent*
+    ``[[a]][[b]]`` markers, so any separator between them stops the match and
+    the raw marker is typeset.
+    """
+    problems = []
+
+    # Command arguments are not typeset, so specials inside them are fine.
+    masked = re.sub(
+        r"\\(cite|label|ref|bibitem|includegraphics|url)\s*(\[[^\]]*\])?\{[^}]*\}",
+        lambda m: "X" * len(m.group(0)), tex)
+    for i, line in enumerate(masked.split("\n"), 1):
+        if re.search(r"(?<!\\)%", line):
+            problems.append(f"line {i}: unescaped % (comments out the rest of "
+                            f"the line in the PDF)")
+    for m in re.finditer(r"\[\[[a-z_0-9]+\]?", tex):
+        problems.append(f"unrendered citation marker {m.group(0)!r} - adjacent "
+                        f"markers merge, separators between them do not")
+    return problems
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -250,6 +278,15 @@ def main() -> None:
     figures_dst.mkdir(parents=True, exist_ok=True)
 
     tex = build_main_tex(args.trainer_state, args.fig_dir)
+
+    problems = check_output(tex)
+    if problems:
+        print("Refusing to write: the generated LaTeX has problems that would "
+              "reach the PDF.", file=sys.stderr)
+        for p in problems:
+            print(f"  {p}", file=sys.stderr)
+        sys.exit(1)
+
     (overleaf_dir / "main.tex").write_text(tex, encoding="utf-8")
     print(f"Wrote {overleaf_dir / 'main.tex'} ({len(tex.splitlines())} lines)")
 
