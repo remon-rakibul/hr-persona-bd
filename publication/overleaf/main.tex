@@ -69,7 +69,7 @@ Splitting happens before training, not after. An earlier version of this pipelin
 \midrule
 Training pool & 3119 & LoRA fine-tuning (includes refusal examples) \\
   of which refusal examples & 50 & Teach declining out-of-scope questions \\
-Hold-out test & 150 & Leakage-free, topic-stratified evaluation \\
+Hold-out test & 146 & Leakage-free, topic-stratified evaluation \\
 HR scenario test & 38 & Hand-authored realistic HR situations \\
 Out-of-scope probes & 20 & Refusal behaviour \\
 \bottomrule
@@ -132,7 +132,9 @@ The trained adapter is exported to GGUF (Q4\_K\_M) and served locally through Ol
 
 Comparison against commercial APIs (ChatGPT, Claude, Gemini) was not performed: no API access was available for this study. We report this as a limitation rather than estimating those numbers, and it is the most useful single extension of this work.
 
-\paragraph{Test sets.} Three sets are used. The \emph{hold-out} set contains 150 QA pairs carved out of the cleaned dataset before training and stratified across HR topics. The \emph{scenario} set contains 38 hand-authored applied HR situations, each labelled with the gold sections a correct answer must cite. The \emph{out-of-scope} set contains 20 questions drawn from other domains, where the correct behaviour is to decline.
+\paragraph{Test sets.} Three sets are used. The \emph{hold-out} set contains 146 QA pairs carved out of the cleaned dataset before training and stratified across HR topics. The \emph{scenario} set contains 38 hand-authored applied HR situations, each labelled with the gold sections a correct answer must cite. The \emph{out-of-scope} set contains 20 questions drawn from other domains, where the correct behaviour is to decline.
+
+Disjointness is enforced on the normalised question text rather than on the full question-answer record. The distinction is not pedantic: the generator occasionally emitted the same question twice with different answers, so the two copies differ as records and a record-level check declares them distinct while the model has in fact been trained on a question it is later tested on. Four such items were found and removed from the hold-out set, three of them genuine duplicates -- one pair gives an adult working week as 48 hours in the test copy and 56 in the training copy -- and one an extraction artefact whose question text was the placeholder heading ``Scenario Question 2''. They were discarded rather than returned to the training pool, so the training data is exactly what the model was fine-tuned on.
 
 \paragraph{Decoding and reproducibility.} All systems are decoded greedily (temperature 0) with a fixed seed and a 384-token limit, under an identical system prompt, so that a re-run reproduces the reported numbers. Model digests, library versions and the exact system prompt are written to a run provenance record at generation time.
 
@@ -208,17 +210,17 @@ GPU & Tesla T4 (peak 5.33 GB / 14.74 GB) \\
 \begin{table}[htbp]
 \centering
 \renewcommand{\arraystretch}{1.15}
-\caption{Comparison on the 150-item leakage-free hold-out set. BLEU and ROUGE-L are 0--100; grounding and cited-valid are fractions; faithfulness, completeness and usefulness are 1--5 LLM-judge scores; harm is the rate of answers flagged misleading.}
+\caption{Comparison on the 146-item leakage-free hold-out set. BLEU and ROUGE-L are 0--100; grounding and cited-valid are fractions; faithfulness, completeness and usefulness are 1--5 LLM-judge scores; harm is the rate of answers flagged misleading.}
 \label{tab:heldout}
 \small
 \begin{tabular}{@{}lcccccccc@{}}
 \toprule
 \textbf{System} & \textbf{BLEU} & \textbf{ROUGE-L} & \textbf{Grounding} & \textbf{Cited valid} & \textbf{Faithful.} & \textbf{Complete.} & \textbf{Useful.} & \textbf{Harm} \\
 \midrule
-Base Llama 3.2 3B & 4.24 & 16.14 & 0.03 & 1.00 & 2.85 & 2.88 & 2.75 & 0.12 \\
-Fine-tuned Llama 3.2 3B & 8.86 & 23.95 & 0.05 & 1.00 & 2.95 & 2.99 & 2.88 & 0.19 \\
-RAG, base Llama 3.2 3B & 9.70 & 22.98 & 0.28 & 0.99 & 2.87 & 2.82 & 2.75 & 0.06 \\
-RAG + fine-tuned & 14.33 & 31.62 & 0.35 & 0.98 & 3.14 & 3.12 & 3.05 & 0.11 \\
+Base Llama 3.2 3B & 4.31 & 16.25 & 0.03 & 1.00 & 2.84 & 2.88 & 2.75 & 0.12 \\
+Fine-tuned Llama 3.2 3B & 8.94 & 24.07 & 0.05 & 1.00 & 2.95 & 2.99 & 2.88 & 0.19 \\
+RAG, base Llama 3.2 3B & 9.70 & 22.93 & 0.28 & 0.99 & 2.86 & 2.82 & 2.74 & 0.06 \\
+RAG + fine-tuned & 14.41 & 31.64 & 0.35 & 0.98 & 3.12 & 3.10 & 3.02 & 0.11 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -252,7 +254,7 @@ RAG + fine-tuned & 7.11 & 26.13 & 0.35 & 1.00 & 2.92 & 2.82 & 2.74 & 0.18 \\
 \begin{table}[htbp]
 \centering
 \renewcommand{\arraystretch}{1.15}
-\caption{Paired comparison against the base model on the 150-item hold-out set. Every system answers the same questions, so differences are computed per item; the CI is a paired bootstrap over items (10{,}000 resamples) and p is Wilcoxon signed-rank, Holm-corrected across the systems compared within each metric. A difference is marked significant only when the adjusted p is below 0.05 and the interval excludes zero.}
+\caption{Paired comparison against the base model on the 146-item hold-out set. Every system answers the same questions, so differences are computed per item; the CI is a paired bootstrap over items (10{,}000 resamples) and p is Wilcoxon signed-rank, Holm-corrected across the systems compared within each metric. A difference is marked significant only when the adjusted p is below 0.05 and the interval excludes zero.}
 \label{tab:significance}
 \small
 \begin{tabular}{@{}lccccc@{}}
@@ -261,28 +263,28 @@ RAG + fine-tuned & 7.11 & 26.13 & 0.35 & 1.00 & 2.92 & 2.82 & 2.74 & 0.18 \\
 \midrule
 Citation F1 & Fine-tuned Llama 3.2 3B & +0.01 & [-0.10, +0.13] & 0.655 &  \\
 Citation F1 & RAG, base Llama 3.2 3B & -0.16 & [-0.39, +0.08] & 0.587 &  \\
-Citation F1 & RAG + fine-tuned & -0.19 & [-0.44, +0.07] & 0.587 &  \\
-Refusal rate & Fine-tuned Llama 3.2 3B & -0.09 & [-0.14, -0.04] & 0.002 & yes \\
-Refusal rate & RAG, base Llama 3.2 3B & -0.08 & [-0.13, -0.03] & 0.002 & yes \\
-Refusal rate & RAG + fine-tuned & -0.09 & [-0.14, -0.04] & 0.002 & yes \\
-ROUGE-L & Fine-tuned Llama 3.2 3B & +7.81 & [+6.42, +9.31] & 0.000 & yes \\
-ROUGE-L & RAG, base Llama 3.2 3B & +6.84 & [+4.16, +9.66] & 0.000 & yes \\
-ROUGE-L & RAG + fine-tuned & +15.48 & [+12.14, +19.17] & 0.000 & yes \\
+Citation F1 & RAG + fine-tuned & -0.19 & [-0.43, +0.07] & 0.587 &  \\
+Refusal rate & Fine-tuned Llama 3.2 3B & -0.08 & [-0.13, -0.03] & 0.004 & yes \\
+Refusal rate & RAG, base Llama 3.2 3B & -0.08 & [-0.12, -0.03] & 0.004 & yes \\
+Refusal rate & RAG + fine-tuned & -0.08 & [-0.13, -0.03] & 0.004 & yes \\
+ROUGE-L & Fine-tuned Llama 3.2 3B & +7.82 & [+6.39, +9.35] & 0.000 & yes \\
+ROUGE-L & RAG, base Llama 3.2 3B & +6.68 & [+3.94, +9.53] & 0.000 & yes \\
+ROUGE-L & RAG + fine-tuned & +15.39 & [+11.98, +19.05] & 0.000 & yes \\
 Grounding & Fine-tuned Llama 3.2 3B & +0.02 & [+0.01, +0.03] & 0.003 & yes \\
-Grounding & RAG, base Llama 3.2 3B & +0.26 & [+0.22, +0.29] & 0.000 & yes \\
-Grounding & RAG + fine-tuned & +0.32 & [+0.28, +0.37] & 0.000 & yes \\
+Grounding & RAG, base Llama 3.2 3B & +0.25 & [+0.22, +0.29] & 0.000 & yes \\
+Grounding & RAG + fine-tuned & +0.33 & [+0.28, +0.37] & 0.000 & yes \\
 Cited sections valid & Fine-tuned Llama 3.2 3B & +0.00 & [+0.00, +0.00] & 1.000 &  \\
 Cited sections valid & RAG, base Llama 3.2 3B & -0.01 & [-0.04, +0.00] & 0.952 &  \\
 Cited sections valid & RAG + fine-tuned & -0.02 & [-0.06, +0.00] & 0.952 &  \\
-Faithfulness (judge) & Fine-tuned Llama 3.2 3B & +0.10 & [-0.21, +0.41] & 1.000 &  \\
-Faithfulness (judge) & RAG, base Llama 3.2 3B & +0.02 & [-0.37, +0.41] & 1.000 &  \\
-Faithfulness (judge) & RAG + fine-tuned & +0.29 & [-0.12, +0.69] & 0.415 &  \\
-Completeness (judge) & Fine-tuned Llama 3.2 3B & +0.11 & [-0.20, +0.43] & 0.996 &  \\
+Faithfulness (judge) & Fine-tuned Llama 3.2 3B & +0.10 & [-0.21, +0.42] & 1.000 &  \\
+Faithfulness (judge) & RAG, base Llama 3.2 3B & +0.02 & [-0.37, +0.42] & 1.000 &  \\
+Faithfulness (judge) & RAG + fine-tuned & +0.27 & [-0.14, +0.68] & 0.523 &  \\
+Completeness (judge) & Fine-tuned Llama 3.2 3B & +0.12 & [-0.21, +0.45] & 0.996 &  \\
 Completeness (judge) & RAG, base Llama 3.2 3B & -0.06 & [-0.45, +0.33] & 0.996 &  \\
-Completeness (judge) & RAG + fine-tuned & +0.24 & [-0.17, +0.64] & 0.675 &  \\
-Usefulness (judge) & Fine-tuned Llama 3.2 3B & +0.13 & [-0.19, +0.45] & 0.913 &  \\
-Usefulness (judge) & RAG, base Llama 3.2 3B & -0.01 & [-0.40, +0.38] & 0.913 &  \\
-Usefulness (judge) & RAG + fine-tuned & +0.29 & [-0.12, +0.69] & 0.443 &  \\
+Completeness (judge) & RAG + fine-tuned & +0.22 & [-0.18, +0.62] & 0.831 &  \\
+Usefulness (judge) & Fine-tuned Llama 3.2 3B & +0.13 & [-0.21, +0.47] & 0.913 &  \\
+Usefulness (judge) & RAG, base Llama 3.2 3B & -0.01 & [-0.39, +0.38] & 0.916 &  \\
+Usefulness (judge) & RAG + fine-tuned & +0.27 & [-0.14, +0.68] & 0.555 &  \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -329,7 +331,7 @@ Usefulness (judge) & RAG + fine-tuned & +1.32 & [+0.74, +1.92] & 0.001 & yes \\
 \begin{table}[htbp]
 \centering
 \renewcommand{\arraystretch}{1.15}
-\caption{Citation behaviour on the scenario set, the subset for which gold section numbers are complete (38/38 items; only 15/150 hold-out items carry gold sections, so citation F1 is not reported there). "Valid" means the cited section exists in the Act; F1 is against the gold sections for the question.}
+\caption{Citation behaviour on the scenario set, the subset for which gold section numbers are complete (38/38 items; only 15/146 hold-out items carry gold sections, so citation F1 is not reported there). "Valid" means the cited section exists in the Act; F1 is against the gold sections for the question.}
 \label{tab:citation}
 \small
 \begin{tabular}{@{}lccc@{}}
@@ -374,10 +376,10 @@ RAG + fine-tuned & 0.25 & 0.01 \\
 \toprule
 \textbf{System} & \textbf{n} & \textbf{Hallucinated section} & \textbf{Wrong section} & \textbf{No citation} & \textbf{Unfaithful} & \textbf{Incomplete} & \textbf{Harmful} \\
 \midrule
-Base Llama 3.2 3B & 150 & 0 & 10 & 2 & 65 & 78 & 18 \\
-Fine-tuned Llama 3.2 3B & 150 & 0 & 9 & 22 & 66 & 72 & 28 \\
-RAG, base Llama 3.2 3B & 150 & 1 & 6 & 63 & 70 & 84 & 9 \\
-RAG + fine-tuned & 150 & 1 & 5 & 96 & 64 & 71 & 16 \\
+Base Llama 3.2 3B & 146 & 0 & 10 & 2 & 63 & 76 & 17 \\
+Fine-tuned Llama 3.2 3B & 146 & 0 & 9 & 20 & 64 & 70 & 28 \\
+RAG, base Llama 3.2 3B & 146 & 1 & 6 & 62 & 68 & 82 & 9 \\
+RAG + fine-tuned & 146 & 1 & 5 & 93 & 63 & 70 & 16 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -417,7 +419,7 @@ Interpreting the metrics requires care. High lexical grounding indicates the ans
 
 \paragraph{Evaluation is automatic.} All reported quality numbers are automatic metrics or LLM-judge proxies. Expert human ratings, for which the protocol and tooling are provided here, had not been collected at the time of writing. Comparison against commercial APIs was not possible without API access. Both gaps bound how strongly the results can be read.
 
-\paragraph{Scale.} The evaluation covers 208 questions across three sets and a 3B model on a single GPU. Differences are tested with paired statistics, but a 150-item hold-out set has limited power: a comparison reported as not significant is evidence of an undetermined difference, not of no difference, and small effects would need a larger benchmark to resolve. The significance tests also treat the LLM judge's scores as data, so they inherit whatever bias that judge has; they quantify sampling noise, not measurement validity.
+\paragraph{Scale.} The evaluation covers 204 questions across three sets and a 3B model on a single GPU. Differences are tested with paired statistics, but a 146-item hold-out set has limited power: a comparison reported as not significant is evidence of an undetermined difference, not of no difference, and small effects would need a larger benchmark to resolve. The significance tests also treat the LLM judge's scores as data, so they inherit whatever bias that judge has; they quantify sampling noise, not measurement validity.
 \section{Conclusion}
 We presented a reproducible pipeline that turns the official PDF of the Bangladesh Labour Act 2006 into a validated QA dataset, fine-tunes a 3B model on it with LoRA, and deploys the result locally, together with a leakage-free benchmark and a metric suite appropriate to legal QA. The benchmark - a topic-stratified hold-out set, hand-authored HR scenarios with gold section labels, and out-of-scope probes - and the accompanying evaluation code are the part of this work most reusable by others, since they make claims about Bangladesh labour-law QA checkable rather than assertable.
 

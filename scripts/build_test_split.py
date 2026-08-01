@@ -66,6 +66,28 @@ def item_hash(item: dict) -> str:
     return hashlib.sha256(blob.encode("utf-8")).hexdigest()
 
 
+def q_key(question: str) -> str:
+    """Normalised question identity: lowercase, punctuation and spacing collapsed."""
+    return re.sub(r"[^a-z0-9]+", " ", (question or "").lower()).strip()
+
+
+# A question that is really a placeholder heading rather than a question. The
+# QA extractor emitted a few of these ("Scenario Question 2"), and they are
+# unanswerable: nothing in the string says what is being asked.
+PLACEHOLDER_RE = re.compile(
+    r"(scenario|sample|example|practice)?\s*question\s*\d*$")
+
+
+def ineligible(question: str) -> str | None:
+    """Why this item must not be used as a test item, or None if it is fine."""
+    k = q_key(question)
+    if not k or len(k) < 15:
+        return "too short to be a question"
+    if PLACEHOLDER_RE.fullmatch(k):
+        return "placeholder heading, not a question"
+    return None
+
+
 def qa(item):
     q = next(m["content"] for m in item["messages"] if m["role"] == "user")
     a = next(m["content"] for m in item["messages"] if m["role"] == "assistant")
@@ -127,11 +149,41 @@ def main():
         else:
             train_pool.append(item)
 
-    # Leakage guard: held-out and train pool must be disjoint by content hash.
-    train_hashes = {item_hash(it) for it in train_pool}
-    heldout_hashes = {item_hash(data[h["id"]]) for h in heldout}
-    overlap = train_hashes & heldout_hashes
-    assert not overlap, f"LEAKAGE: {len(overlap)} held-out items also appear in train pool"
+    # Purge held-out items that cannot serve as test items. This runs *after*
+    # sampling rather than before it so that the sampled set is unchanged and
+    # this stays reproducible against runs made before the filter existed; the
+    # filter only ever removes.
+    #
+    # Two things get removed. Placeholder questions, which are unanswerable. And
+    # questions that also occur somewhere in the train pool: the generator
+    # produced the same question more than once with *different* answers (one
+    # pair gives an adult work week as 48 hours and its twin as 56), so the two
+    # copies hash differently and land on opposite sides of the split. The model
+    # then trains on a question it is later tested on.
+    pool_qkeys = {q_key(qa(it)[0]) for it in train_pool}
+    kept, dropped = [], []
+    for h in heldout:
+        why = ineligible(h["question"]) or (
+            "question also appears in the train pool"
+            if q_key(h["question"]) in pool_qkeys else None)
+        (dropped if why else kept).append((h, why))
+    heldout = [h for h, _ in kept]
+
+    # Dropped items are discarded rather than moved into the train pool, which
+    # keeps the train pool byte-identical to what the model was fine-tuned on.
+    if dropped:
+        print(f"\nDropped {len(dropped)} held-out items:")
+        for h, why in dropped:
+            print(f"  [{why}] {h['question'][:80]}")
+
+    # Leakage guard. The previous version of this check hashed the whole
+    # question+answer blob, but the split is disjoint by index already, so that
+    # could only ever fire on two byte-identical records - it passed while four
+    # questions were sitting verbatim on both sides. Question identity is the
+    # property that actually matters and is what is asserted now.
+    overlap = pool_qkeys & {q_key(h["question"]) for h in heldout}
+    assert not overlap, (
+        f"LEAKAGE: {len(overlap)} held-out questions appear in the train pool")
 
     Path(args.heldout).parent.mkdir(parents=True, exist_ok=True)
     Path(args.train_pool).parent.mkdir(parents=True, exist_ok=True)

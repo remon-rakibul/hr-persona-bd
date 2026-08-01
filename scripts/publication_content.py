@@ -39,6 +39,37 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 RESULTS = ROOT / "results"
+EVAL = ROOT / "data" / "eval"
+
+_EVAL_FILES = {"heldout": "heldout_test.json",
+               "scenario": "scenario_test.json",
+               "oos": "out_of_scope.json"}
+_eval_cache: dict[str, list] = {}
+
+
+def eval_set(setname):
+    """The test items themselves, so counts in the prose come from the data."""
+    if setname not in _eval_cache:
+        path = EVAL / _EVAL_FILES[setname]
+        _eval_cache[setname] = (json.load(open(path, encoding="utf-8"))
+                                if path.exists() else [])
+    return _eval_cache[setname]
+
+
+def set_size(setname):
+    """Size of a test set.
+
+    Written out rather than hardcoded because the hold-out set shrank from 150
+    to 146 when four questions were found to also occur in the training pool,
+    and six sentences of prose went on claiming 150 until they were chased down
+    by hand. Counting the file cannot drift.
+    """
+    return len(eval_set(setname))
+
+
+def gold_count(setname):
+    """Items carrying at least one gold section number."""
+    return sum(1 for i in eval_set(setname) if i.get("gold_sections"))
 
 TITLE = ("Fine-Tuning Large Language Models for Bangladesh Labour Law: "
          "An HR-Oriented Legal QA System")
@@ -157,13 +188,14 @@ def table_main_comparison(setname="heldout"):
     header = ["System", "BLEU", "ROUGE-L", "Grounding", "Cited valid",
               "Faithful.", "Complete.", "Useful.", "Harm"]
     caption = {
-        "heldout": ("Comparison on the 150-item leakage-free hold-out set. "
+        "heldout": (f"Comparison on the {set_size('heldout')}-item leakage-free "
+                    "hold-out set. "
                     "BLEU and ROUGE-L are 0--100; grounding and cited-valid are "
                     "fractions; faithfulness, completeness and usefulness are "
                     "1--5 LLM-judge scores; harm is the rate of answers flagged "
                     "misleading."),
-        "scenario": ("Comparison on the 38 hand-authored HR scenarios "
-                     "(leave, overtime, termination, wages, maternity, "
+        "scenario": (f"Comparison on the {set_size('scenario')} hand-authored HR "
+                     "scenarios (leave, overtime, termination, wages, maternity, "
                      "misconduct, probation, safety, child labour)."),
     }[setname]
     if not comp:
@@ -206,10 +238,12 @@ def table_citation(setname="scenario"):
     header = ["System", "Answers citing a section", "Cited sections valid",
               "Citation F1 vs.\u00a0gold"]
     caption = ("Citation behaviour on the scenario set, the subset for which "
-               "gold section numbers are complete (38/38 items; only 15/150 "
-               "hold-out items carry gold sections, so citation F1 is not "
-               "reported there). \"Valid\" means the cited section exists in the "
-               "Act; F1 is against the gold sections for the question.")
+               f"gold section numbers are complete ({gold_count('scenario')}/"
+               f"{set_size('scenario')} items; only {gold_count('heldout')}/"
+               f"{set_size('heldout')} hold-out items carry gold sections, so "
+               "citation F1 is not reported there). \"Valid\" means the cited "
+               "section exists in the Act; F1 is against the gold sections for "
+               "the question.")
     if not comp:
         return caption, header, [], NOT_MEASURED
     rows = []
@@ -309,9 +343,9 @@ def table_significance(setname="heldout"):
     """Paired differences against the base model, with CIs and adjusted p."""
     header = ["Metric", "System", "Difference", "95% CI", "p (Holm)", "Sig."]
     sig = load_significance(setname)
-    where = {"heldout": "the 150-item hold-out set",
-             "scenario": "the 38 hand-authored HR scenarios"}.get(
-                 setname, f"the {setname} set")
+    where = {"heldout": f"the {set_size('heldout')}-item hold-out set",
+             "scenario": f"the {set_size('scenario')} hand-authored HR scenarios"
+             }.get(setname, f"the {setname} set")
     caption = (f"Paired comparison against the base model on {where}. "
                "Every system answers the same questions, so differences are "
                "computed per item; the CI is a paired bootstrap over items "
@@ -870,12 +904,24 @@ no API access was available for this study. We report this as a limitation rathe
 than estimating those numbers, and it is the most useful single extension of this
 work.
 
-\\paragraph{Test sets.} Three sets are used. The \\emph{hold-out} set contains 150
-QA pairs carved out of the cleaned dataset before training and stratified across
-HR topics. The \\emph{scenario} set contains 38 hand-authored applied HR
-situations, each labelled with the gold sections a correct answer must cite. The
-\\emph{out-of-scope} set contains 20 questions drawn from other domains, where the
-correct behaviour is to decline.
+\\paragraph{Test sets.} Three sets are used. The \\emph{hold-out} set contains
+{N_HELDOUT} QA pairs carved out of the cleaned dataset before training and
+stratified across HR topics. The \\emph{scenario} set contains {N_SCENARIO}
+hand-authored applied HR situations, each labelled with the gold sections a
+correct answer must cite. The \\emph{out-of-scope} set contains {N_OOS} questions
+drawn from other domains, where the correct behaviour is to decline.
+
+Disjointness is enforced on the normalised question text rather than on the
+full question-answer record. The distinction is not pedantic: the generator
+occasionally emitted the same question twice with different answers, so the two
+copies differ as records and a record-level check declares them distinct while
+the model has in fact been trained on a question it is later tested on. Four
+such items were found and removed from the hold-out set, three of them genuine
+duplicates -- one pair gives an adult working week as 48 hours in the test copy
+and 56 in the training copy -- and one an extraction artefact whose question
+text was the placeholder heading ``Scenario Question 2''. They were discarded
+rather than returned to the training pool, so the training data is exactly what
+the model was fine-tuned on.
 
 \\paragraph{Decoding and reproducibility.} All systems are decoded greedily
 (temperature 0) with a fixed seed and a 384-token limit, under an identical
@@ -1007,9 +1053,9 @@ tooling are provided here, had not been collected at the time of writing.
 Comparison against commercial APIs was not possible without API access. Both gaps
 bound how strongly the results can be read.
 
-\\paragraph{Scale.} The evaluation covers 208 questions across three sets and a
-3B model on a single GPU. Differences are tested with paired statistics, but a
-150-item hold-out set has limited power: a comparison reported as not
+\\paragraph{Scale.} The evaluation covers {N_TOTAL} questions across three sets
+and a 3B model on a single GPU. Differences are tested with paired statistics,
+but a {N_HELDOUT}-item hold-out set has limited power: a comparison reported as not
 significant is evidence of an undetermined difference, not of no difference, and
 small effects would need a larger benchmark to resolve. The significance tests
 also treat the LLM judge's scores as data, so they inherit whatever bias that
@@ -1106,7 +1152,35 @@ def strip_latex(text):
     return text
 
 
+_COUNT_PLACEHOLDERS = {
+    "N_HELDOUT": lambda: set_size("heldout"),
+    "N_SCENARIO": lambda: set_size("scenario"),
+    "N_OOS": lambda: set_size("oos"),
+    "N_TOTAL": lambda: sum(set_size(s) for s in ("heldout", "scenario", "oos")),
+    "N_HELDOUT_GOLD": lambda: gold_count("heldout"),
+    "N_SCENARIO_GOLD": lambda: gold_count("scenario"),
+}
+_COUNT_RE = re.compile(r"\{(N_[A-Z_]+)\}")
+
+
+def fill_counts(text):
+    """Substitute {N_...} placeholders with counts read from the test sets.
+
+    The prose blocks are module-level constants, so they cannot be f-strings.
+    Without this the sizes get typed into the text by hand, which is how six
+    sentences came to claim a 150-item hold-out set after it became 146.
+
+    This matches only the specific {N_NAME} spellings rather than running
+    str.format over the block. The prose is LaTeX, so it is full of braces --
+    \\emph{x}, 10{,}000, @{} -- and handing that to a formatter raises on the
+    first one it cannot parse as a field.
+    """
+    return _COUNT_RE.sub(
+        lambda m: str(_COUNT_PLACEHOLDERS[m.group(1)]())
+        if m.group(1) in _COUNT_PLACEHOLDERS else m.group(0), text)
+
+
 def paragraphs(text):
     """Split a prose block into paragraphs."""
     return [re.sub(r"\s+", " ", p).strip()
-            for p in text.strip().split("\n\n") if p.strip()]
+            for p in fill_counts(text).strip().split("\n\n") if p.strip()]

@@ -7,26 +7,26 @@
  "n_valid_sections": 342,
  "by_system_set": {
   "base__heldout": {
-   "n": 150,
+   "n": 146,
    "counts": {
-    "unfaithful": 65,
-    "incomplete": 78,
-    "not_useful": 83,
-    "weak_grounding": 83,
-    "harmful": 18,
-    "over_refusal": 14,
+    "unfaithful": 63,
+    "incomplete": 76,
+    "not_useful": 81,
+    "weak_grounding": 81,
+    "harmful": 17,
+    "over_refusal": 13,
     "wrong_section": 10,
     "missing_citation": 2
    },
    "rates": {
-    "unfaithful": 0.43333333333333335,
-    "incomplete": 0.52,
-    "not_useful": 0.5533333333333333,
-    "weak_grounding": 0.5533333333333333,
-    "harmful": 0.12,
-    "over_refusal": 0.09333333333333334,
-    "wrong_section": 0.06666666666666667,
-    "missing_citation": 0.013333333333333334
+    "unfaithful": 0.4315068493150685,
+    "incomplete": 0.5205479452054794,
+    "not_useful": 0.5547945205479452,
+    "weak_grounding": 0.5547945205479452,
+    "harmful": 0.11643835616438356,
+    "over_refusal": 0.08904109589041095,
+    "wrong_section": 0.0684931506849315,
+    "missing_citation": 0.0136986301369863
    }
   },
   "base__oos": {
@@ -60,26 +60,26 @@
    }
   },
   "finetuned__heldout": {
-   "n": 150,
+   "n": 146,
    "counts": {
-    "weak_grounding": 78,
-    "missing_citation": 22,
-    "unfaithful": 66,
-    "incomplete": 72,
-    "not_useful": 76,
+    "weak_grounding": 75,
+    "missing_citation": 20,
+    "unfaithful": 64,
+    "incomplete": 70,
+    "not_useful": 74,
     "wrong_section": 9,
     "harmful": 28,
     "over_refusal": 1
    },
    "rates": {
-    "weak_grounding": 0.52,
-    "missing_citation": 0.14666666666666667,
-    "unfaithful": 0.44,
-    "incomplete": 0.48,
-    "not_useful": 0.5066666666666667,
-    "wrong_section": 0.06,
-    "harmful": 0.18666666666666668,
-    "over_refusal": 0.006666666666666667
+    "weak_grounding": 0.5136986301369864,
+    "missing_citation": 0.136986301369863,
+    "unfaithful": 0.4383561643835616,
+    "incomplete": 0.4794520547945205,
+    "not_useful": 0.5068493150684932,
+    "wrong_section": 0.06164383561643835,
+    "harmful": 0.1917808219178082,
+    "over_refusal": 0.00684931506849315
    }
   },
   "finetuned__oos": {
@@ -113,28 +113,28 @@
    }
   },
   "rag_base__heldout": {
-   "n": 150,
+   "n": 146,
    "counts": {
-    "missing_citation": 63,
-    "weak_grounding": 28,
-    "unfaithful": 70,
-    "incomplete": 84,
-    "not_useful": 86,
+    "missing_citation": 62,
+    "weak_grounding": 27,
+    "unfaithful": 68,
+    "incomplete": 82,
+    "not_useful": 84,
     "wrong_section": 6,
     "harmful": 9,
     "hallucinated_section": 1,
     "over_refusal": 2
    },
    "rates": {
-    "missing_citation": 0.42,
-    "weak_grounding": 0.18666666666666668,
-    "unfaithful": 0.4666666666666667,
-    "incomplete": 0.56,
-    "not_useful": 0.5733333333333334,
-    "wrong_section": 0.04,
-    "harmful": 0.06,
-    "hallucinated_section": 0.006666666666666667,
-    "over_refusal": 0.013333333333333334
+    "missing_citation": 0.4246575342465753,
+    "weak_grounding": 0.18493150684931506,
+    "unfaithful": 0.4657534246575342,
+    "incomplete": 0.5616438356164384,
+    "not_useful": 0.5753424657534246,
+    "wrong_section": 0.0410958904109589,
+    "harmful": 0.06164383561643835,
+    "hallucinated_section": 0.00684931506849315,
+    "over_refusal": 0.0136986301369863
    }
   },
   "rag_base__oos": {
@@ -170,28 +170,28 @@
    }
   },
   "rag_finetuned__heldout": {
-   "n": 150,
+   "n": 146,
    "counts": {
-    "missing_citation": 96,
-    "weak_grounding": 25,
-    "unfaithful": 64,
-    "incomplete": 71,
-    "not_useful": 74,
+    "missing_citation": 93,
+    "weak_grounding": 24,
+    "unfaithful": 63,
+    "incomplete": 70,
+    "not_useful": 73,
     "wrong_section": 5,
     "harmful": 16,
     "over_refusal": 1,
     "hallucinated_section": 1
    },
    "rates": {
-    "missing_citation": 0.64,
-    "weak_grounding": 0.16666666666666666,
-    "unfaithful": 0.4266666666666667,
-    "incomplete": 0.47333333333333333,
-    "not_useful": 0.49333333333333335,
-    "wrong_section": 0.03333333333333333,
-    "harmful": 0.10666666666666667,
-    "over_refusal": 0.006666666666666667,
-    "hallucinated_section": 0.006666666666666667
+    "missing_citation": 0.636986301369863,
+    "weak_grounding": 0.1643835616438356,
+    "unfaithful": 0.4315068493150685,
+    "incomplete": 0.4794520547945205,
+    "not_useful": 0.5,
+    "wrong_section": 0.03424657534246575,
+    "harmful": 0.1095890410958904,
+    "over_refusal": 0.00684931506849315,
+    "hallucinated_section": 0.00684931506849315
    }
   },
   "rag_finetuned__oos": {
@@ -250,13 +250,13 @@
    "wrong_section": 2
   },
   "base__dismissal": {
-   "weak_grounding": 7,
-   "incomplete": 9,
-   "not_useful": 10,
-   "unfaithful": 8,
+   "weak_grounding": 6,
+   "incomplete": 8,
+   "not_useful": 9,
+   "unfaithful": 7,
    "over_refusal": 1,
-   "harmful": 3,
-   "wrong_section": 4
+   "wrong_section": 4,
+   "harmful": 2
   },
   "base__leave": {
    "wrong_section": 6,
@@ -284,11 +284,11 @@
    "wrong_section": 4
   },
   "base__other": {
-   "unfaithful": 28,
-   "incomplete": 32,
-   "not_useful": 34,
-   "weak_grounding": 36,
-   "over_refusal": 7,
+   "unfaithful": 27,
+   "incomplete": 31,
+   "not_useful": 33,
+   "weak_grounding": 35,
+   "over_refusal": 6,
    "harmful": 5,
    "wrong_section": 2,
    "missing_citation": 2
@@ -353,11 +353,11 @@
    "missing_citation": 1
   },
   "finetuned__dismissal": {
-   "weak_grounding": 7,
-   "incomplete": 8,
-   "not_useful": 8,
+   "weak_grounding": 6,
+   "incomplete": 7,
+   "not_useful": 7,
    "missing_citation": 1,
-   "unfaithful": 6,
+   "unfaithful": 5,
    "harmful": 2,
    "wrong_section": 4
   },
@@ -387,11 +387,11 @@
    "harmful": 3
   },
   "finetuned__other": {
-   "weak_grounding": 35,
-   "missing_citation": 15,
-   "unfaithful": 31,
-   "incomplete": 31,
-   "not_useful": 33,
+   "weak_grounding": 33,
+   "missing_citation": 14,
+   "unfaithful": 30,
+   "incomplete": 30,
+   "not_useful": 32,
    "harmful": 11,
    "wrong_section": 1
   },
@@ -423,7 +423,7 @@
   "finetuned__trade_union": {
    "weak_grounding": 9,
    "wrong_section": 4,
-   "missing_citation": 3,
+   "missing_citation": 2,
    "unfaithful": 7,
    "incomplete": 7,
    "not_useful": 7,
@@ -492,11 +492,11 @@
    "wrong_section": 2
   },
   "rag_base__other": {
-   "missing_citation": 29,
-   "unfaithful": 28,
-   "incomplete": 37,
-   "not_useful": 37,
-   "weak_grounding": 15,
+   "missing_citation": 28,
+   "unfaithful": 27,
+   "incomplete": 36,
+   "not_useful": 36,
+   "weak_grounding": 14,
    "harmful": 1,
    "wrong_section": 1,
    "over_refusal": 1
@@ -524,9 +524,9 @@
   },
   "rag_base__trade_union": {
    "missing_citation": 12,
-   "unfaithful": 15,
-   "incomplete": 16,
-   "not_useful": 16,
+   "unfaithful": 14,
+   "incomplete": 15,
+   "not_useful": 15,
    "weak_grounding": 7,
    "hallucinated_section": 1,
    "harmful": 1
@@ -560,12 +560,12 @@
    "wrong_section": 1
   },
   "rag_finetuned__dismissal": {
-   "missing_citation": 7,
+   "missing_citation": 6,
    "unfaithful": 4,
    "incomplete": 4,
    "not_useful": 5,
-   "weak_grounding": 2,
-   "harmful": 1
+   "harmful": 1,
+   "weak_grounding": 1
   },
   "rag_finetuned__leave": {
    "missing_citation": 3,
@@ -593,11 +593,11 @@
    "harmful": 1
   },
   "rag_finetuned__other": {
-   "missing_citation": 45,
+   "missing_citation": 44,
    "over_refusal": 1,
-   "unfaithful": 31,
-   "incomplete": 34,
-   "not_useful": 35,
+   "unfaithful": 30,
+   "incomplete": 33,
+   "not_useful": 34,
    "harmful": 4,
    "weak_grounding": 11,
    "wrong_section": 2
@@ -624,7 +624,7 @@
    "harmful": 2
   },
   "rag_finetuned__trade_union": {
-   "missing_citation": 16,
+   "missing_citation": 15,
    "wrong_section": 1,
    "unfaithful": 8,
    "incomplete": 10,
@@ -775,13 +775,6 @@
    "errors": [
     "weak_grounding"
    ]
-  },
-  {
-   "system": "base",
-   "set": "heldout",
-   "id": 197,
-   "topic": "trade_union",
-   "errors": []
   },
   {
    "system": "base",
@@ -1098,15 +1091,6 @@
    "system": "base",
    "set": "heldout",
    "id": 960,
-   "topic": "other",
-   "errors": [
-    "weak_grounding"
-   ]
-  },
-  {
-   "system": "base",
-   "set": "heldout",
-   "id": 966,
    "topic": "other",
    "errors": [
     "weak_grounding"
@@ -1738,19 +1722,6 @@
   {
    "system": "base",
    "set": "heldout",
-   "id": 2494,
-   "topic": "dismissal",
-   "errors": [
-    "weak_grounding",
-    "unfaithful",
-    "incomplete",
-    "not_useful",
-    "harmful"
-   ]
-  },
-  {
-   "system": "base",
-   "set": "heldout",
    "id": 2497,
    "topic": "leave",
    "errors": [
@@ -2024,18 +1995,6 @@
    "topic": "other",
    "errors": [
     "weak_grounding"
-   ]
-  },
-  {
-   "system": "base",
-   "set": "heldout",
-   "id": 2893,
-   "topic": "other",
-   "errors": [
-    "over_refusal",
-    "unfaithful",
-    "incomplete",
-    "not_useful"
    ]
   },
   {
@@ -2922,15 +2881,6 @@
   {
    "system": "finetuned",
    "set": "heldout",
-   "id": 197,
-   "topic": "trade_union",
-   "errors": [
-    "missing_citation"
-   ]
-  },
-  {
-   "system": "finetuned",
-   "set": "heldout",
    "id": 204,
    "topic": "other",
    "errors": [
@@ -3256,15 +3206,6 @@
     "unfaithful",
     "incomplete",
     "not_useful"
-   ]
-  },
-  {
-   "system": "finetuned",
-   "set": "heldout",
-   "id": 966,
-   "topic": "other",
-   "errors": [
-    "weak_grounding"
    ]
   },
   {
@@ -3904,18 +3845,6 @@
   {
    "system": "finetuned",
    "set": "heldout",
-   "id": 2494,
-   "topic": "dismissal",
-   "errors": [
-    "weak_grounding",
-    "unfaithful",
-    "incomplete",
-    "not_useful"
-   ]
-  },
-  {
-   "system": "finetuned",
-   "set": "heldout",
    "id": 2497,
    "topic": "leave",
    "errors": []
@@ -4189,19 +4118,6 @@
    "topic": "other",
    "errors": [
     "weak_grounding"
-   ]
-  },
-  {
-   "system": "finetuned",
-   "set": "heldout",
-   "id": 2893,
-   "topic": "other",
-   "errors": [
-    "missing_citation",
-    "weak_grounding",
-    "unfaithful",
-    "incomplete",
-    "not_useful"
    ]
   },
   {
@@ -5069,17 +4985,6 @@
    "set": "heldout",
    "id": 190,
    "topic": "other",
-   "errors": [
-    "unfaithful",
-    "incomplete",
-    "not_useful"
-   ]
-  },
-  {
-   "system": "rag_base",
-   "set": "heldout",
-   "id": 197,
-   "topic": "trade_union",
    "errors": [
     "unfaithful",
     "incomplete",
@@ -5391,13 +5296,6 @@
   {
    "system": "rag_base",
    "set": "heldout",
-   "id": 966,
-   "topic": "other",
-   "errors": []
-  },
-  {
-   "system": "rag_base",
-   "set": "heldout",
    "id": 983,
    "topic": "other",
    "errors": [
@@ -6016,13 +5914,6 @@
   {
    "system": "rag_base",
    "set": "heldout",
-   "id": 2494,
-   "topic": "dismissal",
-   "errors": []
-  },
-  {
-   "system": "rag_base",
-   "set": "heldout",
    "id": 2497,
    "topic": "leave",
    "errors": [
@@ -6305,19 +6196,6 @@
    "topic": "other",
    "errors": [
     "missing_citation",
-    "unfaithful",
-    "incomplete",
-    "not_useful"
-   ]
-  },
-  {
-   "system": "rag_base",
-   "set": "heldout",
-   "id": 2893,
-   "topic": "other",
-   "errors": [
-    "missing_citation",
-    "weak_grounding",
     "unfaithful",
     "incomplete",
     "not_useful"
@@ -7156,15 +7034,6 @@
   {
    "system": "rag_finetuned",
    "set": "heldout",
-   "id": 197,
-   "topic": "trade_union",
-   "errors": [
-    "missing_citation"
-   ]
-  },
-  {
-   "system": "rag_finetuned",
-   "set": "heldout",
    "id": 204,
    "topic": "other",
    "errors": [
@@ -7464,13 +7333,6 @@
    "errors": [
     "missing_citation"
    ]
-  },
-  {
-   "system": "rag_finetuned",
-   "set": "heldout",
-   "id": 966,
-   "topic": "other",
-   "errors": []
   },
   {
    "system": "rag_finetuned",
@@ -8125,16 +7987,6 @@
   {
    "system": "rag_finetuned",
    "set": "heldout",
-   "id": 2494,
-   "topic": "dismissal",
-   "errors": [
-    "missing_citation",
-    "weak_grounding"
-   ]
-  },
-  {
-   "system": "rag_finetuned",
-   "set": "heldout",
    "id": 2497,
    "topic": "leave",
    "errors": [
@@ -8406,18 +8258,6 @@
    "topic": "other",
    "errors": [
     "missing_citation"
-   ]
-  },
-  {
-   "system": "rag_finetuned",
-   "set": "heldout",
-   "id": 2893,
-   "topic": "other",
-   "errors": [
-    "missing_citation",
-    "unfaithful",
-    "incomplete",
-    "not_useful"
    ]
   },
   {
