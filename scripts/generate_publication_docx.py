@@ -177,6 +177,7 @@ def build_document(fig_dir, trainer_state_path=None) -> Document:
 
     doc.add_heading("5. Results", level=1)
     doc.add_heading("5.1 Training", level=2)
+    add_body(doc, P.RESULTS_LEADS["training"])
     if add_table(doc, P.table_training(trainer_state_path), tno):
         tno += 1
     if add_table(doc, P.table_training_steps(trainer_state_path), tno):
@@ -185,6 +186,7 @@ def build_document(fig_dir, trainer_state_path=None) -> Document:
     add_figure(doc, fig_dir, "figure5_eval_loss_perplexity.png")
 
     doc.add_heading("5.2 Answer quality", level=2)
+    add_body(doc, P.RESULTS_LEADS["quality"])
     if add_table(doc, P.table_main_comparison("heldout"), tno):
         tno += 1
     if add_table(doc, P.table_main_comparison("scenario"), tno):
@@ -192,20 +194,24 @@ def build_document(fig_dir, trainer_state_path=None) -> Document:
     add_figure(doc, fig_dir, "figure7_results_comparison.png")
 
     doc.add_heading("5.3 Statistical comparison", level=2)
+    add_body(doc, P.RESULTS_LEADS["significance"])
     if add_table(doc, P.table_significance("heldout"), tno):
         tno += 1
     if add_table(doc, P.table_significance("scenario"), tno):
         tno += 1
 
     doc.add_heading("5.4 Citation accuracy", level=2)
+    add_body(doc, P.RESULTS_LEADS["citation"])
     if add_table(doc, P.table_citation("scenario"), tno):
         tno += 1
 
     doc.add_heading("5.5 Scope discipline", level=2)
+    add_body(doc, P.RESULTS_LEADS["refusal"])
     if add_table(doc, P.table_refusal(), tno):
         tno += 1
 
     doc.add_heading("5.6 Error analysis", level=2)
+    add_body(doc, P.RESULTS_LEADS["errors"])
     if add_table(doc, P.table_error_analysis("heldout"), tno):
         tno += 1
     add_figure(doc, fig_dir, "figure8_error_analysis.png")
@@ -223,6 +229,9 @@ def build_document(fig_dir, trainer_state_path=None) -> Document:
 
     doc.add_heading("8. Conclusion", level=1)
     add_body(doc, P.CONCLUSION)
+
+    doc.add_heading("Data and code availability", level=1)
+    add_body(doc, P.AVAILABILITY)
 
     doc.add_heading("Appendix: reproducibility", level=1)
     doc.add_paragraph(P.strip_latex(P.reproducibility_note()))

@@ -77,12 +77,21 @@ def table(caption, header, rows, note, label=None, small=True):
         out.append("\\label{" + label + "}")
     if small:
         out.append("\\small")
-    out += ["\\begin{tabular}{" + align + "}", "\\toprule",
+    # Shrink to the text width, but only when the table would otherwise run
+    # into the margin - the \ifdim guard leaves narrow tables at their natural
+    # size instead of stretching them. Several of these tables carry nine
+    # columns and overran by up to 68pt (~2.4cm past the margin) before this.
+    # Kept on one line with the tabular: opening the box on its own line needs a
+    # trailing "%" to swallow the newline, and a lone trailing "%" is exactly
+    # what check_output() refuses to emit.
+    out.append("\\resizebox{\\ifdim\\width>\\linewidth\\linewidth\\else\\width\\fi}{!}{"
+               "\\begin{tabular}{" + align + "}")
+    out += ["\\toprule",
             " & ".join("\\textbf{" + esc(h) + "}" for h in header) + " \\\\",
             "\\midrule"]
     for r in rows:
         out.append(" & ".join(esc(str(c)) for c in r) + " \\\\")
-    out += ["\\bottomrule", "\\end{tabular}", "\\end{table}", ""]
+    out += ["\\bottomrule", "\\end{tabular}}", "\\end{table}", ""]
     return "\n".join(out)
 
 
@@ -123,6 +132,12 @@ def build_main_tex(trainer_state_path, fig_dir) -> str:
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Long unbreakable tokens (LEGAL-BERT, BanglaBERT, \cite clusters) left several
+% prose lines overfull by up to 20pt, i.e. visibly past the margin. Allowing a
+% little extra interword stretch lets TeX absorb them instead of overflowing.
+\tolerance=1200
+\emergencystretch=2em
 """)
     add("\\title{" + P.TITLE + "}")
     add("\\author{" + " \\\\ ".join(P.AUTHORS) + "}")
@@ -178,6 +193,7 @@ def build_main_tex(trainer_state_path, fig_dir) -> str:
     add(r"\section{Results}")
 
     add(r"\subsection{Training}")
+    add(prose(P.RESULTS_LEADS["training"]))
     c, h, r, n = P.table_training(trainer_state_path)
     add(table(c, h, r, n, "tab:training", small=False))
     c, h, r, n = P.table_training_steps(trainer_state_path)
@@ -186,6 +202,7 @@ def build_main_tex(trainer_state_path, fig_dir) -> str:
     add(fig("figure5_eval_loss_perplexity.png", "0.88"))
 
     add(r"\subsection{Answer quality}")
+    add(prose(P.RESULTS_LEADS["quality"]))
     c, h, r, n = P.table_main_comparison("heldout")
     add(table(c, h, r, n, "tab:heldout"))
     c, h, r, n = P.table_main_comparison("scenario")
@@ -193,25 +210,30 @@ def build_main_tex(trainer_state_path, fig_dir) -> str:
     add(fig("figure7_results_comparison.png"))
 
     add(r"\subsection{Statistical comparison}")
+    add(prose(P.RESULTS_LEADS["significance"]))
     c, h, r, n = P.table_significance("heldout")
     add(table(c, h, r, n, "tab:significance"))
     c, h, r, n = P.table_significance("scenario")
     add(table(c, h, r, n, "tab:significance_scn"))
 
     add(r"\subsection{Citation accuracy}")
+    add(prose(P.RESULTS_LEADS["citation"]))
     c, h, r, n = P.table_citation("scenario")
     add(table(c, h, r, n, "tab:citation"))
 
     add(r"\subsection{Scope discipline}")
+    add(prose(P.RESULTS_LEADS["refusal"]))
     c, h, r, n = P.table_refusal()
     add(table(c, h, r, n, "tab:refusal"))
 
     add(r"\subsection{Error analysis}")
+    add(prose(P.RESULTS_LEADS["errors"]))
     c, h, r, n = P.table_error_analysis("heldout")
     add(table(c, h, r, n, "tab:errors"))
     add(fig("figure8_error_analysis.png"))
 
     add(r"\subsection{Ablation}")
+    add(r"\label{sec:ablation}")
     c, h, r, n = P.table_ablation()
     add(table(c, h, r, n, "tab:ablation"))
     add(prose(P.training_findings_text()))
@@ -224,6 +246,9 @@ def build_main_tex(trainer_state_path, fig_dir) -> str:
 
     add(r"\section{Conclusion}")
     add(prose(P.CONCLUSION))
+
+    add(r"\section*{Data and code availability}")
+    add(prose(P.AVAILABILITY))
 
     add(r"\section*{Appendix: reproducibility}")
     add(esc(P.reproducibility_note()))
@@ -255,6 +280,12 @@ def check_output(tex: str) -> list[str]:
         r"\\(cite|label|ref|bibitem|includegraphics|url)\s*(\[[^\]]*\])?\{[^}]*\}",
         lambda m: "X" * len(m.group(0)), tex)
     for i, line in enumerate(masked.split("\n"), 1):
+        # A line that *starts* with % is a deliberate comment, not text that
+        # lost its tail. Only a % appearing after real content is the bug this
+        # looks for - "a 99.7% verification rate" silently drops the rest of
+        # the sentence from the PDF.
+        if line.lstrip().startswith("%"):
+            continue
         if re.search(r"(?<!\\)%", line):
             problems.append(f"line {i}: unescaped % (comments out the rest of "
                             f"the line in the PDF)")

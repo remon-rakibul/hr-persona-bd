@@ -71,6 +71,20 @@ def gold_count(setname):
     """Items carrying at least one gold section number."""
     return sum(1 for i in eval_set(setname) if i.get("gold_sections"))
 
+
+def gold_or_count(relpath):
+    """Number of records in a JSON list file, or '--' if it is missing.
+
+    The refusal-example count appears in two places that legitimately differ -
+    the pool holds 50, the trainer's split puts 45 of them in training - and
+    quoting either as a literal is how the two came to contradict each other.
+    """
+    p = ROOT / relpath
+    try:
+        return len(json.load(open(p, encoding="utf-8")))
+    except Exception:
+        return "--"
+
 TITLE = ("Fine-Tuning Large Language Models for Bangladesh Labour Law: "
          "An HR-Oriented Legal QA System")
 AUTHORS = ["Md. Rakibul Haque", "Fabia Chowdhury", "Nowshin Sayara Tamanna"]
@@ -245,11 +259,14 @@ def table_citation(setname="scenario"):
               "Citation F1 vs.\u00a0gold"]
     caption = ("Citation behaviour on the scenario set, the subset for which "
                f"gold section numbers are complete ({gold_count('scenario')}/"
-               f"{set_size('scenario')} items; only {gold_count('heldout')}/"
-               f"{set_size('heldout')} hold-out items carry gold sections, so "
-               "citation F1 is not reported there). ``Valid'' means the cited "
+               f"{set_size('scenario')} items). ``Valid'' means the cited "
                "section exists in the Act; F1 is against the gold sections for "
-               "the question.")
+               "the question. Citation F1 is defined only where a gold section "
+               f"exists, so on the hold-out set it is a mean over the "
+               f"{gold_count('heldout')} of {set_size('heldout')} items that "
+               "carry one. Hold-out citation F1 is reported elsewhere in the "
+               "paper on that basis and should be read against that sample "
+               "size, not against the full set.")
     if not comp:
         return caption, header, [], NOT_MEASURED
     rows = []
@@ -472,9 +489,14 @@ def training_findings_text():
         nr, wr = loss("no_refusal_data"), loss("with_refusal_data")
         if None not in (nr, wr):
             out.append(
-                f"The refusal examples are cheap. Removing all "
+                f"The refusal examples are cheap. The pool contains "
+                f"{gold_or_count('data/final/refusal_examples.json')} refusal "
+                f"examples, of which "
                 f"{by['with_refusal_data']['n_train'] - by['no_refusal_data']['n_train']} "
-                f"of them changes validation loss from {wr:.3f} to {nr:.3f}. "
+                f"fall in the training split and the rest in the validation "
+                f"split; removing those "
+                f"{by['with_refusal_data']['n_train'] - by['no_refusal_data']['n_train']} "
+                f"changes validation loss from {wr:.3f} to {nr:.3f}. "
                 f"This comparison should not be over-read in either direction: "
                 f"the two arms differ in training-set size as well as in "
                 f"content, and validation loss is computed over a split that "
@@ -573,7 +595,14 @@ def key_findings_text():
             "This gap is invisible if the hold-out set is the only test. "
             f"Citation F1 for the fine-tuned model is {ho_ft:.2f} on the "
             f"hold-out set but {sc_ft:.2f} on the scenarios, and for the base "
-            f"model {ho_b:.2f} against {sc_b:.2f}. Hold-out questions are "
+            f"model {ho_b:.2f} against {sc_b:.2f}. The hold-out figures are "
+            f"means over the {gold_count('heldout')} hold-out items that carry "
+            f"a gold section, against all {set_size('scenario')} scenarios, so "
+            "the contrast is between a small in-distribution sample and a full "
+            "applied one; on the hold-out side the difference between systems "
+            "is not significant at that sample size. What the comparison "
+            "supports is the direction of the gap, not its precise magnitude. "
+            "Hold-out questions are "
             "generated from the statute and tend to name or paraphrase the "
             "provision they are about, so the citation is partly given away by "
             "the question. A practitioner's question describes a situation "
@@ -872,6 +901,74 @@ def reproducibility_note():
             f"resumable and idempotent so a re-run reproduces these numbers.")
 
 
+# One lead-in per results subsection. Without these the Results section is a
+# stack of headings with nothing under them - every subsection held only floats,
+# so LaTeX moved the tables away and left the headings stranded on near-empty
+# pages. They also say what the reader should take from each table, which the
+# section otherwise deferred entirely to the Discussion.
+RESULTS_LEADS = {
+    "training": """
+Training ran once on the full pool with early stopping; the ablation arms in
+Section~\\ref{sec:ablation} share its schedule and seed. The tables below report
+the selected checkpoint and the validation loss at each evaluation step. The
+model measured everywhere else in this section is the restored best checkpoint,
+not the state at the final step.
+""",
+    "quality": """
+The two tables below report the same systems and metrics on the two in-scope
+test sets. They should be read together and they do not agree: the ordering of
+the systems on the statute-derived hold-out set differs from the ordering on the
+hand-authored scenarios, which is the finding developed in the Discussion.
+""",
+    "significance": """
+Because every system answered identical questions in identical order,
+differences are tested per item rather than by comparing means. The hold-out and
+scenario sets are reported separately; note the per-row sample size, which for
+citation F1 is the subset of items carrying a gold section rather than the full
+set.
+""",
+    "citation": """
+Citation accuracy is the metric closest to what an HR user can verify, since a
+cited section can be looked up in the Act directly.
+""",
+    "refusal": """
+Scope discipline is reported separately from answer quality because the two move
+in opposite directions across these systems.
+""",
+    "errors": """
+Failure modes are counted per answer and are not mutually exclusive. The
+categories separate errors that are invisible to a citation-validity check --
+citing a real section that does not govern the question -- from errors that a
+stricter output format would fix.
+""",
+}
+
+
+AVAILABILITY = """
+The source statute is a public document published by the Government of
+Bangladesh[[ref_act]] and is not redistributed here. Everything derived from it
+in the course of this study is available: the generated and validated QA
+dataset, the three test sets with their gold section labels, the retrieval
+index, the system and judge prompts, the training and ablation notebooks with
+their captured run manifests, every evaluation and analysis script, and the
+per-item generation and scoring records from which every table in this paper is
+built. The blind human-evaluation application and its written protocol are
+included as well, so the rating exercise reported as pending can be run and
+scored by a third party without reimplementation.
+
+Two categories are not released. The fine-tuned adapter weights are omitted
+because the model is trained on a superseded amendment state of the statute and
+we do not want a downloadable artifact presenting outdated provisions as
+authoritative; the training data and notebooks reproduce it exactly. No human
+rating data exists yet, as no expert evaluation has been collected.
+
+The tables and prose in this paper are generated from the stored measurement
+records by script rather than transcribed, so a reader who re-runs the pipeline
+regenerates the manuscript's numbers directly and any discrepancy is visible as
+a diff rather than requiring manual comparison.
+"""
+
+
 def table_dataset():
     """Dataset composition - counted from the actual files."""
     header = ["Split", "Items", "Purpose"]
@@ -922,37 +1019,28 @@ def table_dataset():
 # --------------------------------------------------------------------------
 
 ABSTRACT = """
-Human resource professionals in Bangladesh need reliable, citable answers to
-questions about the Bangladesh Labour Act 2006 (amended to 2018)[[ref_act]].
-General-purpose large language models lack reliable jurisdiction-specific
-knowledge and are known to hallucinate legal content[[ref_hallucination]][[ref_legaltools]],
-while sending employee data to hosted APIs raises confidentiality concerns. We
-present an end-to-end, reproducible pipeline that converts the official PDF of
-the Act into a validated question-answering dataset, fine-tunes Llama 3.2 3B
-Instruct[[ref_llama3]] with low-rank adaptation[[ref_lora]] using Unsloth[[ref_unsloth]],
-and deploys the result locally in GGUF (Q4\\_K\\_M) form via Ollama. To evaluate
-it we construct a leakage-free benchmark: a topic-stratified hold-out set carved
-out of the dataset before training, a set of hand-authored HR scenarios covering
-leave, overtime, termination, wages, maternity benefit, misconduct, probation and
-workplace safety, and a set of out-of-scope probes that the system should
-decline. Beyond BLEU[[ref_bleu]] and ROUGE-L[[ref_rouge]], which reward surface
-overlap rather than legal correctness, we report citation validity and citation
-F1 against gold sections, lexical grounding in the statute, and LLM-judged
-faithfulness, completeness, usefulness and harmfulness, together with an error
-analysis of the failure modes. We compare the fine-tuned model against the base
-model, retrieval-augmented generation[[ref_rag]] over the Act, and their
-combination. On the practitioner scenarios, fine-tuning alone does not
-significantly improve citation accuracy or any judged quality dimension over the
-base model, while retrieval improves all of them; the advantage of fine-tuning
-that is visible on the statute-derived hold-out set disappears on scenarios,
-because hold-out questions tend to name the provision they concern and so give
-the citation away. Retrieval carries a cost the same benchmark makes visible:
-every configuration that cites better also declines fewer out-of-scope
-questions. These results align with the broader finding that retrieval
-outperforms fine-tuning for knowledge injection, and extend it to a
-citation-level criterion and to the scope discipline that a deployed statutory
-assistant requires. The system is positioned as statute-grounded informational
-support for HR practice, not legal advice.
+Human resource professionals in Bangladesh need reliable, citable answers about
+the Bangladesh Labour Act 2006[[ref_act]]. General-purpose large language models
+lack jurisdiction-specific knowledge and hallucinate legal
+content[[ref_hallucination]][[ref_legaltools]], while sending employee data to
+hosted APIs raises confidentiality concerns. We present a reproducible pipeline
+that converts the official text of the Act into a validated question-answering
+dataset, fine-tunes Llama 3.2 3B Instruct[[ref_llama3]] with low-rank
+adaptation[[ref_lora]], and deploys it locally in quantised form. To evaluate it
+we build a leakage-free benchmark: statute-derived hold-out questions,
+hand-authored HR scenarios labelled with the sections a correct answer must
+cite, and out-of-scope probes that should be declined. Alongside
+BLEU[[ref_bleu]] and ROUGE-L[[ref_rouge]] we report citation validity, citation
+F1 against gold sections, lexical grounding, and LLM-judged faithfulness,
+completeness, usefulness and harmfulness. Comparing the fine-tuned model against
+the base model, retrieval-augmented generation[[ref_rag]] over the Act, and
+their combination: on the applied scenarios fine-tuning alone improves no judged
+dimension significantly, while retrieval improves all of them. The advantage
+fine-tuning shows on the hold-out set disappears there, because statute-derived
+questions tend to name the provision they concern. Retrieval also lowers
+out-of-scope refusal, so citation accuracy and scope discipline trade against
+each other. The study covers the 2018-amended text only. The system provides
+statute-grounded informational support, not legal advice.
 """
 
 INTRO = """
@@ -1123,12 +1211,17 @@ makes it usable on confidential HR material.
 """
 
 EVAL_SETUP = """
-\\paragraph{Systems compared.} We compare five configurations, all served locally
+\\paragraph{Systems compared.} We compare four configurations, all served locally
 through the same interface so that differences reflect the model rather than the
 harness: the base Llama 3.2 3B Instruct model; the fine-tuned model; a
 retrieval-augmented[[ref_rag]] baseline in which the base model answers from the
-top-4 passages retrieved from the Act; the fine-tuned model with the same
-retrieval; and Qwen2.5 7B as a larger general-purpose reference point. Retrieval
+top-4 passages retrieved from the Act; and the fine-tuned model with the same
+retrieval. A larger general-purpose local model (Qwen2.5 7B) was specified as a
+reference point but is not reported: at 4-bit it does not fit the 4\\,GB GPU used
+for evaluation, and running it with CPU offload would have changed the decoding
+conditions the other four systems share. It is listed with the commercial models
+as an unevaluated comparison rather than reported with estimated numbers.
+Retrieval
 uses cosine similarity over 800-character chunks of the Act embedded with
 nomic-embed-text[[ref_nomic]]. The two retrieval configurations share one index,
 so the base and fine-tuned models see identical passages for a given question
@@ -1285,12 +1378,33 @@ that a question depends on material outside its scope rather than outside the
 Act. Most HR practice in Bangladesh is also conducted in Bangla, and the dataset
 is English-only.
 
-\\paragraph{Statutory amendment.} The model encodes the Act at a fixed amendment
-state. Any subsequent amendment silently invalidates the affected answers, and
-the model will continue to answer with unchanged confidence. A deployed system
-needs a review process tied to legislative updates; the retrieval configuration
-degrades more gracefully here, since re-indexing an amended text is cheaper than
-retraining.
+\\paragraph{Statutory currency.} This study covers the 2018-amended text only:
+every result here is measured against the Bangladesh Labour Act 2006 as amended
+to 2018. The Act has since been amended again in 2026, and that amendment is
+\\emph{not} reflected in the corpus, the training data, the retrieval index or
+any reported number. Where the 2026 amendment changes a provision, an answer
+this system gives about that provision may be confidently wrong, and the
+benchmark cannot detect it, because gold labels were written against the earlier
+text. Readers should treat the results as evidence about the method -- whether
+retrieval or fine-tuning grounds a model in a statute -- and not as a validated
+account of current Bangladeshi labour law. Re-running the pipeline against the
+amended text is mechanical: the dataset builder, the index and the evaluation
+all take the statute as input, so the study is reproducible on the new text
+without changes to the method.
+
+\\paragraph{Handling amendment in deployment.} The general problem outlined
+above outlives this particular amendment, and the two configurations we compare
+fail differently under it. A fine-tuned model encodes the statute in its weights,
+so an amendment can only be absorbed by retraining, and until then nothing in
+the system's behaviour signals that its answer is out of date. The retrieval
+configuration degrades more gracefully: re-indexing an amended text costs minutes
+rather than a training run, and the passage the answer was drawn from can be
+displayed alongside it, so a reader can see which version of a provision was
+consulted. This is a further practical argument for the retrieval configurations
+beyond their accuracy advantage. A deployed system would need, at minimum, the
+amendment date of the indexed text surfaced with every answer, a review process
+tied to legislative updates, and refusal to answer on provisions known to be
+under amendment -- none of which is implemented or evaluated here.
 
 \\paragraph{Synthetic training data.} Training questions were generated from the
 Act's own text, so they inherit its phrasing and emphasis and under-represent how
